@@ -1,0 +1,11 @@
+pandoc: 3.1.11
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  articles/ContributorGuidelines: ContributorGuidelines.html
+  DataAnalysis: DataAnalysis.html
+  articles/KRIMethod: KRIMethod.html
+last_built: 2025-03-10T17:36Z
+urls:
+  reference: https://gilead-biostats.github.io/gsm/reference
+  article: https://gilead-biostats.github.io/gsm/articles
