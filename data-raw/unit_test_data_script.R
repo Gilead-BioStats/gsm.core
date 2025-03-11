@@ -122,4 +122,4 @@ DataChg_Map_Raw(dfs = list(dfSUBJ = dfSUBJ, dfDATACHG = dfDATACHG))
 
 # datapasta::tribble_paste() ----------------------------------------------
 # if all looks good:
-# update data in ~gsm/tests/testthat/testdata/data.R
+# update data in ~gsm.core/tests/testthat/testdata/data.R

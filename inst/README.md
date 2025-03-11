@@ -1,7 +1,7 @@
 # 📄 `inst` Summary
 
 
-This README summarizes the contents found in the `gsm/inst` directory.
+This README summarizes the contents found in the `gsm.core/inst` directory.
 
 ---
 
@@ -113,7 +113,7 @@ Bundled/minified JavaScript charting library that is used as part of the `htmlwi
 
 #### Description
 
-R Markdown files that are used as templates underlying the [`gsm.core::Study_Report()`](https://gilead-biostats.github.io/gsm/reference/Study_Report.html) function. Also includes a `.css` file for HTML styling.
+R Markdown files that are used as templates underlying the [`gsm.core::Study_Report()`](https://gilead-biostats.github.io/gsm.core/reference/Study_Report.html) function. Also includes a `.css` file for HTML styling.
 
 #### Contents
 

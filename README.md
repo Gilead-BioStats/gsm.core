@@ -1,6 +1,6 @@
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/Gilead-BioStats/gsm/workflows/R-CMD-check-main/badge.svg)](https://github.com/Gilead-BioStats/gsm/actions) 
+[![R-CMD-check](https://github.com/Gilead-BioStats/gsm.core/workflows/R-CMD-check-main/badge.svg)](https://github.com/Gilead-BioStats/gsm.core/actions) 
 
 <!-- badges: end -->
 
@@ -14,7 +14,7 @@ The {gsm.core} package provides a standardized Risk Based Quality Monitoring (RB
 
 </center>
 
-This README provides a high-level overview of {gsm.core}; see the [package website](https://gilead-biostats.github.io/gsm/) for additional details.
+This README provides a high-level overview of {gsm.core}; see the [package website](https://gilead-biostats.github.io/gsm.core/) for additional details.
 
 
 # Background 
@@ -54,7 +54,7 @@ All {gsm.core} assessments use a standardized 6 step data pipeline:
 5.  **Flag** - Uses `analyzed` data and numeric `thresholds` to create `flagged` data.
 6.  **Summarize** - Selects key columns from `flagged` data to create `summary` data.
 
-To learn more about {gsm.core}'s data pipeline, visit the [Data Pipeline Vignette](https://gilead-biostats.github.io/gsm/articles/DataModel.html).
+To learn more about {gsm.core}'s data pipeline, visit the [Data Pipeline Vignette](https://gilead-biostats.github.io/gsm.core/articles/DataModel.html).
 
 # Reporting
 
@@ -68,8 +68,8 @@ Detailed RMarkdown/HTML reporting is built into `{gsm.core}`, and provides a det
 
 Full reports for a sample trial run with [`{clindata}`](https://github.com/Gilead-BioStats/clindata) are provided below:
 
-- [Site Report](https://gilead-biostats.github.io/gsm/report_kri_site.html)
-- [Country Report](https://gilead-biostats.github.io/gsm/report_kri_country.html)
+- [Site Report](https://gilead-biostats.github.io/gsm.core/report_kri_site.html)
+- [Country Report](https://gilead-biostats.github.io/gsm.core/report_kri_country.html)
 
 
 
@@ -91,4 +91,4 @@ Since {gsm.core} is designed for use in a [GCP](https://en.wikipedia.org/wiki/Go
 - **Regression Testing** - Extensive QC and testing is done before each release. 
 - **Code Formatting** - Code is formatted with {styler} before each release. 
  
-Additional detail, including links to functional documentation and vignettes, is available in the [package website](https://gilead-biostats.github.io/gsm/).
+Additional detail, including links to functional documentation and vignettes, is available in the [package website](https://gilead-biostats.github.io/gsm.core/).

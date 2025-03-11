@@ -22,7 +22,7 @@ This page outlines the development process for `{gsm.core}` packages, including 
 
 ## Prerequisites
 
-Before contributing code via a Pull Request, make sure to file an [issue](https://github.com/Gilead-BioStats/gsm/issues/new/choose) using one of the pre-specified issue templates. Choose the template that best categorizes what you aim to contribute, which generally can be one of the following:
+Before contributing code via a Pull Request, make sure to file an [issue](https://github.com/Gilead-BioStats/gsm.core/issues/new/choose) using one of the pre-specified issue templates. Choose the template that best categorizes what you aim to contribute, which generally can be one of the following:
 
 -   Bugfix Issue: Fix a bug in the code
 -   Feature Issue: Develop a new feature
@@ -32,7 +32,7 @@ Someone from the development team will decide if the issue is in scope. If so, t
 
 The issue templates provide comments/prompts to help ensure that all relevant information is included. When submitting issues for bug fixes or specific feature requests, it is often helpful to provide a minimal [reprex](https://www.tidyverse.org/help/#reprex), or reproducible example, to help the core developers visualize the issue.
 
-Suggestions or other input that might not warrant formal submission of an issue can be filed under [discussions](https://github.com/Gilead-BioStats/gsm/discussions), which can help facilitate discourse of specific use-cases or requests.
+Suggestions or other input that might not warrant formal submission of an issue can be filed under [discussions](https://github.com/Gilead-BioStats/gsm.core/discussions), which can help facilitate discourse of specific use-cases or requests.
 
 ## Branches
 
@@ -47,7 +47,7 @@ The core branches that are used in this repository are:
 
 All code development takes place in `fix` branches. This section provides general guidance about this process flow. A detailed step-by-step workflow for code development in `fix` branches can be found in the first section of [Appendix 1](#fix-branch-workflow) below.
 
-Once an issue is filed and delegated to a core developer, a `fix` branch will be opened, which is where all package development related to that issue will be conducted. Each `fix` branch should be linked to one or more of the filed GitHub [issue(s)](https://github.com/Gilead-BioStats/gsm/issues). The issue(s) will be referenced in the naming of the `fix` branch. For example, a branch named `fix-111` addresses issue #111. Tasks related to documentation, testing, and/or qualification may also use `fix` branches and associated issues.
+Once an issue is filed and delegated to a core developer, a `fix` branch will be opened, which is where all package development related to that issue will be conducted. Each `fix` branch should be linked to one or more of the filed GitHub [issue(s)](https://github.com/Gilead-BioStats/gsm.core/issues). The issue(s) will be referenced in the naming of the `fix` branch. For example, a branch named `fix-111` addresses issue #111. Tasks related to documentation, testing, and/or qualification may also use `fix` branches and associated issues.
 
 In addition to the above, please also use the following general guidelines when creating a Pull Request:
 
@@ -79,7 +79,7 @@ Code developers for `{gsm.core}` use the [tidyverse style guide](https://style.t
 ## `fix` Branch Workflow {#fix-branch-workflow}
 
 1.  Create issue(s) defining addition(s) and/or revision(s):
-    -   Select the appropriate [template](https://github.com/Gilead-BioStats/gsm/issues/new/choose) to use (should be one of the following):
+    -   Select the appropriate [template](https://github.com/Gilead-BioStats/gsm.core/issues/new/choose) to use (should be one of the following):
         -   `Bugfix Issue`
         -   `Feature Issue`
         -   `QC Issue`
@@ -115,12 +115,12 @@ Code developers for `{gsm.core}` use the [tidyverse style guide](https://style.t
     -   Build site using `pkgdown::build_site()`. Check that all examples are displayed correctly and that all new functions occur on the Reference page.
     -   Open a clean R session. Run `devtools::install()` and then `devtools::check()` locally and confirm that there are no issues/conflicts.
 3.  Release Owner creates Pull Request from the `release` branch to the `main` branch:
-    -   Use the [release Pull Request template](https://github.com/Gilead-BioStats/gsm/blob/dev/.github/PULL_REQUEST_TEMPLATE/release.md) by adding `?template=release.md` to the URL when creating the Pull Request. The user can also click the link, then click `Raw`, and copy/paste the displayed Markdown into the Pull Request.
+    -   Use the [release Pull Request template](https://github.com/Gilead-BioStats/gsm.core/blob/dev/.github/PULL_REQUEST_TEMPLATE/release.md) by adding `?template=release.md` to the URL when creating the Pull Request. The user can also click the link, then click `Raw`, and copy/paste the displayed Markdown into the Pull Request.
     -   Assign Pull Request to self.
     -   Request QC review(s).
     -   Assign milestone.
     -   Complete Risk Assessments for each Assessment/Feature added as outlined in the Pull Request template.
-    -   Create comments in the Pull Request with a unique [QC checklist](#appendix-2---qc-checklist) for each selected Assessment/Feature (See [example for v0.1.0](https://github.com/Gilead-BioStats/gsm/pull/194)).
+    -   Create comments in the Pull Request with a unique [QC checklist](#appendix-2---qc-checklist) for each selected Assessment/Feature (See [example for v0.1.0](https://github.com/Gilead-BioStats/gsm.core/pull/194)).
 4.  QC Reviewer(s) conduct(s) review by:
     -   Completing all QC checklists in the Pull Request.
     -   Ensuring all GitHub Actions on the Pull Request to the `main` branch are passing.
@@ -222,6 +222,6 @@ GitHub Actions are used in `{gsm.core}` to automate processes and ensure all cod
     -   Basic R CMD check which can be run using `rcmdcheck::rcmdcheck()`
     -   Provides an additional check for the ability to build the `pkgdown` reference index and ensure that all functions are documented correctly. The check will also run all qualification tests to ensure that the release is fully qualified. This check will run on `ubuntu-latest` and on R version 4.1.3. Additionally, it will be run on the latest R release version on `windows-latest`, `macOS-latest`, and `ubuntu-latest`.
 -   `pkgdown`:
-    -   Builds the [pkgdown site](https://gilead-biostats.github.io/gsm/) for `{gsm.core}`.
+    -   Builds the [pkgdown site](https://gilead-biostats.github.io/gsm.core/) for `{gsm.core}`.
 -   Qualification Report (`qualification-report`):
     -   Builds the qualification vignette as an attached artifact to the Pull Request. This should be reviewed by the Pull Request Owner for completeness and correctness to ensure that the artifact added to the release is correct.
