@@ -73,7 +73,7 @@ issues, bug reports, and submitting code via a Pull Request.</p>
 <div class="section level3">
 <h3 id="prerequisites">Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"></a>
 </h3>
-<p>Before contributing code via a Pull Request, make sure to file an <a href="https://github.com/Gilead-BioStats/gsm/issues/new/choose" class="external-link">issue</a>
+<p>Before contributing code via a Pull Request, make sure to file an <a href="https://github.com/Gilead-BioStats/gsm.core/issues/new/choose" class="external-link">issue</a>
 using one of the pre-specified issue templates. Choose the template that
 best categorizes what you aim to contribute, which generally can be one
 of the following:</p>
@@ -95,7 +95,7 @@ or specific feature requests, it is often helpful to provide a minimal
 reproducible example, to help the core developers visualize the
 issue.</p>
 <p>Suggestions or other input that might not warrant formal submission
-of an issue can be filed under <a href="https://github.com/Gilead-BioStats/gsm/discussions" class="external-link">discussions</a>,
+of an issue can be filed under <a href="https://github.com/Gilead-BioStats/gsm.core/discussions" class="external-link">discussions</a>,
 which can help facilitate discourse of specific use-cases or
 requests.</p>
 </div>
@@ -131,8 +131,8 @@ can be found in the first section of <a href="#fix-branch-workflow">Appendix 1</
 <code>fix</code> branch will be opened, which is where all package
 development related to that issue will be conducted. Each
 <code>fix</code> branch should be linked to one or more of the filed
-GitHub <a href="https://github.com/Gilead-BioStats/gsm/issues" class="external-link">issue(s)</a>. The
-issue(s) will be referenced in the naming of the <code>fix</code>
+GitHub <a href="https://github.com/Gilead-BioStats/gsm.core/issues" class="external-link">issue(s)</a>.
+The issue(s) will be referenced in the naming of the <code>fix</code>
 branch. For example, a branch named <code>fix-111</code> addresses issue
 #111. Tasks related to documentation, testing, and/or qualification may
 also use <code>fix</code> branches and associated issues.</p>
@@ -204,7 +204,7 @@ before each release:</p>
 <ol style="list-style-type: decimal">
 <li>Create issue(s) defining addition(s) and/or revision(s):
 <ul>
-<li>Select the appropriate <a href="https://github.com/Gilead-BioStats/gsm/issues/new/choose" class="external-link">template</a>
+<li>Select the appropriate <a href="https://github.com/Gilead-BioStats/gsm.core/issues/new/choose" class="external-link">template</a>
 to use (should be one of the following):
 <ul>
 <li><code>Bugfix Issue</code></li>
@@ -295,7 +295,7 @@ no issues/conflicts.</li>
 <li>Release Owner creates Pull Request from the <code>release</code>
 branch to the <code>main</code> branch:
 <ul>
-<li>Use the <a href="https://github.com/Gilead-BioStats/gsm/blob/dev/.github/PULL_REQUEST_TEMPLATE/release.md" class="external-link">release
+<li>Use the <a href="https://github.com/Gilead-BioStats/gsm.core/blob/dev/.github/PULL_REQUEST_TEMPLATE/release.md" class="external-link">release
 Pull Request template</a> by adding <code>?template=release.md</code> to
 the URL when creating the Pull Request. The user can also click the
 link, then click <code>Raw</code>, and copy/paste the displayed Markdown
@@ -306,7 +306,7 @@ into the Pull Request.</li>
 <li>Complete Risk Assessments for each Assessment/Feature added as
 outlined in the Pull Request template.</li>
 <li>Create comments in the Pull Request with a unique <a href="#appendix-2---qc-checklist">QC checklist</a> for each selected
-Assessment/Feature (See <a href="https://github.com/Gilead-BioStats/gsm/pull/194" class="external-link">example for
+Assessment/Feature (See <a href="https://github.com/Gilead-BioStats/gsm.core/pull/194" class="external-link">example for
 v0.1.0</a>).</li>
 </ul>
 </li>
@@ -605,8 +605,8 @@ be run on the latest R release version on <code>windows-latest</code>,
 <li>
 <code>pkgdown</code>:
 <ul>
-<li>Builds the <a href="https://gilead-biostats.github.io/gsm/" class="external-link">pkgdown
-site</a> for <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a>.</li>
+<li>Builds the <a href="https://gilead-biostats.github.io/gsm.core/">pkgdown site</a> for
+<a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a>.</li>
 </ul>
 </li>
 <li>Qualification Report (<code>qualification-report</code>):
