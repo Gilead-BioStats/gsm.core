@@ -1,3 +1,2 @@
-devtools::install_github('gilead-biostats/clindata')
-devtools::install_github('gilead-biostats/gsm@dev')
-# or gsm git checkout branch and devtools::load_all()
+devtools::install_github('gilead-biostats/gsm.core@dev')
+# or gsm.core git checkout branch and devtools::load_all()
