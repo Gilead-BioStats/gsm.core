@@ -12,8 +12,8 @@
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Contributor Guidelines">
-<meta name="description" content="This page outlines the development process for `{gsm.core}` packages, including how to contribute by filing issues, bug reports, and submitting code via a Pull Request.">
-<meta property="og:description" content="This page outlines the development process for `{gsm.core}` packages, including how to contribute by filing issues, bug reports, and submitting code via a Pull Request.">
+<meta name="description" content="This page outlines the development process for `{gsm}` packages, including how to contribute by filing issues, bug reports, and submitting code via a Pull Request.">
+<meta property="og:description" content="This page outlines the development process for `{gsm}` packages, including how to contribute by filing issues, bug reports, and submitting code via a Pull Request.">
 <meta name="robots" content="noindex">
 <link href="pkgdown/extra.css" rel="stylesheet">
 </head>
@@ -58,7 +58,7 @@
       <h1>Contributor Guidelines</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/dev/vignettes/articles/ContributorGuidelines.Rmd" class="external-link"><code>vignettes/articles/ContributorGuidelines.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/dev/vignettes/ContributorGuidelines.Rmd" class="external-link"><code>vignettes/ContributorGuidelines.Rmd</code></a></small>
       <div class="d-none name"><code>ContributorGuidelines.Rmd</code></div>
     </div>
 
@@ -67,9 +67,9 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>This page outlines the development process for
-<a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> packages, including how to contribute by filing
-issues, bug reports, and submitting code via a Pull Request.</p>
+<p>This page outlines the development process for <code>{gsm}</code>
+packages, including how to contribute by filing issues, bug reports, and
+submitting code via a Pull Request.</p>
 <div class="section level3">
 <h3 id="prerequisites">Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"></a>
 </h3>
@@ -184,7 +184,7 @@ code release can be found in the second section of <a href="#release-branch-work
 <div class="section level2">
 <h2 id="style-guide">Style Guide<a class="anchor" aria-label="anchor" href="#style-guide"></a>
 </h2>
-<p>Code developers for <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> use the <a href="https://style.tidyverse.org/" class="external-link">tidyverse style guide</a> with
+<p>Code developers for <code>{gsm}</code> use the <a href="https://style.tidyverse.org/" class="external-link">tidyverse style guide</a> with
 minimal modifications. The code below is run to standardize styling
 before each release:</p>
 <pre><code><span><span class="va">double_indent_style</span> <span class="op">&lt;-</span> <span class="fu">styler</span><span class="fu">::</span><span class="fu"><a href="https://styler.r-lib.org/reference/tidyverse_style.html" class="external-link">tidyverse_style</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -250,7 +250,7 @@ after the above requirements are fulfilled. The user who merges the
 <code>dev</code> branch.
 <ul>
 <li>The <code>release</code> branch should be named according to the
-version of <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> being released (e.g.,
+version of the package being released (e.g.,
 <code>release-v1.2.0</code>) using <a href="https://semver.org/" class="external-link">semantic versioning</a>.</li>
 <li>If a release branch is already created, make sure that it is synced
 with the current <code>dev</code> branch.</li>
@@ -260,14 +260,7 @@ with the current <code>dev</code> branch.</li>
 following steps and pushing updates to the <code>release</code> branch:
 <ul>
 <li>Confirm that the version in the <code>DESCRIPTION</code> file is up
-to date.
-<ul>
-<li>
-<strong>After</strong> the version in the <code>DESCRIPTION</code>
-file is updated, run <code>gsm.core::UpdateGSMVersion()</code> to update
-metadata that includes the <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> version number.</li>
-</ul>
-</li>
+to date.</li>
 <li>Run <code>styler</code> using the script from the <a href="#style-guide">style guide</a> above (or by running
 <code>gutil::style_code()</code>) and commit any updates.</li>
 <li>Update <code>NEWS.md</code> with a summary of the
@@ -540,9 +533,9 @@ errors.</label></li>
 <h2 id="github-action-workflow">Appendix 3 - Continuous Integration with GitHub Actions
 <!--# Do we need to add missing actions, i.e., Style, check-dev, pages-build-deployment? --><a class="anchor" aria-label="anchor" href="#github-action-workflow"></a>
 </h2>
-<p>GitHub Actions are used in <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> to automate
-processes and ensure all code and documentation is created consistently
-and documented thoroughly.</p>
+<p>GitHub Actions are used in all <code>{gsm}</code> packages to
+automate processes and ensure all code and documentation is created
+consistently and documented thoroughly.</p>
 <div class="section level3">
 <h3 id="merges-to-dev-branch">Merges to <code>dev</code> Branch<a class="anchor" aria-label="anchor" href="#merges-to-dev-branch"></a>
 </h3>
@@ -569,8 +562,7 @@ Request.</li>
 </li>
 <li>Test Coverage (<code>test-coverage</code>):
 <ul>
-<li>Uses <a href="https://covr.r-lib.org" class="external-link">covr</a> to check the package coverage of
-<a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a>.</li>
+<li>Uses <a href="https://covr.r-lib.org" class="external-link">covr</a> to check the package coverage.</li>
 </ul>
 </li>
 <li>Qualification Check (<code>qualification-check-dev</code>):
@@ -606,7 +598,7 @@ be run on the latest R release version on <code>windows-latest</code>,
 <code>pkgdown</code>:
 <ul>
 <li>Builds the <a href="https://gilead-biostats.github.io/gsm.core/">pkgdown site</a> for
-<a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a>.</li>
+the relevant package (<a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> in this case).</li>
 </ul>
 </li>
 <li>Qualification Report (<code>qualification-report</code>):

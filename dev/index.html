@@ -12,8 +12,8 @@
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Good Statistical Monitoring">
-<meta name="description" content="The Good Statistical Monitoring or gsm.core R package provides a framework for statistical data monitoring.">
-<meta property="og:description" content="The Good Statistical Monitoring or gsm.core R package provides a framework for statistical data monitoring.">
+<meta name="description" content="The Good Statistical Monitoring or gsm suite of R packages provides a framework for statistical data monitoring. gsm.core provides the analytics framework for constructing metrics, and the utility functions to run workflows.">
+<meta property="og:description" content="The Good Statistical Monitoring or gsm suite of R packages provides a framework for statistical data monitoring. gsm.core provides the analytics framework for constructing metrics, and the utility functions to run workflows.">
 <meta name="robots" content="noindex">
 <link href="pkgdown/extra.css" rel="stylesheet">
 </head>
@@ -52,18 +52,29 @@
   <main id="main" class="col-md-9">
 <!-- badges: end -->
 <div class="section level1">
-<div class="page-header"><h1 id="good-statistical-monitoring-gsmcore-r-package">Good Statistical Monitoring {gsm.core} R package<a class="anchor" aria-label="anchor" href="#good-statistical-monitoring-gsmcore-r-package"></a>
+<div class="page-header"><h1 id="good-statistical-monitoring-gsmcore-r-package">Good Statistical Monitoring <code>{gsm.core}</code> R package<a class="anchor" aria-label="anchor" href="#good-statistical-monitoring-gsmcore-r-package"></a>
 </h1></div>
-<p>The {gsm.core} package provides a standardized Risk Based Quality Monitoring (RBQM) framework for clinical trials that pairs a flexible data pipeline with robust reports like the one shown below.</p>
+<p>The <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> package provides the analytical foundation for a standardized Risk Based Quality Monitoring (RBQM) framework for clinical trials that pairs a flexible data pipeline with robust reports like the one shown below.</p>
 <center>
 <p><img src="reference/figures/gsm_report_screenshot_1.png"></p>
 </center>
-<p>This README provides a high-level overview of {gsm.core}; see the <a href="https://gilead-biostats.github.io/gsm.core/">package website</a> for additional details.</p>
+<p>This README provides a high-level overview of <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a>; see the <a href="https://gilead-biostats.github.io/gsm.core/">package website</a> for additional details.</p>
+<p>The <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> package is a successor package to <a href="https://github.com/Gilead-BioStats/gsm" class="external-link"><code>{gsm}</code></a>, which has been deprecated as of March 2025. The contents of <code>{gsm}</code> have been split out among 4 packages as follows:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong><a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a></strong>: A package containing the analytics functionality and utility functions to run workflows.</li>
+<li>
+<a href="https://github.com/Gilead-BioStats/gsm.mapping" class="external-link"><strong><code>{gsm.mapping}</code></strong></a>: A package that provides workflows to apply the necessary data transformation from raw/source datasets to appropriate domains.</li>
+<li>
+<a href="https://github.com/Gilead-BioStats/gsm.kri" class="external-link"><strong><code>{gsm.kri}</code></strong></a>: A package that provides workflows to generate metrics and functionality to visualize and report on these metrics.</li>
+<li>
+<a href="https://github.com/Gilead-BioStats/gsm.reporting" class="external-link"><strong><code>{gsm.reporting}</code></strong></a>: A package that provides workflows to generate the reporting data model needed to generate reports.</li>
+</ol>
 </div>
 <div class="section level1">
 <h1 id="background">Background<a class="anchor" aria-label="anchor" href="#background"></a>
 </h1>
-<p>The {gsm.core} package performs risk assessments primarily focused on detecting differences in quality at the site-level. “High quality” is defined as the absence of errors that matter. We interpret this as focusing on detecting potential issues related to critical data or process across the major risk categories of safety, efficacy, disposition, treatment, and general quality, where each category consists of one or more risk assessment(s). Each risk assessment will analyze the data to flag sites with potential issues and provide a visualization to help the user understand the issue. Some relevant references are provided below.</p>
+<p>The <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> package lays the framework to perform risk assessments primarily focused on detecting differences in quality at the site-level. “High quality” is defined as the absence of errors that matter. We interpret this as focusing on detecting potential issues related to critical data or process across the major risk categories of safety, efficacy, disposition, treatment, and general quality, where each category consists of one or more risk assessment(s). Each risk assessment will analyze the data to flag sites with potential issues and provide a visualization to help the user understand the issue. Some relevant references are provided below.</p>
 <ul>
 <li>Centralized Statistical Monitoring: <a href="https://documents.pub/reader/full/centralized-statistical-monitoring-to-detect-data-integrity-issues-statisticalcentralized" class="external-link">1</a>, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7308734/" class="external-link">2</a>, <a href="https://www.magiworld.org/Journal/2014/1411_Centralized.pdf" class="external-link">3</a>. <a href="https://pubmed.ncbi.nlm.nih.gov/38796099/" class="external-link">4</a>
 </li>
@@ -78,7 +89,7 @@
 <div class="section level1">
 <h1 id="process-overview">Process Overview<a class="anchor" aria-label="anchor" href="#process-overview"></a>
 </h1>
-<p>The {gsm.core} package establishes a data pipeline for RBM using R. The package provides a framework that allows users to <strong>assess</strong> and <strong>visualize</strong> site-level risk in clinical trial data. The package currently provides assessments for the following domains:</p>
+<p>The <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> package is the foundation of a data pipeline for RBM using R. The package, along with <code>{gsm.mapping}</code>, <code>{gsm.kri}</code> and <code>{gsm.reporting}</code> provides a framework that allows users to <strong>assess</strong> and <strong>visualize</strong> site-level risk in clinical trial data. The packages currently provide assessments for the following domains:</p>
 <ol style="list-style-type: decimal">
 <li>Adverse Event Reporting Rate</li>
 <li>Serious Adverse Event Reporting Rate</li>
@@ -93,7 +104,7 @@
 <li>Data Change Rate</li>
 <li>Screen Failure Rate</li>
 </ol>
-<p>All {gsm.core} assessments use a standardized 6 step data pipeline:</p>
+<p>All <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> assessments use a standardized 6 step data pipeline:</p>
 <ol style="list-style-type: decimal">
 <li>
 <strong>Input_Rate</strong> - Converts <code>raw</code> data to <code>input</code> data.</li>
@@ -108,7 +119,7 @@
 <li>
 <strong>Summarize</strong> - Selects key columns from <code>flagged</code> data to create <code>summary</code> data.</li>
 </ol>
-<p>To learn more about {gsm.core}’s data pipeline, visit the <a href="https://gilead-biostats.github.io/gsm.core/articles/DataModel.html">Data Pipeline Vignette</a>.</p>
+<p>To learn more about <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a>’s data pipeline, visit the <a href="https://gilead-biostats.github.io/gsm.core/articles/DataModel.html">Data Pipeline Vignette</a>.</p>
 </div>
 <div class="section level1">
 <h1 id="reporting">Reporting<a class="anchor" aria-label="anchor" href="#reporting"></a>

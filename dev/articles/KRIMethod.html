@@ -12,8 +12,8 @@
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="KRI Method">
-<meta name="description" content="This vignette outlines the statistical methods used to evaluate Key Risk Indicators (KRIs) in {gsm.core}.">
-<meta property="og:description" content="This vignette outlines the statistical methods used to evaluate Key Risk Indicators (KRIs) in {gsm.core}.">
+<meta name="description" content="This vignette outlines the statistical methods used to evaluate Key Risk Indicators (KRIs) in {gsm}.">
+<meta property="og:description" content="This vignette outlines the statistical methods used to evaluate Key Risk Indicators (KRIs) in {gsm}.">
 <meta name="robots" content="noindex">
 <link href="pkgdown/extra.css" rel="stylesheet">
 </head>
@@ -58,7 +58,7 @@
       <h1>KRI Method</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/dev/vignettes/articles/KRIMethod.Rmd" class="external-link"><code>vignettes/articles/KRIMethod.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/dev/vignettes/KRIMethod.Rmd" class="external-link"><code>vignettes/KRIMethod.Rmd</code></a></small>
       <div class="d-none name"><code>KRIMethod.Rmd</code></div>
     </div>
 
@@ -68,16 +68,19 @@
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>This vignette outlines the statistical methods used to evaluate Key
-Risk Indicators (KRIs) in {gsm.core}. KRIs are metrics that allow users
-to measure pre-defined risks and determine the level of observed risk to
-data quality and patient safety in a clinical trial. The {gsm.core}
-package implements a standardized data pipeline to facilitate KRI
-analysis. Other vignettes provide an overview of this framework (<a href="../">1</a>, <a href="Cookbook.html">2</a> <a href="DataModel.html">3</a>, <a href="DataAnalysis.html">4</a>, <a href="DataReporting.html">5</a>), and the statistical methods for this
-process are described in detail below.</p>
-<p>GSM calculates KRIs by defining a numerator and a denominator for
-each metric. Then by default, GSM calculates z-scores using a normal
-approximation with adjustment for over-dispersion to assign risk
-levels.</p>
+Risk Indicators (KRIs) in the {gsm} suite of packages. KRIs are metrics
+that allow users to measure pre-defined risks and determine the level of
+observed risk to data quality and patient safety in a clinical trial.
+The {gsm} suite of packages implements a standardized data pipeline to
+facilitate KRI analysis. Other vignettes provide an overview of this
+framework (<a href="Cookbook.html">1</a> <a href="DataModel.html">2</a>,
+<a href="DataAnalysis.html">3</a>, <a href="https://gilead-biostats.github.io/gsm.reporting/articles/DataReporting.html" class="external-link">4</a>),
+and the statistical methods for this process are described in detail
+below.</p>
+<p><a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> calculates KRIs by defining a numerator and a
+denominator for each metric. Then by default, <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a>
+calculates z-scores using a normal approximation with adjustment for
+over-dispersion to assign risk levels.</p>
 <p>For KRIs that are percentages (binary outcome), the numerator is the
 # of events and the denominator is the # of total participants, and we
 then apply the normal approximation of the binomial distribution to
@@ -87,8 +90,8 @@ events and the denominator is the total participant exposure or study
 duration, and we then apply the normal approximation of the Poisson
 distribution to determine a risk level.</p>
 <p>Alternative statistical methods to calculate standardized scores are
-also available in {gsm.core}, including the Identity, Fisher and Poisson
-methods. More details are provided below.</p>
+also available in <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a>, including the Identity,
+Fisher and Poisson methods. More details are provided below.</p>
 </div>
 <div class="section level2">
 <h2 id="statistical-methods">Statistical Methods<a class="anchor" aria-label="anchor" href="#statistical-methods"></a>
@@ -316,7 +319,8 @@ from the normal approximation analysis are flagged as amber or red,
 respectively. The thresholds are set at common choices corresponding to
 95.6% and 99.7% of the data around the mean in a standard normal
 distribution. However, they are fully configurable in the package and
-can be customized and specified in the {gsm.core} functions.</p>
+can be customized and specified in the <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a>
+functions.</p>
 </div>
 <div class="section level4">
 <h4 id="special-situations">Special Situations<a class="anchor" aria-label="anchor" href="#special-situations"></a>
@@ -350,8 +354,8 @@ risk are set based on the actual counts.</p>
 <div class="section level4">
 <h4 id="introduction-1">Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"></a>
 </h4>
-<p>For the binary outcome KRIs, an optional method in {gsm.core} is
-implemented with Fisher’s exact test.</p>
+<p>For the binary outcome KRIs, an optional method in
+<a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> is implemented with Fisher’s exact test.</p>
 <p>Fisher’s exact test is a statistical significance test used in the
 analysis of contingency tables when we have nominal variables and want
 to find out if proportions for one variable are different among values
@@ -359,11 +363,11 @@ of the other variables.</p>
 <p>In contrast to large-sample based asymptotic statistics which rely on
 approximation, Fisher’s exact test can be applied when sample sizes are
 small.</p>
-<p>The function <code>Analyze_Fisher</code> in {gsm.core} utilizes
-<code><a href="https://rdrr.io/r/stats/fisher.test.html" class="external-link">stats::fisher.test</a></code> to generate an estimate of odds ratio as
-well as p-value using the Fisher’s exact test with site-level count
-data. For each site, Fisher’s exact test is conducted by comparing to
-all other sites combined in a 2×2 contingency table. The p-values are
+<p>The function <code>Analyze_Fisher</code> in <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a>
+utilizes <code><a href="https://rdrr.io/r/stats/fisher.test.html" class="external-link">stats::fisher.test</a></code> to generate an estimate of odds
+ratio as well as p-value using the Fisher’s exact test with site-level
+count data. For each site, Fisher’s exact test is conducted by comparing
+to all other sites combined in a 2×2 contingency table. The p-values are
 then used as a scoring metric in <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> to flag
 possible outliers. The default in <code><a href="https://rdrr.io/r/stats/fisher.test.html" class="external-link">stats::fisher.test</a></code> uses a
 two-sided test (equivalent to testing the null of OR = 1) and does not
@@ -890,8 +894,8 @@ The thresholds are set based on empirical p-value approach, where we use
 the distribution of the p-values to find the best separation of the data
 to identify sites at risk. The default thresholds are set at common
 choices of significance levels. However, they are fully configurable in
-the package and can be customized and specified in the {gsm.core}
-functions.</p>
+the package and can be customized and specified in the
+<a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> functions.</p>
 </div>
 <div class="section level4">
 <h4 id="the-fishers-exact-test-assumptions">The Fisher’s exact test assumptions<a class="anchor" aria-label="anchor" href="#the-fishers-exact-test-assumptions"></a>
@@ -949,8 +953,8 @@ KRIs.</p>
 <div class="section level4">
 <h4 id="introduction-2">Introduction<a class="anchor" aria-label="anchor" href="#introduction-2"></a>
 </h4>
-<p>For the rate outcome KRIs, an optional method in {gsm.core} is
-implemented with Poisson regression.</p>
+<p>For the rate outcome KRIs, an optional method in
+<a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> is implemented with Poisson regression.</p>
 <p>The Poisson distribution is often used to model count data. If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>
 is the number of counts following Poisson distribution, the probability
@@ -1013,7 +1017,7 @@ distribution of the deviance residuals to find the best separation of
 the data to identify sites at risk. The default thresholds are set at
 empirical values based on pilot studies’ data. However, they are fully
 configurable in the package and can be customized and specified in the
-{gsm.core} functions.</p>
+<a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> functions.</p>
 </div>
 <div class="section level4">
 <h4 id="special-situations-2">Special Situations<a class="anchor" aria-label="anchor" href="#special-situations-2"></a>

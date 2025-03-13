@@ -73,9 +73,10 @@
 </h2>
 <p>This vignette walks users through the mechanics of the functions that
 produce all of the Analysis workflow output within the
-<a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> package. <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> leverages Key
-Risk Indicators (KRIs) and thresholds to conduct study-level and
-site-level Risk Based Monitoring for clinical trials.</p>
+<a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> package. The suite of <code>{gsm}</code>
+packages leverages Key Risk Indicators (KRIs) and thresholds to conduct
+study-level and site-level Risk Based Monitoring for clinical
+trials.</p>
 <p>These functions provide data frames, visualizations, and metadata to
 be used in reporting and error checking at clinical sites. The image
 below illustrates the supporting functions that feed into the yaml
@@ -84,7 +85,8 @@ workflow that is specified in each analysis workflow.</p>
 <p>All of these functions will run automatically and sequentially when a
 user calls upon the <code><a href="../reference/RunWorkflow.html">RunWorkflow()</a></code> function with a specified
 yaml file for KRI metrics found in the <code>workflow/2_metrics</code>
-directory of the <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> package.</p>
+directory of the <a href="https://github.com/Gilead-BioStats/gsm.kri" class="external-link"><code>{gsm.kri}</code></a>
+package.</p>
 <p>Each of these individual functions can also be run independently
 outside of a specified yaml workflow.</p>
 <p>For the purposes of this documentation, we will evaluate the input(s)
@@ -95,7 +97,7 @@ process data.</p>
 <div class="section level3">
 <h3 id="case-study---step-by-step-adverse-event-kri">Case Study - Step-by-Step Adverse Event KRI<a class="anchor" aria-label="anchor" href="#case-study---step-by-step-adverse-event-kri"></a>
 </h3>
-<p>We will use sample clinical data from the <a href="https://github.com/Gilead-BioStats/clindata" class="external-link"><code>{clindata}</code></a>
+<p>We will use sample clinical data simulated with the <a href="https://github.com/Gilead-BioStats/gsm.datasim" class="external-link"><code>{gsm.datasim}</code></a>
 package to run the Adverse Events (AE) Assessment, i.e.,
 <code>AE_Assess()</code>, using the normal approximation method.</p>
 <p>Additional statistical methods and supporting functions are explored
@@ -103,12 +105,13 @@ in <a href="#appendix-1">Appendix 1</a>.</p>
 <div class="section level4">
 <h4 id="create-dfinput">1. Create <code>dfInput</code><a class="anchor" aria-label="anchor" href="#create-dfinput"></a>
 </h4>
-<p>Start by creating <code>dfInput</code> using sample rawplus data from
-<code>{clindata}</code>. Note that <code><a href="../reference/Input_Rate.html">Input_Rate()</a></code> requires
-three specific datasets from <code>{clindata}</code>, which include a
-subject-level demographics/exposure dataset (<code>dfSubjects</code>)
-and a domain-level dataset (<code>dfNumerator</code>) that records every
-adverse event per subject.</p>
+<p>Start by creating <code>dfInput</code> using sample rawplus data
+created with <code>{gsm.datasim}</code>. Note that
+<code><a href="../reference/Input_Rate.html">Input_Rate()</a></code> requires three specific clinical datasets,
+which include a subject-level demographics/exposure dataset
+(<code>dfSubjects</code>) and a domain-level dataset
+(<code>dfNumerator</code>) that records every adverse event per
+subject.</p>
 <p>Since <code><a href="../reference/Input_Rate.html">Input_Rate()</a></code> is a generalized function, it is also
 required that you specify the relevant column names for the Subject
 (<code>strSubjectCol</code>), Group (<code>strGroupCol</code>) and
@@ -120,8 +123,8 @@ specified in <code>strNumeratorMethod</code> and
 <code>strDenominatorMethod</code> as either “Count” or “Sum”. If the
 method is “Count”, the function simply counts the number of rows in the
 provided data frame. If the numerator method is “Sum”, the function
-takes the sum of the values in the specified column (strNumeratorCol or
-strDenominatorCol).</p>
+takes the sum of the values in the specified column
+(<code>strNumeratorCol</code> or <code>strDenominatorCol</code>).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dfInput</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Input_Rate.html">Input_Rate</a></span><span class="op">(</span></span>
 <span>              dfSubjects <span class="op">=</span> <span class="fu">gsm.core</span><span class="fu">::</span><span class="va"><a href="../reference/lSource.html">lSource</a></span><span class="op">$</span><span class="va">Raw_SUBJ</span>,</span>
@@ -240,17 +243,17 @@ functions).</li>
 <h4 id="create-dfflagged">4. Create <code>dfFlagged</code><a class="anchor" aria-label="anchor" href="#create-dfflagged"></a>
 </h4>
 <p>The data frame <code>dfFlagged</code> is derived from
-<code>dfAnalyzed</code> using a <code><a href="../reference/Flag.html">Flag()</a></code> function. The
+<code>dfAnalyzed</code> using the <code><a href="../reference/Flag.html">Flag()</a></code> function. The
 resulting <code>dfFlagged</code> data frame will contain site-level
 analysis results data with flagging incorporated based on a
 pre-specified statistical threshold to highlight possible outliers.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dfFlagged</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Flag_NormalApprox.html">Flag_NormalApprox</a></span><span class="op">(</span><span class="va">dfAnalyzed</span>, vThreshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">dfFlagged</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Flag.html">Flag</a></span><span class="op">(</span><span class="va">dfAnalyzed</span>, vThreshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Sorted dfFlagged using custom Flag order: 2.Sorted dfFlagged using custom Flag order: -2.Sorted dfFlagged using custom Flag order: 1.Sorted dfFlagged using custom Flag order: -1.Sorted dfFlagged using custom Flag order: 0.</span></span></code></pre></div>
 <p>The default flagging function for the normal approximation method is
-<code><a href="../reference/Flag_NormalApprox.html">Flag_NormalApprox()</a></code> and the default threshold is (-3, -2,
-2, 3). Using our example AE data, <code>dfFlagged</code> contains the
-following columns:</p>
+<code><a href="../reference/Flag.html">Flag()</a></code> and the default threshold is (-3, -2, 2, 3). Using
+our example AE data, <code>dfFlagged</code> contains the following
+columns:</p>
 <ul>
 <li>
 <code>GroupID</code>: Group Identifier (default is Site ID)</li>
@@ -422,17 +425,14 @@ treatment period</li>
 </h4>
 <ul>
 <li>
-<code><a href="../reference/Flag_NormalApprox.html">Flag_NormalApprox()</a></code>: Default flagging function when
+<code><a href="../reference/Flag.html">Flag()</a></code>: Default flagging function for all
+assessments</li>
+<li>
+<code><a href="../reference/Flag_NormalApprox.html">Flag_NormalApprox()</a></code>: Deprecated flagging function when
 <code><a href="../reference/Analyze_NormalApprox.html">Analyze_NormalApprox()</a></code> is used for an assessment.</li>
 <li>
-<code>Flag_Fisher()</code>: Default flagging function when
-<code><a href="../reference/Analyze_Fisher.html">Analyze_Fisher()</a></code> is used for an assessment</li>
-<li>
-<code><a href="../reference/Flag_Poisson.html">Flag_Poisson()</a></code>: Default flagging function when
+<code><a href="../reference/Flag_Poisson.html">Flag_Poisson()</a></code>: Deprecated flagging function when
 <code><a href="../reference/Analyze_Poisson.html">Analyze_Poisson()</a></code> is used for an assessment</li>
-<li>
-<code><a href="../reference/Flag.html">Flag()</a></code>: Default flagging function when
-<code><a href="../reference/Analyze_Identity.html">Analyze_Identity()</a></code> is used for an assessment</li>
 </ul>
 </div>
 <div class="section level4">
@@ -440,7 +440,8 @@ treatment period</li>
 </h4>
 <ul>
 <li>By default, all yaml workflow assessments specified in the
-<code>inst/workflows/</code> directory use the <a href="https://gilead-biostats.github.io/gsm.core/articles/KRI%20Method.html#the-normal-approximation-method">normal
+<code>inst/workflow/</code> directory of the <code>{gsm.kri}</code>
+package use the <a href="https://gilead-biostats.github.io/gsm.core/articles/KRI%20Method.html#the-normal-approximation-method">normal
 approximation</a> method.</li>
 <li>Optionally, other statistical methods include: <a href="https://gilead-biostats.github.io/gsm.core/articles/KRI%20Method.html#the-poisson-regression-method"><strong>Poisson</strong></a>,
 <a href="https://gilead-biostats.github.io/gsm.core/articles/KRI%20Method.html#the-fishers-exact-method"><strong>Fisher’s
