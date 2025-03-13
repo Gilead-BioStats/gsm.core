@@ -10,6 +10,7 @@
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/articles/index.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/authors.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/index.html</loc></url>
+<url><loc>https://gilead-biostats.github.io/gsm.core/dev/news/index.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/Analyze_Fisher.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/Analyze_Identity.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/Analyze_NormalApprox.html</loc></url>
@@ -52,5 +53,7 @@
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/shared-params.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/stop_if.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/tidyeval.html</loc></url>
+<url><loc>https://gilead-biostats.github.io/gsm.core/dev/report_kri_country.html</loc></url>
+<url><loc>https://gilead-biostats.github.io/gsm.core/dev/report_kri_site.html</loc></url>
 </urlset>
 
