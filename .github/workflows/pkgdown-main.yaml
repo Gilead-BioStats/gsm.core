@@ -33,6 +33,7 @@ jobs:
         run: |
           devtools::load_all()
           dir.create(here::here("pkgdown", "assets"), recursive = TRUE)
+          library(gsm.kri)
 
           lCharts <- gsm.kri::MakeCharts(
             dfResults = gsm.core::reportingResults,
