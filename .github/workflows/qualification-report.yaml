@@ -30,5 +30,6 @@ jobs:
           client-payload: '{
           "GH_TOKEN": "${{ secrets.GSM_QC_TOKEN }}",
           "repository": "${{ github.repository }}",
-          "release_tag": "${{ github.ref_name }}"
+          "release_tag": "${{ github.ref_name }}",
+          "head_ref": "${{ github.head_ref }}"
           }'

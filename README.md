@@ -4,9 +4,9 @@
 
 <!-- badges: end -->
 
-# Good Statistical Monitoring {gsm.core} R package
+# Good Statistical Monitoring `{gsm.core}` R package
 
-The {gsm.core} package provides a standardized Risk Based Quality Monitoring (RBQM) framework for clinical trials that pairs a flexible data pipeline with robust reports like the one shown below.  
+The `{gsm.core}` package provides the analytical foundation for a standardized Risk Based Quality Monitoring (RBQM) framework for clinical trials that pairs a flexible data pipeline with robust reports like the one shown below.  
 
 <center> 
  
@@ -14,12 +14,21 @@ The {gsm.core} package provides a standardized Risk Based Quality Monitoring (RB
 
 </center>
 
-This README provides a high-level overview of {gsm.core}; see the [package website](https://gilead-biostats.github.io/gsm.core/) for additional details.
+This README provides a high-level overview of `{gsm.core}`; see the [package website](https://gilead-biostats.github.io/gsm.core/) for additional details.
 
+The `{gsm.core}` package is a successor package to [`{gsm}`](https://github.com/Gilead-BioStats/gsm), which has been deprecated as of March 2025.
+The contents of `{gsm}` have been split out among 4 packages as follows:
+
+1. **`{gsm.core}`**: A package containing the analytics functionality and utility functions to run workflows.
+2. [**`{gsm.mapping}`**](https://github.com/Gilead-BioStats/gsm.mapping): A package that provides workflows to apply the necessary data transformation from raw/source datasets to appropriate domains.
+3. [**`{gsm.kri}`**](https://github.com/Gilead-BioStats/gsm.kri): A package that provides workflows
+    to generate metrics and functionality to visualize and report on these metrics.
+4. [**`{gsm.reporting}`**](https://github.com/Gilead-BioStats/gsm.reporting): A package that provides workflows
+    to generate the reporting data model needed to generate reports.
 
 # Background 
 
-The {gsm.core} package performs risk assessments primarily focused on detecting differences in quality at the site-level. "High quality" is defined as the absence of errors that matter. We interpret this as focusing on detecting potential issues related to critical data or process across the major risk categories of safety, efficacy, disposition, treatment, and general quality, where each category consists of one or more risk assessment(s). Each risk assessment will analyze the data to flag sites with potential issues and provide a visualization to help the user understand the issue. Some relevant references are provided below. 
+The `{gsm.core}` package lays the framework to perform risk assessments primarily focused on detecting differences in quality at the site-level. "High quality" is defined as the absence of errors that matter. We interpret this as focusing on detecting potential issues related to critical data or process across the major risk categories of safety, efficacy, disposition, treatment, and general quality, where each category consists of one or more risk assessment(s). Each risk assessment will analyze the data to flag sites with potential issues and provide a visualization to help the user understand the issue. Some relevant references are provided below. 
 
 - Centralized Statistical Monitoring: [1](https://documents.pub/reader/full/centralized-statistical-monitoring-to-detect-data-integrity-issues-statisticalcentralized), [2](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7308734/), [3](https://www.magiworld.org/Journal/2014/1411_Centralized.pdf).
 [4](https://pubmed.ncbi.nlm.nih.gov/38796099/)
@@ -30,7 +39,7 @@ The {gsm.core} package performs risk assessments primarily focused on detecting 
 
 # Process Overview
 
-The {gsm.core} package establishes a data pipeline for RBM using R. The package provides a framework that allows users to **assess** and **visualize** site-level risk in clinical trial data. The package currently provides assessments for the following domains:
+The `{gsm.core}` package is the foundation of a data pipeline for RBM using R. The package, along with `{gsm.mapping}`, `{gsm.kri}` and `{gsm.reporting}` provides a framework that allows users to **assess** and **visualize** site-level risk in clinical trial data. The packages currently provide assessments for the following domains:
 
 1.  Adverse Event Reporting Rate
 2.  Serious Adverse Event Reporting Rate
@@ -45,7 +54,7 @@ The {gsm.core} package establishes a data pipeline for RBM using R. The package 
 11. Data Change Rate
 12. Screen Failure Rate
 
-All {gsm.core} assessments use a standardized 6 step data pipeline: 
+All `{gsm.core}` assessments use a standardized 6 step data pipeline: 
 
 1.  **Input_Rate** - Converts `raw` data to `input` data.
 2.  **Transform** - Converts `input` data to `transformed` data.
@@ -54,7 +63,7 @@ All {gsm.core} assessments use a standardized 6 step data pipeline:
 5.  **Flag** - Uses `analyzed` data and numeric `thresholds` to create `flagged` data.
 6.  **Summarize** - Selects key columns from `flagged` data to create `summary` data.
 
-To learn more about {gsm.core}'s data pipeline, visit the [Data Pipeline Vignette](https://gilead-biostats.github.io/gsm.core/articles/DataModel.html).
+To learn more about `{gsm.core}`'s data pipeline, visit the [Data Pipeline Vignette](https://gilead-biostats.github.io/gsm.core/articles/DataModel.html).
 
 # Reporting
 
