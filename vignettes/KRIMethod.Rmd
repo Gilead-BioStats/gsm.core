@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 # Overview
 
-This vignette outlines the statistical methods used to evaluate Key Risk Indicators (KRIs) in the {gsm} suite of packages. KRIs are metrics that allow users to measure pre-defined risks and determine the level of observed risk to data quality and patient safety in a clinical trial. The {gsm} suite of packages  implements a standardized data pipeline to facilitate KRI analysis. Other vignettes provide an overview of this framework ([1](https://gilead-biostats.github.io/gsm.kri/articles/Cookbook.html) [2](DataModel.html), [3](DataAnalysis.html),
+This vignette outlines the statistical methods used to evaluate Key Risk Indicators (KRIs) in the {gsm} suite of packages. KRIs are metrics that allow users to measure pre-defined risks and determine the level of observed risk to data quality and patient safety in a clinical trial. The {gsm} suite of packages  implements a standardized data pipeline to facilitate KRI analysis. Other vignettes provide an overview of this framework ([1](Cookbook.html) [2](DataModel.html), [3](DataAnalysis.html),
 [4](https://gilead-biostats.github.io/gsm.reporting/articles/DataReporting.html)), and the statistical methods for this process are described in detail below.
 
 `{gsm.core}` calculates KRIs by defining a numerator and a denominator for each metric. Then by default, `{gsm.core}` calculates z-scores using a normal approximation with adjustment for over-dispersion to assign risk levels. 
@@ -107,7 +107,7 @@ Fisher's exact test is a statistical significance test used in the analysis of c
 
 In contrast to large-sample based asymptotic statistics which rely on approximation, Fisher's exact test can be applied when sample sizes are small.
 
-The function `Analyze_Fisher` in {gsm} utilizes `stats::fisher.test` to generate an estimate of odds ratio as well as p-value using the Fisher's exact test with site-level count data. For each site, Fisher's exact test is conducted by comparing to all other sites combined in a 2×2 contingency table. The p-values are then used as a scoring metric in `{gsm.core}` to flag possible outliers. The default in `stats::fisher.test` uses a two-sided test (equivalent to testing the null of OR = 1) and does not compute p-values by Monte Carlo simulation unless `simulate.p.value = TRUE`. Sites with p-values less than 0.05 from the Fisher's exact test analysis are flagged by default. The significance level was set at a common choice.
+The function `Analyze_Fisher` in `{gsm.core}` utilizes `stats::fisher.test` to generate an estimate of odds ratio as well as p-value using the Fisher's exact test with site-level count data. For each site, Fisher's exact test is conducted by comparing to all other sites combined in a 2×2 contingency table. The p-values are then used as a scoring metric in `{gsm.core}` to flag possible outliers. The default in `stats::fisher.test` uses a two-sided test (equivalent to testing the null of OR = 1) and does not compute p-values by Monte Carlo simulation unless `simulate.p.value = TRUE`. Sites with p-values less than 0.05 from the Fisher's exact test analysis are flagged by default. The significance level was set at a common choice.
 
 ### Methods
 
@@ -132,7 +132,7 @@ The function `Analyze_Fisher()` in `{gsm.core}` utilizes `stats::fisher.test()` 
 
 ### Threshold
 
-By default, sites with p-values less than 0.05 or 0.01 from the Fisher's exact test analysis are flagged as amber or red, respectively. The thresholds are set based on empirical p-value approach, where we use the distribution of the p-values to find the best separation of the data to identify sites at risk. The default thresholds are set at common choices of significance levels. However, they are fully configurable in the package and can be customized and specified in the {gsm} functions. 
+By default, sites with p-values less than 0.05 or 0.01 from the Fisher's exact test analysis are flagged as amber or red, respectively. The thresholds are set based on empirical p-value approach, where we use the distribution of the p-values to find the best separation of the data to identify sites at risk. The default thresholds are set at common choices of significance levels. However, they are fully configurable in the package and can be customized and specified in the `{gsm.core}` functions. 
 
 
 ### The Fisher's exact test assumptions
@@ -166,7 +166,7 @@ Fisher's exact test can be used in all scenarios with binary KRIs.
 
 ### Introduction
 
-For the rate outcome KRIs, an optional method in {gsm} is implemented with Poisson regression. 
+For the rate outcome KRIs, an optional method in `{gsm.core}` is implemented with Poisson regression. 
 
 The Poisson distribution is often used to model count data. If $Y$ is the number of counts following Poisson distribution, the probability mass function is given by $$
 f(y)=\frac{\mu^ye^{-\mu}}{y!}
@@ -185,11 +185,11 @@ where $\log{n_i}$ is an offset term.
 
 ### Estimate and Score
 
-The function `Analyze_Poisson()` in `{gsm.core}` utilizes `stats::glm()` to generate an estimate of fitted values as well as deviance residual with site-level count data. The p-values are then used as a scoring metric in `{gsm}` to flag possible outliers using the thresholds discussed below.
+The function `Analyze_Poisson()` in `{gsm.core}` utilizes `stats::glm()` to generate an estimate of fitted values as well as deviance residual with site-level count data. The p-values are then used as a scoring metric in `{gsm.core}` to flag possible outliers using the thresholds discussed below.
 
 ### Threshold
 
-By default, sites with deviance residuals exceeding $\pm 5$ or $\pm 7$ from the Poisson analysis are flagged as amber or red, respectively. The thresholds are set based on empirical approach, where we use the distribution of the deviance residuals to find the best separation of the data to identify sites at risk. The default thresholds are set at empirical values based on pilot studies' data. However, they are fully configurable in the package and can be customized and specified in the {gsm} functions. 
+By default, sites with deviance residuals exceeding $\pm 5$ or $\pm 7$ from the Poisson analysis are flagged as amber or red, respectively. The thresholds are set based on empirical approach, where we use the distribution of the deviance residuals to find the best separation of the data to identify sites at risk. The default thresholds are set at empirical values based on pilot studies' data. However, they are fully configurable in the package and can be customized and specified in the `{gsm.core}` functions. 
 
 
 ### Special Situations

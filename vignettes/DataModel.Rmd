@@ -72,7 +72,7 @@ More details about analysis data pipelines can be found in `vignette("DataAnalys
 
 # Reporting Data 
 
-A rigid Reporting Data framework is provided in {gsm} to allow for standardized reporting, visualization and meta-analysis that compare risk profiles across timepoints, and even across multiple studies.  The Reporting Data sets used in {gsm} are: 
+A rigid Reporting Data framework is provided in `{gsm.reporting}` to allow for standardized reporting, visualization and meta-analysis that compare risk profiles across timepoints, and even across multiple studies.  The Reporting Data sets used in `{gsm.reporting}` and `{gsm.kri}` are: 
 
 1. `Reporting_Results`: Summary data; Standardized subset of the flagged data. This summary data has the same structure for all assessments and always includes both KRI and Flag values so that a user can easily look at trends for any given site across multiple assessments. Created using the `Summarize()` function in the analytics pipeline, followed by the `BindResults()` function to add columns necessary for reporting and stack metrics and snapshots into a single data.frame.
 3. `Reporting_Bounds`: Bounded data; A data.frame containing predicted boundary values with upper and lower bounds across the range of observed values. Created with the `MakeBounds()` function.

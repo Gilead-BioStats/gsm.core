@@ -6,7 +6,7 @@
 \alias{gsm.core-package}
 \title{gsm.core: Good Statistical Monitoring}
 \description{
-The Good Statistical Monitoring or 'gsm.core' R package provides a framework for statistical data monitoring.
+The Good Statistical Monitoring or 'gsm' suite of R packages provides a framework for statistical data monitoring. 'gsm.core' provides the analytics framework for constructing metrics, and the utility functions to run workflows.
 }
 \seealso{
 Useful links:
@@ -23,12 +23,12 @@ Useful links:
 Authors:
 \itemize{
   \item Jeremy Wildfire \email{jwildfire@gmail.com}
-  \item Matt Roumaya \email{matthewroumaya@gmail.com} (\href{https://orcid.org/0000-0002-8009-2771}{ORCID})
   \item Spencer Childress \email{spencer.childress@gilead.com} (\href{https://orcid.org/0000-0001-6877-8511}{ORCID})
   \item Laura Maxwell \email{laura.maxwell@atorusresearch.com}
   \item Jacob Anderson \email{jacob.anderson@atorusresearch.com}
   \item Jon Harmon \email{jon.harmon@atorusresearch.com}
   \item Zelos Zhu \email{zelos.zhu@atorusresearch.com}
+  \item Matt Roumaya \email{matthewroumaya@gmail.com} (\href{https://orcid.org/0000-0002-8009-2771}{ORCID})
   \item Nathan Kosiba \email{Nathan.Kosiba@atorusresearch.com}
   \item Douglas Sanders
   \item Li Ge

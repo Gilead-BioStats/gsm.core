@@ -1,6 +1,6 @@
 ---
 title: "Step-by-Step Analysis Workflow"
-description: "This vignette walks users through the mechanics of the functions that produce all of the Analysis workflow output within the `{gsm}` package."
+description: "This vignette walks users through the mechanics of the functions that produce all of the Analysis workflow output within the `{gsm.core}` package."
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Step-by-Step Analysis Workflow}
@@ -43,7 +43,7 @@ Additional statistical methods and supporting functions are explored in [Appendi
 
 ### 1. Create `dfInput`
 
-Start by creating `dfInput` using sample rawplus data created with `{gsm.datasim}`. Note that `Input_Rate()` requires three specific rawplus datasets, which include a subject-level demographics/exposure dataset (`dfSubjects`) and a domain-level dataset (`dfNumerator`) that records every adverse event per subject. 
+Start by creating `dfInput` using sample rawplus data created with `{gsm.datasim}`. Note that `Input_Rate()` requires three specific clinical datasets, which include a subject-level demographics/exposure dataset (`dfSubjects`) and a domain-level dataset (`dfNumerator`) that records every adverse event per subject. 
 
 Since `Input_Rate()` is a generalized function, it is also required that you specify the relevant column names for the Subject (`strSubjectCol`), Group (`strGroupCol`) and optionally the Denominator (`strDenominatorCol`) and Numerator (`strNumeratorCol`) when it is not simply "Denominator" or "Numerator", respectively.
 
