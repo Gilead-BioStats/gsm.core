@@ -1,4 +1,4 @@
-load_all()
+devtools::load_all()
 
 LoadData <- function(lWorkflow, lConfig, lData = NULL) {
   lData <- lData
