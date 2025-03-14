@@ -38,16 +38,18 @@ SAE_KRI <- Input_Rate(
 table(SAE_KRI$Flag)
 
 ### Example 1.3 - Visualize Metric distribution using Bar Charts using provided htmlwidgets
+library(gsm.kri)
+
 labels <- list(
   Metric= "Serious Adverse Event Rate",
   Numerator= "Serious Adverse Events",
   Denominator= "Days on Study"
 )
 
-Widget_BarChart(dfResults = SAE_KRI, lMetric=labels, strOutcome="Metric")
-Widget_BarChart(dfResults = SAE_KRI, lMetric=labels, strOutcome="Score")
-Widget_BarChart(dfResults = SAE_KRI, lMetric=labels, strOutcome="Numerator")
+gsm.kri::Widget_BarChart(dfResults = SAE_KRI, lMetric=labels, strOutcome="Metric")
+gsm.kri::Widget_BarChart(dfResults = SAE_KRI, lMetric=labels, strOutcome="Score")
+gsm.kri::Widget_BarChart(dfResults = SAE_KRI, lMetric=labels, strOutcome="Numerator")
 
 ### Example 1.4 - Create Scatter plot with confidence bounds
 dfBounds <- Analyze_NormalApprox_PredictBounds(SAE_KRI, vThreshold = c(-3,-2,2,3))
-Widget_ScatterPlot(SAE_KRI, lMetric = labels, dfBounds = dfBounds)
+gsm.kri::Widget_ScatterPlot(SAE_KRI, lMetric = labels, dfBounds = dfBounds)

@@ -37,7 +37,7 @@ ParseThreshold <- function(strThreshold, bSort = TRUE) {
     )
 
     if (bSort) {
-      vThreshold = sort(vThreshold)
+      vThreshold <- sort(vThreshold)
     }
     return(vThreshold)
   } else {

@@ -1,0 +1,12 @@
+# gsm.core v1.0.0
+
+We are excited to announce the first major release of the `gsm.core` package, which serves as the backbone of the GSM pipeline. This package provides the analytics framework for constructing metrics and includes utility functions to execute workflows. 
+
+### Key Features and Updates:
+- **Integration with Other gsm Packages:**  
+  The package is designed to seamlessly integrate with other GSM modules (e.g., `gsm.mapping`, `gsm.reporting`, `gsm.kri`), ensuring smooth data flow and interoperability across the pipeline. It serves as the central hub for analytics and workflow execution.
+
+### Other Updates:
+- Bug fixes and minor improvements to the existing utility functions.
+
+For more details on the changes and new features, please refer to the documentation and pull requests linked to this release.
