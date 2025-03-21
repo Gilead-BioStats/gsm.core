@@ -128,5 +128,27 @@ RunStep <- function(lStep, lData, lMeta, lSpec = NULL) {
     cli_detail = "h3"
   )
 
-  return(do.call(GetStrFunctionIfNamespaced(lStep$name), params))
+  if (lStep$name %in% c("dplyr::mutate", "mutate")) {
+    # 1) Extract the data frame
+    df <- params[[".data"]]  # already replaced "= temp1" with actual df in prior code
+
+    # 2) Build up a list of arguments to pass to mutate
+    mutate_args <- list(.data = df)
+
+    # 3) Convert each string to an expression and then use `!!` to unquote it
+    for (col_name in setdiff(names(params), ".data")) {
+      code_str <- params[[col_name]]
+      # Parse the string into an expression
+      expr_obj <- rlang::parse_expr(code_str)
+      # In mutate, use the unquote operator to evaluate it in df’s context
+      mutate_args[[col_name]] <- rlang::expr(!!expr_obj)
+    }
+
+    # 4) Call mutate via do.call
+    result <- do.call(dplyr::mutate, mutate_args)
+  }
+  else {
+    result <- do.call(GetStrFunctionIfNamespaced(lStep$name), params)
+  }
+  return(result)
 }
