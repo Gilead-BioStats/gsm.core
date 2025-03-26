@@ -76,7 +76,7 @@ found in dfNumerator/dfDenominator numerator and denominator values are filled w
 dfInput <- Input_Rate(
   dfSubjects = gsm.core::lSource$Raw_SUBJ,
   dfNumerator = gsm.core::lSource$Raw_AE,
-  dfDenominator =  gsm.core::lSource$Raw_SUBJ,
+  dfDenominator = gsm.core::lSource$Raw_SUBJ,
   strSubjectCol = "subjid",
   strGroupCol = "siteid",
   strGroupLevel = "Site",

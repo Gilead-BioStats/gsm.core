@@ -1,3 +1,6 @@
+library(gsm.mapping)
+library(gsm.kri)
+
 #### Example 2.1 - Configurable Adverse Event Workflow
 
 # Define YAML workflow
@@ -79,8 +82,8 @@ lMappingWorkflows <- MakeWorkflowList(
   strPath = here::here("tests/testthat/testdata/mappings"),
   bExact = TRUE
 )
-mappings_spec <- CombineSpecs(lMappingWorkflows)
-lRawData <- Ingest(gsm.core::lSource, mappings_spec)
+mappings_spec <- gsm.mapping::CombineSpecs(lMappingWorkflows)
+lRawData <- gsm.mapping::Ingest(gsm.core::lSource, mappings_spec)
 AE_data <-list(
   Mapped_SUBJ= lRawData$Raw_SUBJ,
   Mapped_AE= lRawData$Raw_AE
@@ -96,7 +99,7 @@ AE_country_workflow$meta$GroupLevel <- "Country"
 AE_country_workflow$steps[[2]]$params$strGroupCol <- "country"
 
 AE_country_KRI <- RunWorkflow(lWorkflow = AE_country_workflow, lData = AE_data)
-Widget_BarChart(dfResults = AE_country_KRI$Analysis_Summary, lMetric = AE_country_workflow$meta)
+gsm.kri::Widget_BarChart(dfResults = AE_country_KRI$Analysis_Summary, lMetric = AE_country_workflow$meta)
 
 #### Example 2.3 - Create SAE workflow
 
@@ -119,7 +122,7 @@ SAE_workflow$steps <- SAE_workflow$steps %>% append(filterStep, after=0)
 
 # Run the updated workflow
 SAE_KRI <- RunWorkflow(lWorkflow = SAE_workflow, lData = AE_data )
-Widget_BarChart(dfResults = SAE_KRI$Analysis_Summary, lMetric = SAE_workflow$meta)
+gsm.kri::Widget_BarChart(dfResults = SAE_KRI$Analysis_Summary, lMetric = SAE_workflow$meta)
 
 
 

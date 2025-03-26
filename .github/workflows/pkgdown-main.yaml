@@ -3,7 +3,7 @@ on:
     branches: [main]
   workflow_dispatch:
 
-name: pkgdown-dev2main
+name: pkgdown-main
 
 jobs:
   pkgdown-dev2main:
@@ -16,8 +16,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: dev
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -27,7 +25,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown
+          extra-packages: any::pkgdown, github::Gilead-BioStats/gsm.kri@dev
           needs: website
 
       - name: Generate sample reports
@@ -35,17 +33,18 @@ jobs:
         run: |
           devtools::load_all()
           dir.create(here::here("pkgdown", "assets"), recursive = TRUE)
+          library(gsm.kri)
 
-          lCharts <- MakeCharts(
+          lCharts <- gsm.kri::MakeCharts(
             dfResults = gsm.core::reportingResults,
             dfGroups = gsm.core::reportingGroups,
             dfMetrics = gsm.core::reportingMetrics,
             dfBounds = gsm.core::reportingBounds
           )
 
-          Report_KRI(
+          gsm.kri::Report_KRI(
             lCharts = lCharts,
-            dfResults =  FilterByLatestSnapshotDate(gsm.core::reportingResults),
+            dfResults =  gsm.kri::FilterByLatestSnapshotDate(gsm.core::reportingResults),
             dfGroups =  gsm.core::reportingGroups,
             dfMetrics = gsm.core::reportingMetrics,
             strOutputDir = here::here("pkgdown", "assets"),
@@ -53,16 +52,16 @@ jobs:
           )
 
           ## Country Report
-            lCharts_country <- MakeCharts(
+            lCharts_country <- gsm.kri::MakeCharts(
             dfResults = gsm.core::reportingResults_country,
             dfGroups = gsm.core::reportingGroups_country,
             dfMetrics = gsm.core::reportingMetrics_country,
             dfBounds = gsm.core::reportingBounds_country
           )
 
-          Report_KRI(
+          gsm.kri::Report_KRI(
             lCharts = lCharts_country,
-            dfResults =  FilterByLatestSnapshotDate(gsm.core::reportingResults_country),
+            dfResults =  gsm.kri::FilterByLatestSnapshotDate(gsm.core::reportingResults_country),
             dfGroups =  gsm.core::reportingGroups_country,
             dfMetrics = gsm.core::reportingMetrics_country,
             strOutputDir = here::here("pkgdown", "assets"),
