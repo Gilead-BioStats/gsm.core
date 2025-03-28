@@ -14,7 +14,7 @@ include the name of the function to run (\code{lStep$name}), name of the object 
 
 \item{lMeta}{\code{list} a named list of meta data.}
 
-\item{lSpec}{\code{list} a data specification containing required columns. See \code{vignette("gsm_extensions")}.}
+\item{lSpec}{\code{list} a data specification containing required columns. See \code{vignette("gsmExtensions", package = "gsm.core")}.}
 }
 \value{
 \code{list} containing the results of the \code{lStep$name} function call should contain \code{.$checks}
