@@ -13,7 +13,7 @@ basic_sim <- gsm.datasim::generate_rawdata_for_single_study(
   SnapshotWidth = "months",
   ParticipantCount = 1000,
   SiteCount = 150,
-  StudyID = "ABC",
+  StudyID = "AA-AA-000-0000",
   workflow_path = "workflow/1_mappings",
   mappings = core_mappings,
   package = "gsm.mapping",

@@ -78,7 +78,7 @@ lReports_site <- RunWorkflows(wf_report_site, lReporting_site)
 write.csv(file = "data-raw/analyticsSummary.csv",
           x = analyzed$Analysis_kri0001$Analysis_Summary,
           row.names = F)
-write.csv(file = "data-raw/analyticsInput.csv",
+rewrite_csv(file = "data-raw/analyticsInput.csv",
           x = analyzed$Analysis_kri0001$Analysis_Input,
           row.names = F)
 
