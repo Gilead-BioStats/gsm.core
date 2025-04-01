@@ -24,6 +24,10 @@ Flag_Poisson(
 \item{vFlag}{\code{numeric} Vector of flag values. There must be one more item in Flag than thresholds - that is \code{length(vThreshold)+1 == length(vFlagValues)}. Default is \code{c(-2,-1,0,1,2)}, which is typical for z-scores.}
 
 \item{vFlagOrder}{\code{numeric} Vector of ordered flag values. Output data.frame will be sorted based on flag column using the order provided. NULL (or values that don't match vFlag) will leave the data unsorted. Must have identical values to vFlag. Default is \code{c(2,-2,1,-1,0)} which puts largest z-score outliers first in the data set.}
+
+\item{nAccrualThreshold}{\code{numeric} Specifies the minimum value required to return a \code{score} and calculate a \code{flag}. Default: NULL}
+
+\item{strAccrualMetric}{\code{character} Specifies the Metric to apply \code{nAccrualThreshold} to in order to determine the validity of a flag. Options are "Numerator", "Denominator" or "Difference". If "Difference" is specified, the threshold is based on the difference between the Denominator and the Numerator for a given Group. Default: \code{NULL}.}
 }
 \description{
 #' @description
