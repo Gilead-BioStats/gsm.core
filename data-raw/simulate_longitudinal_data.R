@@ -3,13 +3,13 @@ library(gsm.mapping)
 library(gsm.datasim)
 library(gsm.kri)
 library(dplyr)
-set.seed(1)
+set.seed(123)
 
 core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
                    "PD", "PK", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
 
 basic_sim <- gsm.datasim::generate_rawdata_for_single_study(
-  SnapshotCount = 12,
+  SnapshotCount = 3,
   SnapshotWidth = "months",
   ParticipantCount = 1000,
   SiteCount = 150,
@@ -19,9 +19,15 @@ basic_sim <- gsm.datasim::generate_rawdata_for_single_study(
   package = "gsm.mapping",
   desired_specs = NULL
 )
+basic_sim[[1]]$Raw_SITE$site_status <- "Active"
+basic_sim[[2]]$Raw_SITE$site_status <- "Active"
+basic_sim[[3]]$Raw_SITE$site_status <- "Active"
 
-lSource <- basic_sim[[12]]
-rm(basic_sim)
+analyzed <- list()
+reporting <- list()
+dates <- as.Date(c("2025-02-01", "2025-03-01", "2025-04-01"))
+for(snap in seq_along(basic_sim)){
+  lSource <- basic_sim[[snap]]
 
 mappings_wf <- gsm.core::MakeWorkflowList(strNames = core_mappings, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
 mappings_spec <- gsm.mapping::CombineSpecs(mappings_wf)
@@ -32,37 +38,43 @@ mapped <- gsm.core::RunWorkflows(mappings_wf, lRaw)
 
 # Step 2 - Create Metrics - calculate metrics using mapped data
 metrics_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/2_metrics", strPackage = "gsm.kri")
-analyzed <- gsm.core::RunWorkflows(metrics_wf, mapped)
+analyzed[[snap]] <- gsm.core::RunWorkflows(metrics_wf, mapped)
 
 # Step 3 - Create Reporting Layer - create reports using metrics data
 reporting_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/3_reporting", strPackage = "gsm.reporting")
-reporting <- gsm.core::RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed,
+reporting[[snap]] <- gsm.core::RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed[[snap]],
                                                                  lWorkflows = metrics_wf)))
+reporting[[snap]]$Reporting_Results$SnapshotDate = dates[snap]
+reporting[[snap]]$Reporting_Bounds$SnapshotDate = dates[snap]
+}
 
-# Step 4 - Create KRI Report - create KRI report using reporting data
-module_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/4_modules", strPackage = "gsm.kri")
-lReports <- gsm.core::RunWorkflows(module_wf, reporting)
+all_reportingResults <- do.call(bind_rows, lapply(reporting, function(x) x$Reporting_Results))
+all_reportingGroups <- reporting[[snap]]$Reporting_Groups
+all_reportingBounds <- do.call(bind_rows, lapply(reporting, function(x) x$Reporting_Bounds))
+all_reportingMetrics <- reporting[[snap]]$Reporting_Metrics
+
+
 
 #save site and country data separately
 lReporting_site <- list()
 lReporting_country <- list()
 
-lReporting_site$Reporting_Results <- reporting$Reporting_Results %>%
+lReporting_site$Reporting_Results <- all_reportingResults %>%
   filter(stringr::str_detect(MetricID, "Analysis_kri"))
-lReporting_site$Reporting_Groups <- reporting$Reporting_Groups %>%
+lReporting_site$Reporting_Groups <- all_reportingGroups %>%
   filter(GroupLevel %in% c("Study","Site"))
-lReporting_site$Reporting_Bounds <- reporting$Reporting_Bounds %>%
+lReporting_site$Reporting_Bounds <-  all_reportingBounds %>%
   filter(stringr::str_detect(MetricID, "Analysis_kri"))
-lReporting_site$Reporting_Metrics <- reporting$Reporting_Metrics %>%
+lReporting_site$Reporting_Metrics <- all_reportingMetrics %>%
   filter(stringr::str_detect(MetricID, "Analysis_kri"))
 
-lReporting_country$Reporting_Results <- reporting$Reporting_Results %>%
+lReporting_country$Reporting_Results <- all_reportingResults %>%
   filter(stringr::str_detect(MetricID, "Analysis_cou"))
-lReporting_country$Reporting_Groups <- reporting$Reporting_Groups %>%
+lReporting_country$Reporting_Groups <- all_reportingGroups %>%
   filter(GroupLevel%in% c("Study","Country"))
-lReporting_country$Reporting_Bounds <- reporting$Reporting_Bounds %>%
+lReporting_country$Reporting_Bounds <- all_reportingBounds %>%
   filter(stringr::str_detect(MetricID, "Analysis_cou"))
-lReporting_country$Reporting_Metrics <- reporting$Reporting_Metrics %>%
+lReporting_country$Reporting_Metrics <- all_reportingMetrics %>%
   filter(stringr::str_detect(MetricID, "Analysis_cou"))
 
 ## test out the data on a report
@@ -76,10 +88,10 @@ lReports_site <- RunWorkflows(wf_report_site, lReporting_site)
 # analysis data
 ## site
 write.csv(file = "data-raw/analyticsSummary.csv",
-          x = analyzed$Analysis_kri0001$Analysis_Summary,
+          x = analyzed[[3]]$Analysis_kri0001$Analysis_Summary,
           row.names = F)
-rewrite_csv(file = "data-raw/analyticsInput.csv",
-          x = analyzed$Analysis_kri0001$Analysis_Input,
+write_csv(file = "data-raw/analyticsInput.csv",
+          x = analyzed[[3]]$Analysis_kri0001$Analysis_Input,
           row.names = F)
 
 ## country
