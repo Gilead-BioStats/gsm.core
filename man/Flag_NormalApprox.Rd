@@ -9,7 +9,9 @@ Flag_NormalApprox(
   strColumn = "Score",
   vThreshold = c(-3, -2, 2, 3),
   vFlag = c(-2, -1, 0, 1, 2),
-  vFlagOrder = c(2, -2, 1, -1, 0)
+  vFlagOrder = c(2, -2, 1, -1, 0),
+  nAccrualThreshold = NULL,
+  strAccrualMetric = NULL
 )
 }
 \arguments{

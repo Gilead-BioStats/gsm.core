@@ -4,7 +4,7 @@
 \alias{Summarize}
 \title{Make Summary Data Frame}
 \usage{
-Summarize(dfFlagged, nMinDenominator = NULL)
+Summarize(dfFlagged, nMinDenominator = lifecycle::deprecated())
 }
 \arguments{
 \item{dfFlagged}{data.frame in format produced by \code{\link[=Flag]{Flag()}}.}
