@@ -51,7 +51,7 @@ Flag <- function(
   vThreshold = c(-3, -2, 2, 3),
   vFlag = c(-2, -1, 0, 1, 2),
   vFlagOrder = c(2, -2, 1, -1, 0),
-  strAccrualThreshold = NULL,
+  nAccrualThreshold = NULL,
   strAccrualMetric = NULL
 ) {
   stop_if(cnd = !is.data.frame(dfAnalyzed), message = "dfAnalyzed is not a data frame")
@@ -81,9 +81,9 @@ Flag <- function(
   if (!is.null(nAccrualThreshold) && !is.null(strAccrualMetric)) {
     if(strAccrualMetric == "Denominator"){
       Accrual_Flag <- dfFlagged$Denominator < nAccrualThreshold
-    } else if(AccrualMetric == "Numerator"){
+    } else if(strAccrualMetric == "Numerator"){
       Accrual_Flag <-  dfFlagged$Numerator < nAccrualThreshold
-    } else if(AccrualMetric == "Difference"){
+    } else if(strAccrualMetric == "Difference"){
       Accrual_Flag <- (dfFlagged$Denominator - dfFlagged$Numerator) < nAccrualThreshold
     }
     dfFlagged$Score[Accrual_Flag] <- NA
@@ -93,7 +93,7 @@ Flag <- function(
       level = "info",
       message = paste0(
         filtered_sites <- sum(Accrual_Flag),
-        " Group(s) have insufficient sample size due to KRI denominator less than {AccrualThreshold}. \nThese group(s) will not have KRI score and flag summarized."
+        " Group(s) have insufficient sample size due to KRI denominator less than {nAccrualThreshold}. \nThese group(s) will not have KRI score and flag summarized."
       ),
       cli_detail = "alert_info"
     )
