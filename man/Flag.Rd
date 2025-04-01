@@ -34,7 +34,7 @@ method is used.
 }
 \details{
 This function provides a generalized framework for flagging sites as part of the
-GSM data model (see \code{vignette("DataModel")}).
+GSM data model (see \code{vignette("DataModel", package = "gsm.core")}).
 }
 \section{Data Specification}{
 
