@@ -52,9 +52,11 @@ lData$\{paramVal\}) and passed to the function.
 \examples{
 \dontrun{
 ----
-  wf_mapping <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/mappings"))
-lStep <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics"))[["kri0001"]][["steps"]][[1]]
-lMeta <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics"))[["kri0001"]][["meta"]]
+wf_mapping <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/mappings"))
+lStep <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics")
+                          )[["kri0001"]][["steps"]][[1]]
+lMeta <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics")
+                          )[["kri0001"]][["meta"]]
 
 mappings_spec <- CombineSpecs(wf_mapping)
 lRaw <- Ingest(gsm.core::lSource, mappings_spec)

@@ -148,6 +148,7 @@ Flag_Poisson <- Flag
 
 #' Filter Flags based on Threshold and Metric
 #'
+#' @param dfFlagged data.frame in format produced by [Flag()].
 #' @param nAccrualThreshold `numeric` Specifies the minimum value required to return a `score` and calculate a `flag`. Default: NULL
 #' @param strAccrualMetric `character` Specifies the Metric to apply `nAccrualThreshold` to in order to determine the validity of a flag. Options are "Numerator", "Denominator" or "Difference". If "Difference" is specified, the threshold is based on the difference between the Denominator and the Numerator for a given Group. Default: `NULL`.
 #'

@@ -17,8 +17,8 @@ A data frame with 13 rows and 16 columns:
 \item{Score}{type of score reported}
 \item{Type}{statistical outcome type}
 \item{Threshold}{thresholds to be used for bounds and flags}
-\item{nMinDenominator}{minimum denominator required to return a score and calculate a flag}
-\item{nMinNumerator}{minimum numerator required to return a score and calculate a flag}
+\item{AccrualThreshold}{minimum numerator required to return a score and calculate a flag}
+\item{AccrualMetric}{metric used to apply threshold to}
 \item{ID}{ID}
 \item{Priority}{Priority in workflow}
 \item{AnalysisType}{analysis type}

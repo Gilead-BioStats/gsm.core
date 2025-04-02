@@ -33,6 +33,7 @@ MakeWorkflowList(
 }
 \examples{
 # get specific workflow files
-workflow <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics"), strPackage = NULL)
+workflow <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics"),
+                             strPackage = NULL)
 
 }

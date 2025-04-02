@@ -7,6 +7,8 @@
 Flag_Accrual(dfFlagged, nAccrualThreshold, strAccrualMetric)
 }
 \arguments{
+\item{dfFlagged}{data.frame in format produced by \code{\link[=Flag]{Flag()}}.}
+
 \item{nAccrualThreshold}{\code{numeric} Specifies the minimum value required to return a \code{score} and calculate a \code{flag}. Default: NULL}
 
 \item{strAccrualMetric}{\code{character} Specifies the Metric to apply \code{nAccrualThreshold} to in order to determine the validity of a flag. Options are "Numerator", "Denominator" or "Difference". If "Difference" is specified, the threshold is based on the difference between the Denominator and the Numerator for a given Group. Default: \code{NULL}.}
