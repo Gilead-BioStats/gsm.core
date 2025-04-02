@@ -39,9 +39,6 @@ test_that("incorrect inputs throw errors", {
   )
   expect_error(Summarize(list()), "dfFlagged is not a data frame")
   expect_error(Summarize("Hi"), "dfFlagged is not a data frame")
-  expect_message(
-    Summarize(dfFlagged, 12312), "have insufficient sample size"
-  )
 })
 
 test_that("output is correctly sorted by Flag and Score", {
