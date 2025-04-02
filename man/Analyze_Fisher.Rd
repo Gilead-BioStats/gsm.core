@@ -47,7 +47,7 @@ choice.
 
 \examples{
 dfTransformed <- Transform_Rate(
-  analyticsInput
+  analyticsInput[1:20,]
 )
 dfAnalyzed <- Analyze_Fisher(dfTransformed)
 
