@@ -79,24 +79,9 @@ Flag <- function(
 
   #filter to site with enough observations via AccrualThreshold and AccrualMetric
   if (!is.null(nAccrualThreshold) && !is.null(strAccrualMetric)) {
-    if(strAccrualMetric == "Denominator"){
-      Accrual_Flag <- dfFlagged$Denominator < nAccrualThreshold
-    } else if(strAccrualMetric == "Numerator"){
-      Accrual_Flag <-  dfFlagged$Numerator < nAccrualThreshold
-    } else if(strAccrualMetric == "Difference"){
-      Accrual_Flag <- (dfFlagged$Denominator - dfFlagged$Numerator) < nAccrualThreshold
-    }
-    dfFlagged$Score[Accrual_Flag] <- NA
-    dfFlagged$Flag[Accrual_Flag] <- NA
-
-    LogMessage(
-      level = "info",
-      message = paste0(
-        filtered_sites <- sum(Accrual_Flag),
-        " Group(s) have insufficient sample size due to KRI denominator less than {nAccrualThreshold}. \nThese group(s) will not have KRI score and flag summarized."
-      ),
-      cli_detail = "alert_info"
-    )
+    dfFlagged <- Flag_Accrual(dfFlagged = dfFlagged,
+                              nAccrualThreshold = nAccrualThreshold,
+                              strAccrualMetric = strAccrualMetric)
   }
 
   # Apply custom sort order using vFlagOrder
@@ -160,3 +145,33 @@ Flag_NormalApprox <- Flag
 #' @export
 
 Flag_Poisson <- Flag
+
+#' Filter Flags based on Threshold and Metric
+#'
+#' @param nAccrualThreshold `numeric` Specifies the minimum value required to return a `score` and calculate a `flag`. Default: NULL
+#' @param strAccrualMetric `character` Specifies the Metric to apply `nAccrualThreshold` to in order to determine the validity of a flag. Options are "Numerator", "Denominator" or "Difference". If "Difference" is specified, the threshold is based on the difference between the Denominator and the Numerator for a given Group. Default: `NULL`.
+#'
+Flag_Accrual <- function(dfFlagged,
+                         nAccrualThreshold,
+                         strAccrualMetric) {
+  if(strAccrualMetric == "Denominator"){
+    Accrual_Flag <- dfFlagged$Denominator < nAccrualThreshold
+  } else if(strAccrualMetric == "Numerator"){
+    Accrual_Flag <-  dfFlagged$Numerator < nAccrualThreshold
+  } else if(strAccrualMetric == "Difference"){
+    Accrual_Flag <- (dfFlagged$Denominator - dfFlagged$Numerator) < nAccrualThreshold
+  }
+  dfFlagged$Score[Accrual_Flag] <- NA
+  dfFlagged$Flag[Accrual_Flag] <- NA
+
+  LogMessage(
+    level = "info",
+    message = paste0(
+      filtered_sites <- sum(Accrual_Flag),
+      " Group(s) have insufficient sample size due to KRI denominator less than {nAccrualThreshold}. \nThese group(s) will not have KRI score and flag summarized."
+    ),
+    cli_detail = "alert_info"
+  )
+
+  return(dfFlagged)
+}
