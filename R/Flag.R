@@ -170,7 +170,9 @@ Flag_Accrual <- function(dfFlagged,
     level = "info",
     message = paste0(
       filtered_sites <- sum(Accrual_Flag),
-      " Group(s) have insufficient sample size due to KRI denominator less than {nAccrualThreshold}. \nThese group(s) will not have KRI score and flag summarized."
+      " Group(s) have insufficient sample size due to KRI denominator less than {nAccrualThreshold}: ",
+      paste(dfFlagged$GroupID[is.na(dfFlagged$Flag)], collapse = ", "),
+      "\nThese group(s) will not have KRI score and flag summarized."
     ),
     cli_detail = "alert_info"
   )
