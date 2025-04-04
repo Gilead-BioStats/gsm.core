@@ -7,7 +7,7 @@
 Summarize(
   dfFlagged,
   nMinDenominator = NULL,
-  strColumns = c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric", "Score",
+  vColumns = c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric", "Score",
     "Flag")
 )
 }
@@ -16,7 +16,7 @@ Summarize(
 
 \item{nMinDenominator}{\code{numeric} Specifies the minimum denominator required to return a \code{score} and calculate a \code{flag}. Default: NULL}
 
-\item{strColumns}{\code{character} Vector of column names to include in the summary data.frame. Default: c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric", "Score", "Flag")}
+\item{vColumns}{\code{character} Vector of column names to include in the summary data.frame. Default: c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric", "Score", "Flag")}
 }
 \value{
 Simplified finding data.frame with columns for GroupID, GroupType, Metric, Score, Flag

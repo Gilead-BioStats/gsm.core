@@ -19,7 +19,7 @@
 #'
 #' @param dfFlagged data.frame in format produced by [Flag()].
 #' @param nMinDenominator `numeric` Specifies the minimum denominator required to return a `score` and calculate a `flag`. Default: NULL
-#' @param strColumns `character` Vector of column names to include in the summary data.frame. Default: c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric", "Score", "Flag")
+#' @param vColumns `character` Vector of column names to include in the summary data.frame. Default: c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric", "Score", "Flag")
 #' 
 #' @return Simplified finding data.frame with columns for GroupID, GroupType, Metric, Score, Flag
 #' when associated with a workflow.
@@ -36,7 +36,7 @@
 Summarize <- function(
   dfFlagged,
   nMinDenominator = NULL,
-  strColumns = c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric", "Score", "Flag")
+  vColumns = c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric", "Score", "Flag")
 ) {
   stop_if(cnd = !is.data.frame(dfFlagged), message = "dfFlagged is not a data frame")
   stop_if(
