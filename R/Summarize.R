@@ -53,7 +53,7 @@ Summarize <- function(
   }
 
   dfSummary <- dfFlagged %>%
-    select(any_of(strColumns)) %>%
+    select(any_of(vColumns)) %>%
     arrange(desc(abs(.data$Metric))) %>%
     arrange(match(.data$Flag, c(2, -2, 1, -1, 0)))
 
