@@ -398,8 +398,9 @@ specified in the <code>name</code> field of the step.</p>
 </h5>
 <p>In the example below, the steps to produce the AE analysis output is
 specified. Here, <code>Threshold</code>, <code>GroupLevel</code>,
-<code>Type</code> and <code>nMinDenominator</code> are specified in the
-<code>meta</code> section of the workflow, and would be access via the
+<code>Type</code>, <code>AccrualThreshold</code> and
+<code>AccrualMetric</code> are specified in the <code>meta</code>
+section of the workflow, and would be access via the
 <code>paramVal</code> process discussed above. As a default, the output
 of these steps as run with <code><a href="../reference/RunWorkflows.html">gsm.core::RunWorkflows()</a></code> would
 be a list of data tables, as specified in the final <code>list</code>
@@ -435,11 +436,12 @@ step of the workflow.</p>
 <span>    <span class="va">params</span><span class="op">:</span></span>
 <span>      <span class="va">dfAnalyzed</span><span class="op">:</span> <span class="va">Analysis_Analyzed</span></span>
 <span>      <span class="va">vThreshold</span><span class="op">:</span> <span class="va">vThreshold</span></span>
+<span>      <span class="va">nAccrualThreshold</span><span class="op">:</span> <span class="va">AccrualThreshold</span></span>
+<span>      <span class="va">strAccrualMetric</span><span class="op">:</span> <span class="va">AccrualMetric</span></span>
 <span>  <span class="op">-</span> <span class="va">name</span><span class="op">:</span> <span class="fu">gsm.core</span><span class="fu">::</span><span class="va"><a href="../reference/Summarize.html">Summarize</a></span></span>
 <span>    <span class="va">output</span><span class="op">:</span> <span class="va">Analysis_Summary</span></span>
 <span>    <span class="va">params</span><span class="op">:</span></span>
 <span>      <span class="va">dfFlagged</span><span class="op">:</span> <span class="va">Analysis_Flagged</span></span>
-<span>      <span class="va">nMinDenominator</span><span class="op">:</span> <span class="va">nMinDenominator</span></span>
 <span>  <span class="op">-</span> <span class="va">name</span><span class="op">:</span> <span class="va">list</span></span>
 <span>    <span class="va">output</span><span class="op">:</span> <span class="va">kri0001</span></span>
 <span>    <span class="va">params</span><span class="op">:</span></span>

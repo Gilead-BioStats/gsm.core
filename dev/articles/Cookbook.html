@@ -220,7 +220,8 @@ to generate the SAE metric.</li>
 <span><span class="st">  Score: Adjusted Z-Score</span></span>
 <span><span class="st">  AnalysisType: rate</span></span>
 <span><span class="st">  Threshold: -2,-1,2,3</span></span>
-<span><span class="st">  nMinDenominator: 30</span></span>
+<span><span class="st">  AccrualThreshold: 30</span></span>
+<span><span class="st">  AccrualMetric: Denominator</span></span>
 <span><span class="st">spec:</span></span>
 <span><span class="st">  Mapped_AE:</span></span>
 <span><span class="st">    subjid:</span></span>
@@ -263,11 +264,12 @@ to generate the SAE metric.</li>
 <span><span class="st">    params:</span></span>
 <span><span class="st">      dfAnalyzed: Analysis_Analyzed</span></span>
 <span><span class="st">      vThreshold: vThreshold</span></span>
+<span><span class="st">      nAccrualThreshold: AccrualThreshold</span></span>
+<span><span class="st">      strAccrualMetric: AccrualMetric</span></span>
 <span><span class="st">  - output: Analysis_Summary</span></span>
 <span><span class="st">    name: Summarize</span></span>
 <span><span class="st">    params:</span></span>
 <span><span class="st">      dfFlagged: Analysis_Flagged</span></span>
-<span><span class="st">      nMinDenominator: nMinDenominator</span></span>
 <span><span class="st">  - output: lAnalysis</span></span>
 <span><span class="st">    name: list</span></span>
 <span><span class="st">    params:</span></span>
