@@ -23,7 +23,8 @@ Check if the data and spec are compatible by comparing the data.frames and
 columns in the spec with the data.
 }
 \examples{
-lData <- list(reporting_bounds = gsm.core::reportingBounds, reporting_results = gsm.core::reportingResults)
+lData <- list(reporting_bounds = gsm.core::reportingBounds,
+              reporting_results = gsm.core::reportingResults)
 lSpec <- list(
   reporting_bounds = list(
     Metric = list(type = "numeric"),
