@@ -14,7 +14,8 @@
 #' if any data.frame or column is missing.
 #'
 #' @examples
-#' lData <- list(reporting_bounds = gsm.core::reportingBounds, reporting_results = gsm.core::reportingResults)
+#' lData <- list(reporting_bounds = gsm.core::reportingBounds,
+#'               reporting_results = gsm.core::reportingResults)
 #' lSpec <- list(
 #'   reporting_bounds = list(
 #'     Metric = list(type = "numeric"),
