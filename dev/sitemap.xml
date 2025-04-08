@@ -1,5 +1,4 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
-<url><loc>https://gilead-biostats.github.io/gsm.core/dev/LICENSE-text.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/LICENSE.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/articles/ContributorGuidelines.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/articles/Cookbook.html</loc></url>
@@ -19,7 +18,6 @@
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/Analyze_Poisson_PredictBounds.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/CheckSpec.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/Flag.html</loc></url>
-<url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/Flag_Accrual.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/Flag_NormalApprox.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/Flag_Poisson.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/GetStrFunctionIfNamespaced.html</loc></url>
@@ -54,5 +52,7 @@
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/shared-params.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/stop_if.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/dev/reference/tidyeval.html</loc></url>
+<url><loc>https://gilead-biostats.github.io/gsm.core/dev/report_kri_country.html</loc></url>
+<url><loc>https://gilead-biostats.github.io/gsm.core/dev/report_kri_site.html</loc></url>
 </urlset>
 

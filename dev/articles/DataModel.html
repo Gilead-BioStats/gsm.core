@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gsm.core</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@
       <h1>Data Model</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/dev/vignettes/DataModel.Rmd" class="external-link"><code>vignettes/DataModel.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/gsm.core-v1.1.0-rc/vignettes/DataModel.Rmd" class="external-link"><code>vignettes/DataModel.Rmd</code></a></small>
       <div class="d-none name"><code>DataModel.Rmd</code></div>
     </div>
 
@@ -130,9 +130,9 @@ file). Examples of these methods can be found in
 <div class="section level2">
 <h2 id="analysis-data">Analysis Data<a class="anchor" aria-label="anchor" href="#analysis-data"></a>
 </h2>
-<p>In <code>{gsm.kri}</code> analysis data is used to capture key
+<p>In <a href="https://github.com/Gilead-BioStats/gsm.kri" class="external-link">gsm.kri</a> analysis data is used to capture key
 metrics associated with the conduct of a clinical trial. As described in
-the <code>{gsm.kri}</code> readme, 12 standard Key Risk Indicator (KRI)
+the <a href="https://github.com/Gilead-BioStats/gsm.kri" class="external-link">gsm.kri</a> readme, 12 standard Key Risk Indicator (KRI)
 metrics are included in the package along with automated workflows that
 allow them to be run for all sites or countries in a study. Examples of
 KRIs include the rate of adverse events or amount of missing data at a
@@ -211,7 +211,7 @@ workflows.</p>
 <code>{gsm.reporting}</code> to allow for standardized reporting,
 visualization and meta-analysis that compare risk profiles across
 timepoints, and even across multiple studies. The Reporting Data sets
-used in <code>{gsm.reporting}</code> and <code>{gsm.kri}</code> are:</p>
+used in <code>{gsm.reporting}</code> and <a href="https://github.com/Gilead-BioStats/gsm.kri" class="external-link">gsm.kri</a> are:</p>
 <ol style="list-style-type: decimal">
 <li>
 <code>Reporting_Results</code>: Summary data; Standardized subset of
@@ -1204,7 +1204,7 @@ functions and parameters across multiple studies.</p>
 <p>The <code>lWorkflow</code> object is a named list of metadata and
 steps defining how each assessment should be run. By default,
 <code><a href="../reference/MakeWorkflowList.html">gsm.core::MakeWorkflowList()</a></code> imports YAML specifications
-from <code>workflow/2_metrics</code> in <code>{gsm.kri}</code>. Each
+from <code>workflow/2_metrics</code> in <a href="https://github.com/Gilead-BioStats/gsm.kri" class="external-link">gsm.kri</a>. Each
 item in <code>lWorkflow</code> expects the following parameters in the
 <code>steps</code> section:</p>
 <ul>
@@ -1252,65 +1252,63 @@ is shown below:</p>
 <span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="at">  </span><span class="fu">Score</span><span class="kw">:</span><span class="at"> Adjusted Z-Score</span></span>
 <span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="at">  </span><span class="fu">AnalysisType</span><span class="kw">:</span><span class="at"> rate</span></span>
 <span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="at">  </span><span class="fu">Threshold</span><span class="kw">:</span><span class="at"> -2,-1,2,3</span></span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="at">  </span><span class="fu">AccrualThreshold</span><span class="kw">:</span><span class="at"> </span><span class="dv">30</span></span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="at">  </span><span class="fu">AccrualMetric</span><span class="kw">:</span><span class="at"> Denominator</span></span>
-<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="fu">spec</span><span class="kw">:</span></span>
-<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="at">  </span><span class="fu">Mapped_AE</span><span class="kw">:</span></span>
-<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="at">    </span><span class="fu">subjid</span><span class="kw">:</span></span>
-<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> character</span></span>
-<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="at">  </span><span class="fu">Mapped_SUBJ</span><span class="kw">:</span></span>
-<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="at">    </span><span class="fu">subjid</span><span class="kw">:</span></span>
-<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> character</span></span>
-<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a><span class="at">    </span><span class="fu">invid</span><span class="kw">:</span></span>
-<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> character</span></span>
-<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a><span class="at">    </span><span class="fu">timeonstudy</span><span class="kw">:</span></span>
-<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> integer</span></span>
-<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a><span class="fu">steps</span><span class="kw">:</span></span>
-<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> vThreshold</span></span>
-<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> gsm.core::ParseThreshold</span></span>
-<span id="cb1-29"><a href="#cb1-29" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb1-30"><a href="#cb1-30" tabindex="-1"></a><span class="at">      </span><span class="fu">strThreshold</span><span class="kw">:</span><span class="at"> Threshold</span></span>
-<span id="cb1-31"><a href="#cb1-31" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> Analysis_Input</span></span>
-<span id="cb1-32"><a href="#cb1-32" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> gsm.core::Input_Rate</span></span>
-<span id="cb1-33"><a href="#cb1-33" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb1-34"><a href="#cb1-34" tabindex="-1"></a><span class="at">      </span><span class="fu">dfSubjects</span><span class="kw">:</span><span class="at"> Mapped_SUBJ</span></span>
-<span id="cb1-35"><a href="#cb1-35" tabindex="-1"></a><span class="at">      </span><span class="fu">dfNumerator</span><span class="kw">:</span><span class="at"> Mapped_AE</span></span>
-<span id="cb1-36"><a href="#cb1-36" tabindex="-1"></a><span class="at">      </span><span class="fu">dfDenominator</span><span class="kw">:</span><span class="at"> Mapped_SUBJ</span></span>
-<span id="cb1-37"><a href="#cb1-37" tabindex="-1"></a><span class="at">      </span><span class="fu">strSubjectCol</span><span class="kw">:</span><span class="at"> subjid</span></span>
-<span id="cb1-38"><a href="#cb1-38" tabindex="-1"></a><span class="at">      </span><span class="fu">strGroupCol</span><span class="kw">:</span><span class="at"> invid</span></span>
-<span id="cb1-39"><a href="#cb1-39" tabindex="-1"></a><span class="at">      </span><span class="fu">strGroupLevel</span><span class="kw">:</span><span class="at"> GroupLevel</span></span>
-<span id="cb1-40"><a href="#cb1-40" tabindex="-1"></a><span class="at">      </span><span class="fu">strNumeratorMethod</span><span class="kw">:</span><span class="at"> Count</span></span>
-<span id="cb1-41"><a href="#cb1-41" tabindex="-1"></a><span class="at">      </span><span class="fu">strDenominatorMethod</span><span class="kw">:</span><span class="at"> Sum</span></span>
-<span id="cb1-42"><a href="#cb1-42" tabindex="-1"></a><span class="at">      </span><span class="fu">strDenominatorCol</span><span class="kw">:</span><span class="at"> timeonstudy</span></span>
-<span id="cb1-43"><a href="#cb1-43" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> Analysis_Transformed</span></span>
-<span id="cb1-44"><a href="#cb1-44" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> gsm.core::Transform_Rate</span></span>
-<span id="cb1-45"><a href="#cb1-45" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb1-46"><a href="#cb1-46" tabindex="-1"></a><span class="at">      </span><span class="fu">dfInput</span><span class="kw">:</span><span class="at"> Analysis_Input</span></span>
-<span id="cb1-47"><a href="#cb1-47" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> Analysis_Analyzed</span></span>
-<span id="cb1-48"><a href="#cb1-48" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Analyze_NormalApprox</span></span>
-<span id="cb1-49"><a href="#cb1-49" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb1-50"><a href="#cb1-50" tabindex="-1"></a><span class="at">      </span><span class="fu">dfTransformed</span><span class="kw">:</span><span class="at"> Analysis_Transformed</span></span>
-<span id="cb1-51"><a href="#cb1-51" tabindex="-1"></a><span class="at">      </span><span class="fu">strType</span><span class="kw">:</span><span class="at"> AnalysisType</span></span>
-<span id="cb1-52"><a href="#cb1-52" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> Analysis_Flagged</span></span>
-<span id="cb1-53"><a href="#cb1-53" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> gsm.core::Flag_NormalApprox</span></span>
-<span id="cb1-54"><a href="#cb1-54" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb1-55"><a href="#cb1-55" tabindex="-1"></a><span class="at">      </span><span class="fu">dfAnalyzed</span><span class="kw">:</span><span class="at"> Analysis_Analyzed</span></span>
-<span id="cb1-56"><a href="#cb1-56" tabindex="-1"></a><span class="at">      </span><span class="fu">vThreshold</span><span class="kw">:</span><span class="at"> vThreshold</span></span>
-<span id="cb1-57"><a href="#cb1-57" tabindex="-1"></a><span class="at">      </span><span class="fu">nAccrualThreshold</span><span class="kw">:</span><span class="at"> AccrualThreshold</span></span>
-<span id="cb1-58"><a href="#cb1-58" tabindex="-1"></a><span class="at">      </span><span class="fu">strAccrualMetric</span><span class="kw">:</span><span class="at"> AccrualMetric</span></span>
-<span id="cb1-59"><a href="#cb1-59" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> Analysis_Summary</span></span>
-<span id="cb1-60"><a href="#cb1-60" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> gsm.core::Summarize</span></span>
-<span id="cb1-61"><a href="#cb1-61" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb1-62"><a href="#cb1-62" tabindex="-1"></a><span class="at">      </span><span class="fu">dfFlagged</span><span class="kw">:</span><span class="at"> Analysis_Flagged</span></span>
-<span id="cb1-63"><a href="#cb1-63" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> lAnalysis</span></span>
-<span id="cb1-64"><a href="#cb1-64" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> list</span></span>
-<span id="cb1-65"><a href="#cb1-65" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb1-66"><a href="#cb1-66" tabindex="-1"></a><span class="at">      </span><span class="fu">ID</span><span class="kw">:</span><span class="at"> ID</span></span>
-<span id="cb1-67"><a href="#cb1-67" tabindex="-1"></a><span class="at">      </span><span class="fu">Analysis_Input</span><span class="kw">:</span><span class="at"> Analysis_Input</span></span>
-<span id="cb1-68"><a href="#cb1-68" tabindex="-1"></a><span class="at">      </span><span class="fu">Analysis_Transformed</span><span class="kw">:</span><span class="at"> Analysis_Transformed</span></span>
-<span id="cb1-69"><a href="#cb1-69" tabindex="-1"></a><span class="at">      </span><span class="fu">Analysis_Analyzed</span><span class="kw">:</span><span class="at"> Analysis_Analyzed</span></span>
-<span id="cb1-70"><a href="#cb1-70" tabindex="-1"></a><span class="at">      </span><span class="fu">Analysis_Flagged</span><span class="kw">:</span><span class="at"> Analysis_Flagged</span></span>
-<span id="cb1-71"><a href="#cb1-71" tabindex="-1"></a><span class="at">      </span><span class="fu">Analysis_Summary</span><span class="kw">:</span><span class="at"> Analysis_Summary</span></span></code></pre></div>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="at">  </span><span class="fu">nMinDenominator</span><span class="kw">:</span><span class="at"> </span><span class="dv">30</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="fu">spec</span><span class="kw">:</span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="at">  </span><span class="fu">Mapped_AE</span><span class="kw">:</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="at">    </span><span class="fu">subjid</span><span class="kw">:</span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> character</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="at">  </span><span class="fu">Mapped_SUBJ</span><span class="kw">:</span></span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="at">    </span><span class="fu">subjid</span><span class="kw">:</span></span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> character</span></span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a><span class="at">    </span><span class="fu">invid</span><span class="kw">:</span></span>
+<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> character</span></span>
+<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a><span class="at">    </span><span class="fu">timeonstudy</span><span class="kw">:</span></span>
+<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> integer</span></span>
+<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> vThreshold</span></span>
+<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> gsm.core::ParseThreshold</span></span>
+<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb1-29"><a href="#cb1-29" tabindex="-1"></a><span class="at">      </span><span class="fu">strThreshold</span><span class="kw">:</span><span class="at"> Threshold</span></span>
+<span id="cb1-30"><a href="#cb1-30" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> Analysis_Input</span></span>
+<span id="cb1-31"><a href="#cb1-31" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> gsm.core::Input_Rate</span></span>
+<span id="cb1-32"><a href="#cb1-32" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb1-33"><a href="#cb1-33" tabindex="-1"></a><span class="at">      </span><span class="fu">dfSubjects</span><span class="kw">:</span><span class="at"> Mapped_SUBJ</span></span>
+<span id="cb1-34"><a href="#cb1-34" tabindex="-1"></a><span class="at">      </span><span class="fu">dfNumerator</span><span class="kw">:</span><span class="at"> Mapped_AE</span></span>
+<span id="cb1-35"><a href="#cb1-35" tabindex="-1"></a><span class="at">      </span><span class="fu">dfDenominator</span><span class="kw">:</span><span class="at"> Mapped_SUBJ</span></span>
+<span id="cb1-36"><a href="#cb1-36" tabindex="-1"></a><span class="at">      </span><span class="fu">strSubjectCol</span><span class="kw">:</span><span class="at"> subjid</span></span>
+<span id="cb1-37"><a href="#cb1-37" tabindex="-1"></a><span class="at">      </span><span class="fu">strGroupCol</span><span class="kw">:</span><span class="at"> invid</span></span>
+<span id="cb1-38"><a href="#cb1-38" tabindex="-1"></a><span class="at">      </span><span class="fu">strGroupLevel</span><span class="kw">:</span><span class="at"> GroupLevel</span></span>
+<span id="cb1-39"><a href="#cb1-39" tabindex="-1"></a><span class="at">      </span><span class="fu">strNumeratorMethod</span><span class="kw">:</span><span class="at"> Count</span></span>
+<span id="cb1-40"><a href="#cb1-40" tabindex="-1"></a><span class="at">      </span><span class="fu">strDenominatorMethod</span><span class="kw">:</span><span class="at"> Sum</span></span>
+<span id="cb1-41"><a href="#cb1-41" tabindex="-1"></a><span class="at">      </span><span class="fu">strDenominatorCol</span><span class="kw">:</span><span class="at"> timeonstudy</span></span>
+<span id="cb1-42"><a href="#cb1-42" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> Analysis_Transformed</span></span>
+<span id="cb1-43"><a href="#cb1-43" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> gsm.core::Transform_Rate</span></span>
+<span id="cb1-44"><a href="#cb1-44" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb1-45"><a href="#cb1-45" tabindex="-1"></a><span class="at">      </span><span class="fu">dfInput</span><span class="kw">:</span><span class="at"> Analysis_Input</span></span>
+<span id="cb1-46"><a href="#cb1-46" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> Analysis_Analyzed</span></span>
+<span id="cb1-47"><a href="#cb1-47" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Analyze_NormalApprox</span></span>
+<span id="cb1-48"><a href="#cb1-48" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb1-49"><a href="#cb1-49" tabindex="-1"></a><span class="at">      </span><span class="fu">dfTransformed</span><span class="kw">:</span><span class="at"> Analysis_Transformed</span></span>
+<span id="cb1-50"><a href="#cb1-50" tabindex="-1"></a><span class="at">      </span><span class="fu">strType</span><span class="kw">:</span><span class="at"> AnalysisType</span></span>
+<span id="cb1-51"><a href="#cb1-51" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> Analysis_Flagged</span></span>
+<span id="cb1-52"><a href="#cb1-52" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> gsm.core::Flag_NormalApprox</span></span>
+<span id="cb1-53"><a href="#cb1-53" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb1-54"><a href="#cb1-54" tabindex="-1"></a><span class="at">      </span><span class="fu">dfAnalyzed</span><span class="kw">:</span><span class="at"> Analysis_Analyzed</span></span>
+<span id="cb1-55"><a href="#cb1-55" tabindex="-1"></a><span class="at">      </span><span class="fu">vThreshold</span><span class="kw">:</span><span class="at"> vThreshold</span></span>
+<span id="cb1-56"><a href="#cb1-56" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> Analysis_Summary</span></span>
+<span id="cb1-57"><a href="#cb1-57" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> gsm.core::Summarize</span></span>
+<span id="cb1-58"><a href="#cb1-58" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb1-59"><a href="#cb1-59" tabindex="-1"></a><span class="at">      </span><span class="fu">dfFlagged</span><span class="kw">:</span><span class="at"> Analysis_Flagged</span></span>
+<span id="cb1-60"><a href="#cb1-60" tabindex="-1"></a><span class="at">      </span><span class="fu">nMinDenominator</span><span class="kw">:</span><span class="at"> nMinDenominator</span></span>
+<span id="cb1-61"><a href="#cb1-61" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">output</span><span class="kw">:</span><span class="at"> lAnalysis</span></span>
+<span id="cb1-62"><a href="#cb1-62" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> list</span></span>
+<span id="cb1-63"><a href="#cb1-63" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb1-64"><a href="#cb1-64" tabindex="-1"></a><span class="at">      </span><span class="fu">ID</span><span class="kw">:</span><span class="at"> ID</span></span>
+<span id="cb1-65"><a href="#cb1-65" tabindex="-1"></a><span class="at">      </span><span class="fu">Analysis_Input</span><span class="kw">:</span><span class="at"> Analysis_Input</span></span>
+<span id="cb1-66"><a href="#cb1-66" tabindex="-1"></a><span class="at">      </span><span class="fu">Analysis_Transformed</span><span class="kw">:</span><span class="at"> Analysis_Transformed</span></span>
+<span id="cb1-67"><a href="#cb1-67" tabindex="-1"></a><span class="at">      </span><span class="fu">Analysis_Analyzed</span><span class="kw">:</span><span class="at"> Analysis_Analyzed</span></span>
+<span id="cb1-68"><a href="#cb1-68" tabindex="-1"></a><span class="at">      </span><span class="fu">Analysis_Flagged</span><span class="kw">:</span><span class="at"> Analysis_Flagged</span></span>
+<span id="cb1-69"><a href="#cb1-69" tabindex="-1"></a><span class="at">      </span><span class="fu">Analysis_Summary</span><span class="kw">:</span><span class="at"> Analysis_Summary</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

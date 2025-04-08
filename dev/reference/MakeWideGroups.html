@@ -11,7 +11,7 @@ use in charts and reports."><meta name="robots" content="noindex"><link href="pk
 
     <a class="navbar-brand me-2" href="../index.html">gsm.core</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@ use in charts and reports."><meta name="robots" content="noindex"><link href="pk
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Helper function to compile "wide" group metadata</h1>
-      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/dev/R/util-MakeWideGroups.R" class="external-link"><code>R/util-MakeWideGroups.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/gsm.core-v1.1.0-rc/R/util-MakeWideGroups.R" class="external-link"><code>R/util-MakeWideGroups.R</code></a></small>
       <div class="d-none name"><code>MakeWideGroups.Rd</code></div>
     </div>
 
@@ -77,22 +77,24 @@ dfGroups$GroupLevel.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">MakeWideGroups</span><span class="op">(</span><span class="va">reportingGroups</span>, <span class="st">"Site"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 150 × 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    GroupID GroupLevel studyid   invid InvestigatorFirstName InvestigatorLastName</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0X216   Site       AA-AA-00… 0X216 John                  Deer                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 0X9505  Site       AA-AA-00… 0X95… Joanne                Deer                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 0X8156  Site       AA-AA-00… 0X81… John                  Deer                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 0X6215  Site       AA-AA-00… 0X62… Joanne                Smith               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 0X8779  Site       AA-AA-00… 0X87… John                  Deer                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 0X1598  Site       AA-AA-00… 0X15… Fred                  Doe                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 0X4236  Site       AA-AA-00… 0X42… Fred                  Deer                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 0X3936  Site       AA-AA-00… 0X39… Joanne                Deer                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 0X4088  Site       AA-AA-00… 0X40… Fred                  Deer                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 0X2906  Site       AA-AA-00… 0X29… John                  Smith               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 140 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: site_status &lt;chr&gt;, City &lt;chr&gt;, State &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Country &lt;chr&gt;, ParticipantCount &lt;chr&gt;, SiteCount &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 176 × 18</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    GroupID GroupLevel protocol_row_id site_num site_row_id    studyid      invid</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0X126   Site       1-1G9113        10       123-1234-0X126 AA-AA-000-0… 0X126</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> X060X   Site       1-1G9113        100      123-1234-X060X AA-AA-000-0… X060X</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 0X174   Site       1-1G9113        101      123-1234-0X174 AA-AA-000-0… 0X174</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 0X073   Site       1-1G9113        102      123-1234-0X073 AA-AA-000-0… 0X073</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 0X176   Site       1-1G9113        103      123-1234-0X176 AA-AA-000-0… 0X176</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 0X140   Site       1-1G9113        104      123-1234-0X140 AA-AA-000-0… 0X140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 0X179   Site       1-1G9113        105      123-1234-0X179 AA-AA-000-0… 0X179</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 0X040   Site       1-1G9113        106      123-1234-0X040 AA-AA-000-0… 0X040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 0X072   Site       1-1G9113        107      123-1234-0X072 AA-AA-000-0… 0X072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 0X127   Site       1-1G9113        109      123-1234-0X127 AA-AA-000-0… 0X127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 166 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 11 more variables: InvestigatorLastName &lt;chr&gt;, InvestigatorFirstName &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   site_status &lt;chr&gt;, is_satellite &lt;chr&gt;, account &lt;chr&gt;, site_active_dt &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   City &lt;chr&gt;, State &lt;chr&gt;, Country &lt;chr&gt;, ParticipantCount &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   SiteCount &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
