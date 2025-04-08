@@ -42,7 +42,7 @@ Calls \code{RunStep} for each item in \code{lWorkflow$workflow} and saves the re
 # ----
 # Workflow using in-memory data.
 
-Generate mapped input data to metric workflow.
+# Generate mapped input data to metric workflow.
 lMappingWorkflows <- MakeWorkflowList(
   c("AE", "SUBJ"),
   strPath = testthat::test_path("testdata/mappings"),

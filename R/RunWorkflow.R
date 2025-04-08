@@ -20,7 +20,7 @@
 #' # ----
 #' # Workflow using in-memory data.
 #'
-#' Generate mapped input data to metric workflow.
+#' # Generate mapped input data to metric workflow.
 #' lMappingWorkflows <- MakeWorkflowList(
 #'   c("AE", "SUBJ"),
 #'   strPath = testthat::test_path("testdata/mappings"),
