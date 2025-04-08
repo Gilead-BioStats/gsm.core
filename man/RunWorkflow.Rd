@@ -39,14 +39,13 @@ Attempts to run a single assessment (\code{lWorkflow}) using shared data (\code{
 Calls \code{RunStep} for each item in \code{lWorkflow$workflow} and saves the results to \code{lWorkflow}.
 }
 \examples{
-\dontrun{
 # ----
 # Workflow using in-memory data.
 
 Generate mapped input data to metric workflow.
 lMappingWorkflows <- MakeWorkflowList(
   c("AE", "SUBJ"),
-  strPath = here::here("tests/testthat/testdata/mappings"),
+  strPath = testthat::test_path("testdata/mappings"),
   bExact = TRUE
 )
 mappings_spec <- CombineSpecs(lMappingWorkflows)
@@ -58,12 +57,12 @@ lMappedData <- RunWorkflows(
 )
 
 # Run the metric workflow.
-lMetricWorkflow <- MakeWorkflowList(here::here("tests/testthat/testdata/metrics/kri0001"))$kri0001
+lMetricWorkflow <- MakeWorkflowList(testthat::test_path("testdata/metrics/kri0001"))$kri0001
 lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lMappedData
 )
-
+/dontrun{
 # ----
 # Workflow using data read/write functions.
 
@@ -119,7 +118,7 @@ lConfig <- list(
 # Generate mapped input data to metric workflow.
 lMappingWorkflows <- MakeWorkflowList(
   c("AE", "SUBJ"),
-  strPath = here::here("tests/testthat/testdata/mappings"),
+  strPath = testthat::test_path("testdata/mappings"),
   bExact = TRUE
 )
 
@@ -129,7 +128,7 @@ lMappedData <- RunWorkflows(
 )
 
 # Run the metric workflow.
-lMetricWorkflow <- MakeWorkflowList(here::here("tests/testthat/testdata/metrics/kri0001"))$kri0001
+lMetricWorkflow <- MakeWorkflowList(testthat::test_path("testdata/metrics/kri0001"))$kri0001
 lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lConfig = lConfig

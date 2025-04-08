@@ -17,14 +17,13 @@
 #' @return Object containing the results of the workflow's last step (if `bLastResult` is `TRUE`) or the full workflow object (if `bReturnResults` is `TRUE`) or the full workflow object (if `bReturnResults` is `FALSE`).
 #'
 #' @examples
-#' \dontrun{
 #' # ----
 #' # Workflow using in-memory data.
 #'
 #' Generate mapped input data to metric workflow.
 #' lMappingWorkflows <- MakeWorkflowList(
 #'   c("AE", "SUBJ"),
-#'   strPath = here::here("tests/testthat/testdata/mappings"),
+#'   strPath = testthat::test_path("testdata/mappings"),
 #'   bExact = TRUE
 #' )
 #' mappings_spec <- CombineSpecs(lMappingWorkflows)
@@ -36,12 +35,12 @@
 #' )
 #'
 #' # Run the metric workflow.
-#' lMetricWorkflow <- MakeWorkflowList(here::here("tests/testthat/testdata/metrics/kri0001"))$kri0001
+#' lMetricWorkflow <- MakeWorkflowList(testthat::test_path("testdata/metrics/kri0001"))$kri0001
 #' lMetricOutput <- RunWorkflow(
 #'   lMetricWorkflow,
 #'   lMappedData
 #' )
-#'
+#' /dontrun{
 #' # ----
 #' # Workflow using data read/write functions.
 #'
@@ -97,7 +96,7 @@
 #' # Generate mapped input data to metric workflow.
 #' lMappingWorkflows <- MakeWorkflowList(
 #'   c("AE", "SUBJ"),
-#'   strPath = here::here("tests/testthat/testdata/mappings"),
+#'   strPath = testthat::test_path("testdata/mappings"),
 #'   bExact = TRUE
 #' )
 #'
@@ -107,7 +106,7 @@
 #' )
 #'
 #' # Run the metric workflow.
-#' lMetricWorkflow <- MakeWorkflowList(here::here("tests/testthat/testdata/metrics/kri0001"))$kri0001
+#' lMetricWorkflow <- MakeWorkflowList(testthat::test_path("testdata/metrics/kri0001"))$kri0001
 #' lMetricOutput <- RunWorkflow(
 #'   lMetricWorkflow,
 #'   lConfig = lConfig

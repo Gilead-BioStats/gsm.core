@@ -81,7 +81,7 @@ steps:
 # Run the workflow
 lMappingWorkflows <- MakeWorkflowList(
   c("AE", "SUBJ"),
-  strPath = here::here("tests/testthat/testdata/mappings"),
+  strPath = testthat::test_path("testdata/mappings"),
   bExact = TRUE
 )
 mappings_spec <- gsm.mapping::CombineSpecs(lMappingWorkflows)
