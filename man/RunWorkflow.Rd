@@ -45,7 +45,7 @@ Calls \code{RunStep} for each item in \code{lWorkflow$workflow} and saves the re
 # Generate mapped input data to metric workflow.
 lMappingWorkflows <- MakeWorkflowList(
   c("AE", "SUBJ"),
-  strPath = testthat::test_path("testdata/mappings"),
+  strPath = here::here("tests/testthat/testdata/mappings"),
   bExact = TRUE
 )
 mappings_spec <- CombineSpecs(lMappingWorkflows)
@@ -57,7 +57,7 @@ lMappedData <- RunWorkflows(
 )
 
 # Run the metric workflow.
-lMetricWorkflow <- MakeWorkflowList(testthat::test_path("testdata/metrics/kri0001"))$kri0001
+lMetricWorkflow <- MakeWorkflowList(here::here("tests/testthat/testdata/metrics/kri0001"))$kri0001
 lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lMappedData
@@ -118,7 +118,7 @@ lConfig <- list(
 # Generate mapped input data to metric workflow.
 lMappingWorkflows <- MakeWorkflowList(
   c("AE", "SUBJ"),
-  strPath = testthat::test_path("testdata/mappings"),
+  strPath = here::here("tests/testthat/testdata/mappings"),
   bExact = TRUE
 )
 
@@ -128,7 +128,7 @@ lMappedData <- RunWorkflows(
 )
 
 # Run the metric workflow.
-lMetricWorkflow <- MakeWorkflowList(testthat::test_path("testdata/metrics/kri0001"))$kri0001
+lMetricWorkflow <- MakeWorkflowList(here::here("tests/testthat/testdata/metrics/kri0001"))$kri0001
 lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lConfig = lConfig
