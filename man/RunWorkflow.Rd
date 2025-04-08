@@ -62,7 +62,7 @@ lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lMappedData
 )
-/dontrun{
+\dontrun{
 # ----
 # Workflow using data read/write functions.
 
