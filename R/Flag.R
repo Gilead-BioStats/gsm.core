@@ -8,7 +8,7 @@
 #'
 #' @details
 #' This function provides a generalized framework for flagging sites as part of the
-#' GSM data model (see `vignette("DataModel")`).
+#' GSM data model (see `vignette("DataModel", package = "gsm.core")`).
 #'
 #' @section Data Specification:
 #' \code{Flag} is designed to support the input data (`dfAnalyzed`) from the `Analyze_Identity()`
@@ -32,6 +32,8 @@
 #' @param vThreshold `numeric` Vector of numeric values representing threshold values. Default is `c(-3,-2,2,3)` which is typical for z-scores.
 #' @param vFlag `numeric` Vector of flag values. There must be one more item in Flag than thresholds - that is `length(vThreshold)+1 == length(vFlagValues)`. Default is `c(-2,-1,0,1,2)`, which is typical for z-scores.
 #' @param vFlagOrder `numeric` Vector of ordered flag values. Output data.frame will be sorted based on flag column using the order provided. NULL (or values that don't match vFlag) will leave the data unsorted. Must have identical values to vFlag. Default is `c(2,-2,1,-1,0)` which puts largest z-score outliers first in the data set.
+#' @param nAccrualThreshold `numeric` Specifies the minimum value required to return a `score` and calculate a `flag`. Default: NULL
+#' @param strAccrualMetric `character` Specifies the Metric to apply `nAccrualThreshold` to in order to determine the validity of a flag. Options are "Numerator", "Denominator" or "Difference". If "Difference" is specified, the threshold is based on the difference between the Denominator and the Numerator for a given Group. Default: `NULL`.
 #'
 #' @return `data.frame` dfAnalyzed is returned with an additional `Flag` column.
 #'
@@ -48,7 +50,9 @@ Flag <- function(
   strColumn = "Score",
   vThreshold = c(-3, -2, 2, 3),
   vFlag = c(-2, -1, 0, 1, 2),
-  vFlagOrder = c(2, -2, 1, -1, 0)
+  vFlagOrder = c(2, -2, 1, -1, 0),
+  nAccrualThreshold = NULL,
+  strAccrualMetric = NULL
 ) {
   stop_if(cnd = !is.data.frame(dfAnalyzed), message = "dfAnalyzed is not a data frame")
   stop_if(cnd = !is.character(strColumn), message = "strColumn is not character")
@@ -72,6 +76,13 @@ Flag <- function(
   ) %>%
     as.character() %>%
     as.numeric() # Parse from factor to numeric
+
+  #filter to site with enough observations via AccrualThreshold and AccrualMetric
+  if (!is.null(nAccrualThreshold) && !is.null(strAccrualMetric)) {
+    dfFlagged <- Flag_Accrual(dfFlagged = dfFlagged,
+                              nAccrualThreshold = nAccrualThreshold,
+                              strAccrualMetric = strAccrualMetric)
+  }
 
   # Apply custom sort order using vFlagOrder
   if (!is.null(vFlagOrder)) {
@@ -107,6 +118,8 @@ Flag <- function(
 #' @param vThreshold `numeric` Vector of numeric values representing threshold values. Default is `c(-3,-2,2,3)` which is typical for z-scores.
 #' @param vFlag `numeric` Vector of flag values. There must be one more item in Flag than thresholds - that is `length(vThreshold)+1 == length(vFlagValues)`. Default is `c(-2,-1,0,1,2)`, which is typical for z-scores.
 #' @param vFlagOrder `numeric` Vector of ordered flag values. Output data.frame will be sorted based on flag column using the order provided. NULL (or values that don't match vFlag) will leave the data unsorted. Must have identical values to vFlag. Default is `c(2,-2,1,-1,0)` which puts largest z-score outliers first in the data set.
+#' @param nAccrualThreshold `numeric` Specifies the minimum value required to return a `score` and calculate a `flag`. Default: NULL
+#' @param strAccrualMetric `character` Specifies the Metric to apply `nAccrualThreshold` to in order to determine the validity of a flag. Options are "Numerator", "Denominator" or "Difference". If "Difference" is specified, the threshold is based on the difference between the Denominator and the Numerator for a given Group. Default: `NULL`.
 #'
 #'
 #' @export
@@ -126,7 +139,43 @@ Flag_NormalApprox <- Flag
 #' @param vThreshold `numeric` Vector of numeric values representing threshold values. Default is `c(-3,-2,2,3)` which is typical for z-scores.
 #' @param vFlag `numeric` Vector of flag values. There must be one more item in Flag than thresholds - that is `length(vThreshold)+1 == length(vFlagValues)`. Default is `c(-2,-1,0,1,2)`, which is typical for z-scores.
 #' @param vFlagOrder `numeric` Vector of ordered flag values. Output data.frame will be sorted based on flag column using the order provided. NULL (or values that don't match vFlag) will leave the data unsorted. Must have identical values to vFlag. Default is `c(2,-2,1,-1,0)` which puts largest z-score outliers first in the data set.
+#' @param nAccrualThreshold `numeric` Specifies the minimum value required to return a `score` and calculate a `flag`. Default: NULL
+#' @param strAccrualMetric `character` Specifies the Metric to apply `nAccrualThreshold` to in order to determine the validity of a flag. Options are "Numerator", "Denominator" or "Difference". If "Difference" is specified, the threshold is based on the difference between the Denominator and the Numerator for a given Group. Default: `NULL`.
 #'
 #' @export
 
 Flag_Poisson <- Flag
+
+#' Filter Flags based on Threshold and Metric
+#'
+#' @param dfFlagged data.frame in format produced by [Flag()].
+#' @param nAccrualThreshold `numeric` Specifies the minimum value required to return a `score` and calculate a `flag`. Default: NULL
+#' @param strAccrualMetric `character` Specifies the Metric to apply `nAccrualThreshold` to in order to determine the validity of a flag. Options are "Numerator", "Denominator" or "Difference". If "Difference" is specified, the threshold is based on the difference between the Denominator and the Numerator for a given Group. Default: `NULL`.
+#'
+#' @keywords internal
+Flag_Accrual <- function(dfFlagged,
+                         nAccrualThreshold,
+                         strAccrualMetric) {
+  if(strAccrualMetric == "Denominator"){
+    Accrual_Flag <- dfFlagged$Denominator < nAccrualThreshold
+  } else if(strAccrualMetric == "Numerator"){
+    Accrual_Flag <-  dfFlagged$Numerator < nAccrualThreshold
+  } else if(strAccrualMetric == "Difference"){
+    Accrual_Flag <- (dfFlagged$Denominator - dfFlagged$Numerator) < nAccrualThreshold
+  }
+  dfFlagged$Score[Accrual_Flag] <- NA
+  dfFlagged$Flag[Accrual_Flag] <- NA
+
+  LogMessage(
+    level = "info",
+    message = paste0(
+      filtered_sites <- sum(Accrual_Flag),
+      " Group(s) have insufficient sample size due to KRI denominator less than {nAccrualThreshold}: ",
+      paste(dfFlagged$GroupID[is.na(dfFlagged$Flag)], collapse = ", "),
+      "\nThese group(s) will not have KRI score and flag summarized."
+    ),
+    cli_detail = "alert_info"
+  )
+
+  return(dfFlagged)
+}

@@ -34,7 +34,7 @@
 
 Summarize <- function(
   dfFlagged,
-  nMinDenominator = NULL
+  nMinDenominator = lifecycle::deprecated()
 ) {
   stop_if(cnd = !is.data.frame(dfFlagged), message = "dfFlagged is not a data frame")
   stop_if(
@@ -67,7 +67,10 @@ Summarize <- function(
     arrange(desc(abs(.data$Metric))) %>%
     arrange(match(.data$Flag, c(2, -2, 1, -1, 0)))
 
-  if (!is.null(nMinDenominator)) {
+  if (lifecycle::is_present(nMinDenominator)) {
+    lifecycle::deprecate_warn(when = "1.0.0",
+                   what = "Summarize(nMinDenominator)",
+                   details = "Please use the `nAccrualThreshold` and `strAccrualMetric` arguments in `Flag()` instead")
     dfSummary$Score[dfSummary$Denominator < nMinDenominator] <- NA
     dfSummary$Flag[dfSummary$Denominator < nMinDenominator] <- NA
 
@@ -75,7 +78,7 @@ Summarize <- function(
       level = "info",
       message = paste0(
         sum(dfSummary$Denominator < nMinDenominator),
-        " Site(s) have insufficient sample size due to KRI denominator less than {nMinDenominator}. \nThese site(s) will not have KRI score and flag summarized."
+        " Group(s) have insufficient sample size due to KRI denominator less than {nMinDenominator}. \nThese group(s) will not have KRI score and flag summarized."
       ),
       cli_detail = "alert_info"
     )

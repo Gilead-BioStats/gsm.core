@@ -31,15 +31,17 @@
 #' @param lStep `list` single workflow step (typically pulled from `lWorkflow$steps`). Should
 #'   include the name of the function to run (`lStep$name`), name of the object where the function result should be saved (`lStep$output`) and configurable parameters (`lStep$params`) (if any)
 #' @param lData `list` a named list of domain level data frames.
-#' @param lSpec `list` a data specification containing required columns. See `vignette("gsm_extensions")`.
+#' @param lSpec `list` a data specification containing required columns. See `vignette("gsmExtensions", package = "gsm.core")`.
 #' @param lMeta `list` a named list of meta data.
 #'
 #' @examples
 #' \dontrun{
 #' ----
-#'   wf_mapping <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/mappings"))
-#' lStep <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics"))[["kri0001"]][["steps"]][[1]]
-#' lMeta <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics"))[["kri0001"]][["meta"]]
+#' wf_mapping <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/mappings"))
+#' lStep <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics")
+#'                           )[["kri0001"]][["steps"]][[1]]
+#' lMeta <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics")
+#'                           )[["kri0001"]][["meta"]]
 #'
 #' mappings_spec <- CombineSpecs(wf_mapping)
 #' lRaw <- Ingest(gsm.core::lSource, mappings_spec)

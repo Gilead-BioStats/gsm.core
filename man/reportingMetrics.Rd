@@ -5,7 +5,7 @@
 \alias{reportingMetrics}
 \title{reportingMetrics Dataset}
 \format{
-A data frame with 12 rows and 17 columns:
+A data frame with 13 rows and 16 columns:
 \describe{
 \item{MetricID}{unique metric identifier}
 \item{GroupLevel}{level of grouping variable}
@@ -17,13 +17,12 @@ A data frame with 12 rows and 17 columns:
 \item{Score}{type of score reported}
 \item{Type}{statistical outcome type}
 \item{Threshold}{thresholds to be used for bounds and flags}
-\item{nMinDenominator}{minimum denominator required to return a score and calculate a flag}
+\item{AccrualThreshold}{minimum numerator required to return a score and calculate a flag}
+\item{AccrualMetric}{metric used to apply threshold to}
 \item{ID}{ID}
 \item{Priority}{Priority in workflow}
-\item{Output}{output}
-\item{Name}{name}
-\item{Description}{description}
 \item{AnalysisType}{analysis type}
+\item{Flag}{thresholds to be used for vFlags argument}
 }
 }
 \source{

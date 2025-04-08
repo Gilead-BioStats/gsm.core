@@ -6,7 +6,7 @@ library(dplyr)
 
 #### 3.1 - Create a KRI Report using 12 standard metrics in a step-by-step workflow
 
-core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
+core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB", "PK",
                    "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
 
 # Step 0 - Create Raw Data from Source Data
