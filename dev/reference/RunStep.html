@@ -154,16 +154,58 @@ parameter with results from <code>is_mapping_vald</code> for each domain in <cod
 <span class="r-in"><span><span class="va">lStep</span> <span class="op">&lt;-</span> <span class="va">lWorkflow</span><span class="op">[[</span><span class="st">"kri0001"</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="st">"steps"</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">lMeta</span> <span class="op">&lt;-</span> <span class="va">lWorkflow</span><span class="op">[[</span><span class="st">"kri0001"</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="st">"meta"</span><span class="op">]</span><span class="op">]</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">mappings_spec</span> <span class="op">&lt;-</span> <span class="fu">CombineSpecs</span><span class="op">(</span><span class="va">wf_mapping</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in CombineSpecs(wf_mapping):</span> could not find function "CombineSpecs"</span>
-<span class="r-in"><span><span class="va">lRaw</span> <span class="op">&lt;-</span> <span class="fu">Ingest</span><span class="op">(</span><span class="fu">gsm.core</span><span class="fu">::</span><span class="va"><a href="lSource.html">lSource</a></span>, <span class="va">mappings_spec</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in Ingest(gsm.core::lSource, mappings_spec):</span> could not find function "Ingest"</span>
+<span class="r-in"><span><span class="va">lRaw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>          Raw_SUBJ <span class="op">=</span> <span class="fu">gsm.core</span><span class="fu">::</span><span class="va"><a href="lSource.html">lSource</a></span><span class="op">$</span><span class="va">Raw_SUBJ</span>,</span></span>
+<span class="r-in"><span>          Raw_AE <span class="op">=</span> <span class="fu">gsm.core</span><span class="fu">::</span><span class="va"><a href="lSource.html">lSource</a></span><span class="op">$</span><span class="va">Raw_AE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mapped</span> <span class="op">&lt;-</span> <span class="fu"><a href="RunWorkflows.html">RunWorkflows</a></span><span class="op">(</span><span class="va">wf_mapping</span>, <span class="va">lRaw</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Running 2 Workflows</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Initializing `Mapped_AE` Workflow</span> <span style="color: #00BBBB;">───────────────────────────────────────────</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'lRaw' not found</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Checking data against spec </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All 1 data.frame(s) in the spec are present in the data: Raw_AE</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All specified columns in Raw_AE are in the expected format</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All 2 specified column(s) in the spec are present in the data: Raw_AE$subjid, Raw_AE$aeser</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 1 of 1: `=`</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Evaluating 2 parameter(s) for `=` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> lhs = Mapped_AE: No matching data found. Passing 'Mapped_AE' as a string.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> rhs = Raw_AE: Passing lData$Raw_AE.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `=` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 3000x7 data.frame saved as `lData$Mapped_AE`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Returning results from final step: 3000x7 data.frame`.</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Completed `Mapped_AE` Workflow</span> <span style="color: #00BBBB;">──────────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Initializing `Mapped_SUBJ` Workflow</span> <span style="color: #00BBBB;">─────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Checking data against spec </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All 1 data.frame(s) in the spec are present in the data: Raw_SUBJ</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All specified columns in Raw_SUBJ are in the expected format</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All 7 specified column(s) in the spec are present in the data: Raw_SUBJ$studyid, Raw_SUBJ$invid, Raw_SUBJ$country, Raw_SUBJ$subjid, Raw_SUBJ$subject_nsv, Raw_SUBJ$enrollyn, Raw_SUBJ$timeonstudy</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 1 of 1: `RunQuery`</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Evaluating 2 parameter(s) for `RunQuery` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> df = Raw_SUBJ: Passing lData$Raw_SUBJ.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> strQuery = SELECT * FROM df WHERE enrollyn == 'Y': No matching data found. Passing 'SELECT * FROM df WHERE enrollyn == 'Y'' as a string.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `RunQuery` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Creating a new temporary DuckDB connection.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> SQL Query complete: 746 rows returned.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Disconnected from temporary DuckDB connection.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 746x14 data.frame saved as `lData$Mapped_SUBJ`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Returning results from final step: 746x14 data.frame`.</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Completed `Mapped_SUBJ` Workflow</span> <span style="color: #00BBBB;">────────────────────────────────────────────</span></span>
 <span class="r-in"><span><span class="va">ae_step</span> <span class="op">&lt;-</span> <span class="fu">RunStep</span><span class="op">(</span>lStep <span class="op">=</span> <span class="va">lStep</span>, lData <span class="op">=</span> <span class="va">lMapped</span>, lMeta <span class="op">=</span> <span class="va">lMeta</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── Evaluating 1 parameter(s) for `ParseThreshold` </span>

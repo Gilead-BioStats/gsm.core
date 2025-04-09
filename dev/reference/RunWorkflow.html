@@ -104,10 +104,9 @@ Calls <code>RunStep</code> for each item in <code>lWorkflow$workflow</code> and 
 <span class="r-in"><span>  strPackage <span class="op">=</span> <span class="st">"gsm.core"</span>,</span></span>
 <span class="r-in"><span>  bExact <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">mappings_spec</span> <span class="op">&lt;-</span> <span class="fu">CombineSpecs</span><span class="op">(</span><span class="va">lMappingWorkflows</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in CombineSpecs(lMappingWorkflows):</span> could not find function "CombineSpecs"</span>
-<span class="r-in"><span><span class="va">lRawData</span> <span class="op">&lt;-</span> <span class="fu">Ingest</span><span class="op">(</span><span class="fu">gsm.core</span><span class="fu">::</span><span class="va"><a href="lSource.html">lSource</a></span>, <span class="va">mappings_spec</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in Ingest(gsm.core::lSource, mappings_spec):</span> could not find function "Ingest"</span>
+<span class="r-in"><span><span class="va">lRawData</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>          Raw_SUBJ <span class="op">=</span> <span class="fu">gsm.core</span><span class="fu">::</span><span class="va"><a href="lSource.html">lSource</a></span><span class="op">$</span><span class="va">Raw_SUBJ</span>,</span></span>
+<span class="r-in"><span>          Raw_AE <span class="op">=</span> <span class="fu">gsm.core</span><span class="fu">::</span><span class="va"><a href="lSource.html">lSource</a></span><span class="op">$</span><span class="va">Raw_AE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">lMappedData</span> <span class="op">&lt;-</span> <span class="fu"><a href="RunWorkflows.html">RunWorkflows</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="va">lMappingWorkflows</span>,</span></span>
@@ -117,7 +116,49 @@ Calls <code>RunStep</code> for each item in <code>lWorkflow$workflow</code> and 
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Running 2 Workflows</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Initializing `Mapped_AE` Workflow</span> <span style="color: #00BBBB;">───────────────────────────────────────────</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'lRawData' not found</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Checking data against spec </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All 1 data.frame(s) in the spec are present in the data: Raw_AE</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All specified columns in Raw_AE are in the expected format</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All 2 specified column(s) in the spec are present in the data: Raw_AE$subjid, Raw_AE$aeser</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 1 of 1: `=`</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Evaluating 2 parameter(s) for `=` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> lhs = Mapped_AE: No matching data found. Passing 'Mapped_AE' as a string.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> rhs = Raw_AE: Passing lData$Raw_AE.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `=` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 3000x7 data.frame saved as `lData$Mapped_AE`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Returning results from final step: 3000x7 data.frame`.</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Completed `Mapped_AE` Workflow</span> <span style="color: #00BBBB;">──────────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Initializing `Mapped_SUBJ` Workflow</span> <span style="color: #00BBBB;">─────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Checking data against spec </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All 1 data.frame(s) in the spec are present in the data: Raw_SUBJ</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All specified columns in Raw_SUBJ are in the expected format</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All 7 specified column(s) in the spec are present in the data: Raw_SUBJ$studyid, Raw_SUBJ$invid, Raw_SUBJ$country, Raw_SUBJ$subjid, Raw_SUBJ$subject_nsv, Raw_SUBJ$enrollyn, Raw_SUBJ$timeonstudy</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 1 of 1: `RunQuery`</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Evaluating 2 parameter(s) for `RunQuery` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> df = Raw_SUBJ: Passing lData$Raw_SUBJ.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> strQuery = SELECT * FROM df WHERE enrollyn == 'Y': No matching data found. Passing 'SELECT * FROM df WHERE enrollyn == 'Y'' as a string.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `RunQuery` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Creating a new temporary DuckDB connection.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> SQL Query complete: 746 rows returned.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Disconnected from temporary DuckDB connection.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 746x14 data.frame saved as `lData$Mapped_SUBJ`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Returning results from final step: 746x14 data.frame`.</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Completed `Mapped_SUBJ` Workflow</span> <span style="color: #00BBBB;">────────────────────────────────────────────</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Run the metric workflow.</span></span></span>
 <span class="r-in"><span><span class="va">lMetricWorkflow</span> <span class="op">&lt;-</span> <span class="fu"><a href="MakeWorkflowList.html">MakeWorkflowList</a></span><span class="op">(</span>strPath <span class="op">=</span> <span class="st">"example_workflow/2_metrics"</span>,</span></span>
@@ -129,7 +170,102 @@ Calls <code>RunStep</code> for each item in <code>lWorkflow$workflow</code> and 
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Initializing `Analysis_kri0001` Workflow</span> <span style="color: #00BBBB;">────────────────────────────────────</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'lMappedData' not found</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Checking data against spec </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All 2 data.frame(s) in the spec are present in the data: Mapped_AE, Mapped_SUBJ</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All specified columns in Mapped_AE are in the expected format</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All specified columns in Mapped_SUBJ are in the expected format</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → All 4 specified column(s) in the spec are present in the data: Mapped_AE$subjid, Mapped_SUBJ$subjid, Mapped_SUBJ$invid, Mapped_SUBJ$timeonstudy</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 1 of 7: `ParseThreshold`</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Evaluating 1 parameter(s) for `ParseThreshold` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> strThreshold = Threshold: Passing lMeta$Threshold.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `ParseThreshold` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Parsed -2,-1,2,3 to numeric vector: -2, -1, 2, 3</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── double of length 4 saved as `lData$vThreshold`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 2 of 7: `Input_Rate`</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Evaluating 9 parameter(s) for `Input_Rate` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> dfSubjects = Mapped_SUBJ: Passing lData$Mapped_SUBJ.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> dfNumerator = Mapped_AE: Passing lData$Mapped_AE.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> dfDenominator = Mapped_SUBJ: Passing lData$Mapped_SUBJ.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> strSubjectCol = subjid: No matching data found. Passing 'subjid' as a string.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> strGroupCol = invid: No matching data found. Passing 'invid' as a string.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> strGroupLevel = GroupLevel: Passing lMeta$GroupLevel.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> strNumeratorMethod = Count: No matching data found. Passing 'Count' as a string.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> strDenominatorMethod = Sum: No matching data found. Passing 'Sum' as a string.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> strDenominatorCol = timeonstudy: No matching data found. Passing 'timeonstudy' as a string.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `Input_Rate` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 746x6 data.frame saved as `lData$Analysis_Input`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 3 of 7: `Transform_Rate`</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Evaluating 1 parameter(s) for `Transform_Rate` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> dfInput = Analysis_Input: Passing lData$Analysis_Input.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `Transform_Rate` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 149x5 data.frame saved as `lData$Analysis_Transformed`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 4 of 7: `Analyze_NormalApprox`</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Evaluating 2 parameter(s) for `Analyze_NormalApprox` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> dfTransformed = Analysis_Transformed: Passing lData$Analysis_Transformed.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> strType = AnalysisType: Passing lMeta$AnalysisType.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `Analyze_NormalApprox` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> `OverallMetric`, `Factor`, and `Score` columns created from normal</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> approximation.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 149x8 data.frame saved as `lData$Analysis_Analyzed`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 5 of 7: `Flag`</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Evaluating 4 parameter(s) for `Flag` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> dfAnalyzed = Analysis_Analyzed: Passing lData$Analysis_Analyzed.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> vThreshold = vThreshold: Passing lData$vThreshold.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> nAccrualThreshold = AccrualThreshold: Passing lMeta$AccrualThreshold.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> strAccrualMetric = AccrualMetric: Passing lMeta$AccrualMetric.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `Flag` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 16 Group(s) have insufficient sample size due to KRI denominator less than 30: 0X984, 0X9532, 0X8517, 0X6600, 0X7988, 0X709, 0X8649, 0X617, 0X184, 0X5406, 0X1705, 0X7683, 0X2111, 0X2312, 0X5357, 0X8948</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> These group(s) will not have KRI score and flag summarized.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Sorted dfFlagged using custom Flag order: 2.Sorted dfFlagged using custom Flag order: -2.Sorted dfFlagged using custom Flag order: 1.Sorted dfFlagged using custom Flag order: -1.Sorted dfFlagged using custom Flag order: 0.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 149x9 data.frame saved as `lData$Analysis_Flagged`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 6 of 7: `Summarize`</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Evaluating 1 parameter(s) for `Summarize` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> dfFlagged = Analysis_Flagged: Passing lData$Analysis_Flagged.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `Summarize` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 149x7 data.frame saved as `lData$Analysis_Summary`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 7 of 7: `list`</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Evaluating 6 parameter(s) for `list` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> ID = ID: Passing lMeta$ID.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Analysis_Input = Analysis_Input: Passing lData$Analysis_Input.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Analysis_Transformed = Analysis_Transformed: Passing lData$Analysis_Transformed.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Analysis_Analyzed = Analysis_Analyzed: Passing lData$Analysis_Analyzed.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Analysis_Flagged = Analysis_Flagged: Passing lData$Analysis_Flagged.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Analysis_Summary = Analysis_Summary: Passing lData$Analysis_Summary.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `list` </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── list of length 6 saved as `lData$lAnalysis`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Returning results from final step: list of length 6`.</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Completed `Analysis_kri0001` Workflow</span> <span style="color: #00BBBB;">───────────────────────────────────────</span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="co"># ----</span></span></span>
 <span class="r-in"><span><span class="co"># Workflow using data read/write functions.</span></span></span>
