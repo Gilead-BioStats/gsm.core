@@ -11,10 +11,10 @@
 #' @param bExact `logical` Should strName matches be exact? If false, partial matches will be included. Default FALSE.
 #' @param bRecursive `logical` Find files in nested folders? Default TRUE
 #'
-#' @examples
+#' @examplesIf require("gsm.mapping")
 #' # get specific workflow files
-#' workflow <- MakeWorkflowList(strPath = testthat::test_path("testdata/metrics"),
-#'                              strPackage = NULL)
+#' workflow <- MakeWorkflowList(strPath = "workflow/1_mappings",
+#'                              strPackage = "gsm.mapping")
 #'
 #' @return `list` A list of workflows with workflow and parameter metadata.
 #'

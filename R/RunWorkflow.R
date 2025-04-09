@@ -16,14 +16,15 @@
 #'
 #' @return Object containing the results of the workflow's last step (if `bLastResult` is `TRUE`) or the full workflow object (if `bReturnResults` is `TRUE`) or the full workflow object (if `bReturnResults` is `FALSE`).
 #'
-#' @examples
+#' @examplesIf require("gsm.mapping")
 #' # ----
 #' # Workflow using in-memory data.
 #'
 #' # Generate mapped input data to metric workflow.
 #' lMappingWorkflows <- MakeWorkflowList(
-#'   c("AE", "SUBJ"),
-#'   strPath = here::here("tests/testthat/testdata/mappings"),
+#'   strNames = c("AE", "SUBJ"),
+#'   strPath = "workflow/1_mappings",
+#'   strPackage = "gsm.mapping",
 #'   bExact = TRUE
 #' )
 #' mappings_spec <- CombineSpecs(lMappingWorkflows)
@@ -35,7 +36,9 @@
 #' )
 #'
 #' # Run the metric workflow.
-#' lMetricWorkflow <- MakeWorkflowList(here::here("tests/testthat/testdata/metrics/kri0001"))$kri0001
+#' lMetricWorkflow <- MakeWorkflowList(strPath = "workflow/2_metrics",
+#'                               strNames = c("kri0001", "kri0002"),
+#'                               strPackage = "gsm.kri")$kri0001
 #' lMetricOutput <- RunWorkflow(
 #'   lMetricWorkflow,
 #'   lMappedData
@@ -94,10 +97,10 @@
 #' )
 #'
 #' # Generate mapped input data to metric workflow.
-#' lMappingWorkflows <- MakeWorkflowList(
-#'   c("AE", "SUBJ"),
-#'   strPath = here::here("tests/testthat/testdata/mappings"),
-#'   bExact = TRUE
+#' lMappingWorkflows <- MakeWorkflowList(strNames = c("AE", "SUBJ"),
+#'                                strPath = "workflow/1_mappings",
+#'                                strPackage = "gsm.mapping",
+#'                                bExact = TRUE
 #' )
 #'
 #' lMappedData <- RunWorkflows(
@@ -106,7 +109,9 @@
 #' )
 #'
 #' # Run the metric workflow.
-#' lMetricWorkflow <- MakeWorkflowList(here::here("tests/testthat/testdata/metrics/kri0001"))$kri0001
+#' lMetricWorkflow <- MakeWorkflowList(strPath = "workflow/2_metrics",
+#'                               strNames = c("kri0001", "kri0002"),
+#'                               strPackage = "gsm.kri")$kri0001
 #' lMetricOutput <- RunWorkflow(
 #'   lMetricWorkflow,
 #'   lConfig = lConfig

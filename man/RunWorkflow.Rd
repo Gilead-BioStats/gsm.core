@@ -39,13 +39,15 @@ Attempts to run a single assessment (\code{lWorkflow}) using shared data (\code{
 Calls \code{RunStep} for each item in \code{lWorkflow$workflow} and saves the results to \code{lWorkflow}.
 }
 \examples{
+\dontshow{if (require("gsm.mapping")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # ----
 # Workflow using in-memory data.
 
 # Generate mapped input data to metric workflow.
 lMappingWorkflows <- MakeWorkflowList(
-  c("AE", "SUBJ"),
-  strPath = here::here("tests/testthat/testdata/mappings"),
+  strNames = c("AE", "SUBJ"),
+  strPath = "workflow/1_mappings",
+  strPackage = "gsm.mapping",
   bExact = TRUE
 )
 mappings_spec <- CombineSpecs(lMappingWorkflows)
@@ -57,7 +59,9 @@ lMappedData <- RunWorkflows(
 )
 
 # Run the metric workflow.
-lMetricWorkflow <- MakeWorkflowList(here::here("tests/testthat/testdata/metrics/kri0001"))$kri0001
+lMetricWorkflow <- MakeWorkflowList(strPath = "workflow/2_metrics",
+                              strNames = c("kri0001", "kri0002"),
+                              strPackage = "gsm.kri")$kri0001
 lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lMappedData
@@ -116,10 +120,10 @@ lConfig <- list(
 )
 
 # Generate mapped input data to metric workflow.
-lMappingWorkflows <- MakeWorkflowList(
-  c("AE", "SUBJ"),
-  strPath = here::here("tests/testthat/testdata/mappings"),
-  bExact = TRUE
+lMappingWorkflows <- MakeWorkflowList(strNames = c("AE", "SUBJ"),
+                               strPath = "workflow/1_mappings",
+                               strPackage = "gsm.mapping",
+                               bExact = TRUE
 )
 
 lMappedData <- RunWorkflows(
@@ -128,10 +132,13 @@ lMappedData <- RunWorkflows(
 )
 
 # Run the metric workflow.
-lMetricWorkflow <- MakeWorkflowList(here::here("tests/testthat/testdata/metrics/kri0001"))$kri0001
+lMetricWorkflow <- MakeWorkflowList(strPath = "workflow/2_metrics",
+                              strNames = c("kri0001", "kri0002"),
+                              strPackage = "gsm.kri")$kri0001
 lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lConfig = lConfig
 )
 }
+\dontshow{\}) # examplesIf}
 }

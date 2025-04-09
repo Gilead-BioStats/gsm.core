@@ -34,9 +34,15 @@
 #' @param lSpec `list` a data specification containing required columns. See `vignette("gsmExtensions", package = "gsm.core")`.
 #' @param lMeta `list` a named list of meta data.
 #'
-#' @examples
-#' wf_mapping <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/mappings"))
-#' lWorkflow <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics"))
+#' @examplesIf require("gsm.mapping") & require("gsm.kri")
+#' wf_mapping <- MakeWorkflowList(strNames = c("AE", "SUBJ"),
+#'                                strPath = "workflow/1_mappings",
+#'                                strPackage = "gsm.mapping",
+#'                                bExact = TRUE
+#' )
+#' lWorkflow <- MakeWorkflowList(strPath = "workflow/2_metrics",
+#'                               strNames = c("kri0001", "kri0002"),
+#'                               strPackage = "gsm.kri")
 #' lStep <- lWorkflow[["kri0001"]][["steps"]][[1]]
 #' lMeta <- lWorkflow[["kri0001"]][["meta"]]
 #'

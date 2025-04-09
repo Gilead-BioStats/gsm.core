@@ -50,8 +50,15 @@ lData$\{paramVal\}) and passed to the function.
 }
 }
 \examples{
-wf_mapping <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/mappings"))
-lWorkflow <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics"))
+\dontshow{if (require("gsm.mapping") & require("gsm.kri")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+wf_mapping <- MakeWorkflowList(strNames = c("AE", "SUBJ"),
+                               strPath = "workflow/1_mappings",
+                               strPackage = "gsm.mapping",
+                               bExact = TRUE
+)
+lWorkflow <- MakeWorkflowList(strPath = "workflow/2_metrics",
+                              strNames = c("kri0001", "kri0002"),
+                              strPackage = "gsm.kri")
 lStep <- lWorkflow[["kri0001"]][["steps"]][[1]]
 lMeta <- lWorkflow[["kri0001"]][["meta"]]
 
@@ -59,5 +66,5 @@ mappings_spec <- CombineSpecs(wf_mapping)
 lRaw <- Ingest(gsm.core::lSource, mappings_spec)
 mapped <- RunWorkflows(wf_mapping, lRaw)
 ae_step <- RunStep(lStep = lStep, lData = lMapped, lMeta = lMeta)
-
+\dontshow{\}) # examplesIf}
 }
