@@ -27,8 +27,9 @@
 #'   strPackage = "gsm.core",
 #'   bExact = TRUE
 #' )
-#' mappings_spec <- CombineSpecs(lMappingWorkflows)
-#' lRawData <- Ingest(gsm.core::lSource, mappings_spec)
+#' lRawData <- list(
+#'           Raw_SUBJ = gsm.core::lSource$Raw_SUBJ,
+#'           Raw_AE = gsm.core::lSource$Raw_AE)
 #'
 #' lMappedData <- RunWorkflows(
 #'   lMappingWorkflows,

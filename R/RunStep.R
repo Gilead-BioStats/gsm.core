@@ -46,8 +46,10 @@
 #' lStep <- lWorkflow[["kri0001"]][["steps"]][[1]]
 #' lMeta <- lWorkflow[["kri0001"]][["meta"]]
 #'
-#' mappings_spec <- CombineSpecs(wf_mapping)
-#' lRaw <- Ingest(gsm.core::lSource, mappings_spec)
+#' lRaw <- list(
+#'           Raw_SUBJ = gsm.core::lSource$Raw_SUBJ,
+#'           Raw_AE = gsm.core::lSource$Raw_AE)
+#'
 #' mapped <- RunWorkflows(wf_mapping, lRaw)
 #' ae_step <- RunStep(lStep = lStep, lData = lMapped, lMeta = lMeta)
 #'
