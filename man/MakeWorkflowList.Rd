@@ -32,9 +32,8 @@ MakeWorkflowList(
 \code{MakeWorkflowList()} is a utility function that creates a list of workflows for use in KRI pipelines.
 }
 \examples{
-\dontshow{if (require("gsm.mapping")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # get specific workflow files
-workflow <- MakeWorkflowList(strPath = "workflow/1_mappings",
-                             strPackage = "gsm.mapping")
-\dontshow{\}) # examplesIf}
+workflow <- MakeWorkflowList(strPath = "example_workflow/1_mappings",
+                             strPackage = "gsm.core")
+
 }

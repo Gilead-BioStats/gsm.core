@@ -39,15 +39,14 @@ Attempts to run a single assessment (\code{lWorkflow}) using shared data (\code{
 Calls \code{RunStep} for each item in \code{lWorkflow$workflow} and saves the results to \code{lWorkflow}.
 }
 \examples{
-\dontshow{if (require("gsm.mapping")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # ----
 # Workflow using in-memory data.
 
 # Generate mapped input data to metric workflow.
 lMappingWorkflows <- MakeWorkflowList(
   strNames = c("AE", "SUBJ"),
-  strPath = "workflow/1_mappings",
-  strPackage = "gsm.mapping",
+  strPath = "example_workflow/1_mappings",
+  strPackage = "gsm.core",
   bExact = TRUE
 )
 mappings_spec <- CombineSpecs(lMappingWorkflows)
@@ -59,9 +58,9 @@ lMappedData <- RunWorkflows(
 )
 
 # Run the metric workflow.
-lMetricWorkflow <- MakeWorkflowList(strPath = "workflow/2_metrics",
+lMetricWorkflow <- MakeWorkflowList(strPath = "example_workflow/2_metrics",
                               strNames = c("kri0001", "kri0002"),
-                              strPackage = "gsm.kri")$kri0001
+                              strPackage = "gsm.core")$kri0001
 lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lMappedData
@@ -121,8 +120,8 @@ lConfig <- list(
 
 # Generate mapped input data to metric workflow.
 lMappingWorkflows <- MakeWorkflowList(strNames = c("AE", "SUBJ"),
-                               strPath = "workflow/1_mappings",
-                               strPackage = "gsm.mapping",
+                               strPath = "example_workflow/1_mappings",
+                               strPackage = "gsm.core",
                                bExact = TRUE
 )
 
@@ -132,13 +131,12 @@ lMappedData <- RunWorkflows(
 )
 
 # Run the metric workflow.
-lMetricWorkflow <- MakeWorkflowList(strPath = "workflow/2_metrics",
+lMetricWorkflow <- MakeWorkflowList(strPath = "example_workflow/2_metrics",
                               strNames = c("kri0001", "kri0002"),
-                              strPackage = "gsm.kri")$kri0001
+                              strPackage = "gsm.core")$kri0001
 lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lConfig = lConfig
 )
 }
-\dontshow{\}) # examplesIf}
 }
