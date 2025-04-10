@@ -3,7 +3,7 @@ library(gsm.mapping)
 library(gsm.datasim)
 library(gsm.kri)
 library(dplyr)
-set.seed(123)
+set.seed(1234)
 
 core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
                    "PD", "PK", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
@@ -96,10 +96,10 @@ write.csv(file = "data-raw/analyticsInput.csv",
 
 ## country
 write.csv(file = "data-raw/analyticsSummary_country.csv",
-          x = analyzed$Analysis_cou0001$Analysis_Summary,
+          x = analyzed[[3]]$Analysis_cou0001$Analysis_Summary,
           row.names = F)
 write.csv(file = "data-raw/analyticsInput_country.csv",
-          x = analyzed$Analysis_cou0001$Analysis_Input,
+          x = analyzed[[3]]$Analysis_cou0001$Analysis_Input,
           row.names = F)
 
 
