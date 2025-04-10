@@ -15,6 +15,8 @@ lRaw <- list(
   Raw_AE = gsm.core::lSource$Raw_AE,
   Raw_PD = gsm.core::lSource$Raw_PD %>%
     rename(subjid = subjectenrollmentnumber),
+  Raw_PK = gsm.core::lSource$Raw_PK %>%
+    rename(visit = foldername),
   Raw_LB = gsm.core::lSource$Raw_LB,
   Raw_STUDCOMP = gsm.core::lSource$Raw_STUDCOMP %>%
     select(subjid, compyn),
@@ -37,7 +39,10 @@ lRaw <- list(
     rename(Status = site_status),
   Raw_STUDY = gsm.core::lSource$Raw_STUDY %>%
     rename(studyid = protocol_number) %>%
-    rename(Status = status)
+    rename(Status = status),
+  Raw_VISIT = gsm.core::lSource$Raw_VISIT %>%
+    mutate(visit_folder = foldername) %>%
+    rename(visit = foldername)
 )
 
 # Step 1 - Create Mapped Data Layer - filter, aggregate and join raw data to create mapped data layer
