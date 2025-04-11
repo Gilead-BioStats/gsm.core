@@ -171,7 +171,7 @@ After processing the YAML `meta` and `spec` sections, `gsm.core::RunWorkflow()` 
 
 #### `Metric` steps example
 
-In the example below, the steps to produce the AE analysis output is specified. Here, `Threshold`, `GroupLevel`, `Type` and `nMinDenominator` are specified in the `meta` section of the workflow, and would be access via the `paramVal` process discussed above. As a default, the output of these steps as run with `gsm.core::RunWorkflows()` would be a list of data tables, as specified in the final `list` step of the workflow.
+In the example below, the steps to produce the AE analysis output is specified. Here, `Threshold`, `GroupLevel`, `Type`,  `AccrualThreshold` and `AccrualMetric` are specified in the `meta` section of the workflow, and would be access via the `paramVal` process discussed above. As a default, the output of these steps as run with `gsm.core::RunWorkflows()` would be a list of data tables, as specified in the final `list` step of the workflow.
 
 ```
 steps:
@@ -205,11 +205,12 @@ steps:
     params:
       dfAnalyzed: Analysis_Analyzed
       vThreshold: vThreshold
+      nAccrualThreshold: AccrualThreshold
+      strAccrualMetric: AccrualMetric
   - name: gsm.core::Summarize
     output: Analysis_Summary
     params:
       dfFlagged: Analysis_Flagged
-      nMinDenominator: nMinDenominator
   - name: list
     output: kri0001
     params:

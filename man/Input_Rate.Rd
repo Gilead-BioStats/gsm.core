@@ -78,7 +78,7 @@ dfInput <- Input_Rate(
   dfNumerator = gsm.core::lSource$Raw_AE,
   dfDenominator = gsm.core::lSource$Raw_SUBJ,
   strSubjectCol = "subjid",
-  strGroupCol = "siteid",
+  strGroupCol = "invid",
   strGroupLevel = "Site",
   strNumeratorMethod = "Count",
   strDenominatorMethod = "Sum",

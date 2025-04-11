@@ -14,7 +14,7 @@ include the name of the function to run (\code{lStep$name}), name of the object 
 
 \item{lMeta}{\code{list} a named list of meta data.}
 
-\item{lSpec}{\code{list} a data specification containing required columns. See \code{vignette("gsm_extensions")}.}
+\item{lSpec}{\code{list} a data specification containing required columns. See \code{vignette("gsmExtensions", package = "gsm.core")}.}
 }
 \value{
 \code{list} containing the results of the \code{lStep$name} function call should contain \code{.$checks}
@@ -50,15 +50,22 @@ lData$\{paramVal\}) and passed to the function.
 }
 }
 \examples{
-\dontrun{
-----
-  wf_mapping <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/mappings"))
-lStep <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics"))[["kri0001"]][["steps"]][[1]]
-lMeta <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics"))[["kri0001"]][["meta"]]
+wf_mapping <- MakeWorkflowList(strNames = c("AE", "SUBJ"),
+                               strPath = "example_workflow/1_mappings",
+                               strPackage = "gsm.core",
+                               bExact = TRUE
+)
+lWorkflow <- MakeWorkflowList(strPath = "example_workflow/2_metrics",
+                              strNames = c("kri0001", "kri0002"),
+                              strPackage = "gsm.core")
+lStep <- lWorkflow[["kri0001"]][["steps"]][[1]]
+lMeta <- lWorkflow[["kri0001"]][["meta"]]
 
-mappings_spec <- CombineSpecs(wf_mapping)
-lRaw <- Ingest(gsm.core::lSource, mappings_spec)
+lRaw <- list(
+          Raw_SUBJ = gsm.core::lSource$Raw_SUBJ,
+          Raw_AE = gsm.core::lSource$Raw_AE)
+
 mapped <- RunWorkflows(wf_mapping, lRaw)
 ae_step <- RunStep(lStep = lStep, lData = lMapped, lMeta = lMeta)
-}
+
 }

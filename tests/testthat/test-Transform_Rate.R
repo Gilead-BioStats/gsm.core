@@ -1,7 +1,7 @@
 test_that("output is created as expected", {
   dfTransformed <- Transform_Rate(
     dfInput = analyticsInput
-  )
+  ) %>% suppressWarnings()
 
   expect_true(is.data.frame(dfTransformed))
   expect_equal(
@@ -9,15 +9,15 @@ test_that("output is created as expected", {
     c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric")
   )
   expect_equal(
-    sort(unique(analyticsInput$GroupID)),
+    sort(unique(analyticsInput$GroupID[which(analyticsInput$Denominator != 0)])),
     sort(dfTransformed$GroupID)
   )
   expect_equal(
-    length(unique(analyticsInput$GroupID)),
+    length(unique(analyticsInput$GroupID[which(analyticsInput$Denominator != 0)])),
     length(unique(dfTransformed$GroupID))
   )
   expect_equal(
-    length(unique(analyticsInput$GroupID)),
+    length(unique(analyticsInput$GroupID[which(analyticsInput$Denominator != 0)])),
     nrow(dfTransformed)
   )
 })

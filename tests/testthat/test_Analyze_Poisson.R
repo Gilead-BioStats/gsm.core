@@ -1,8 +1,8 @@
 test_that("output created as expected and has correct structure", {
-  ae_prep <- Transform_Rate(analyticsInput)
+  ae_prep <- Transform_Rate(analyticsInput) %>% suppressWarnings()
   ae_anly <- Analyze_Poisson(ae_prep)
   expect_true(is.data.frame(ae_anly))
-  expect_equal(sort(unique(analyticsInput$GroupID)), sort(ae_anly$GroupID))
+  expect_equal(sort(unique(analyticsInput$GroupID[which(analyticsInput$Denominator != 0)])), sort(ae_anly$GroupID))
   expect_equal(names(ae_anly), c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric", "Score", "PredictedCount"))
 })
 
@@ -24,7 +24,8 @@ test_that("error given if required column not found", {
 test_that("NA values are caught", {
   createNA <- function(x) {
     df <- analyticsInput %>%
-      Transform_Rate()
+      Transform_Rate() %>%
+      suppressWarnings()
 
     df[[x]][1] <- NA
 

@@ -39,18 +39,19 @@ Attempts to run a single assessment (\code{lWorkflow}) using shared data (\code{
 Calls \code{RunStep} for each item in \code{lWorkflow$workflow} and saves the results to \code{lWorkflow}.
 }
 \examples{
-\dontrun{
 # ----
 # Workflow using in-memory data.
 
-Generate mapped input data to metric workflow.
+# Generate mapped input data to metric workflow.
 lMappingWorkflows <- MakeWorkflowList(
-  c("AE", "SUBJ"),
-  strPath = here::here("tests/testthat/testdata/mappings"),
+  strNames = c("AE", "SUBJ"),
+  strPath = "example_workflow/1_mappings",
+  strPackage = "gsm.core",
   bExact = TRUE
 )
-mappings_spec <- CombineSpecs(lMappingWorkflows)
-lRawData <- Ingest(gsm.core::lSource, mappings_spec)
+lRawData <- list(
+          Raw_SUBJ = gsm.core::lSource$Raw_SUBJ,
+          Raw_AE = gsm.core::lSource$Raw_AE)
 
 lMappedData <- RunWorkflows(
   lMappingWorkflows,
@@ -58,12 +59,14 @@ lMappedData <- RunWorkflows(
 )
 
 # Run the metric workflow.
-lMetricWorkflow <- MakeWorkflowList(here::here("tests/testthat/testdata/metrics/kri0001"))$kri0001
+lMetricWorkflow <- MakeWorkflowList(strPath = "example_workflow/2_metrics",
+                              strNames = c("kri0001", "kri0002"),
+                              strPackage = "gsm.core")$kri0001
 lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lMappedData
 )
-
+\dontrun{
 # ----
 # Workflow using data read/write functions.
 
@@ -117,10 +120,10 @@ lConfig <- list(
 )
 
 # Generate mapped input data to metric workflow.
-lMappingWorkflows <- MakeWorkflowList(
-  c("AE", "SUBJ"),
-  strPath = here::here("tests/testthat/testdata/mappings"),
-  bExact = TRUE
+lMappingWorkflows <- MakeWorkflowList(strNames = c("AE", "SUBJ"),
+                               strPath = "example_workflow/1_mappings",
+                               strPackage = "gsm.core",
+                               bExact = TRUE
 )
 
 lMappedData <- RunWorkflows(
@@ -129,7 +132,9 @@ lMappedData <- RunWorkflows(
 )
 
 # Run the metric workflow.
-lMetricWorkflow <- MakeWorkflowList(here::here("tests/testthat/testdata/metrics/kri0001"))$kri0001
+lMetricWorkflow <- MakeWorkflowList(strPath = "example_workflow/2_metrics",
+                              strNames = c("kri0001", "kri0002"),
+                              strPackage = "gsm.core")$kri0001
 lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lConfig = lConfig

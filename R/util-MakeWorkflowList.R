@@ -13,7 +13,8 @@
 #'
 #' @examples
 #' # get specific workflow files
-#' workflow <- MakeWorkflowList(strPath = here::here("tests/testthat/testdata/metrics"), strPackage = NULL)
+#' workflow <- MakeWorkflowList(strPath = "example_workflow/1_mappings",
+#'                              strPackage = "gsm.core")
 #'
 #' @return `list` A list of workflows with workflow and parameter metadata.
 #'

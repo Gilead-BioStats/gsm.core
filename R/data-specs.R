@@ -62,13 +62,12 @@
 #'   \item{Score}{type of score reported}
 #'   \item{Type}{statistical outcome type}
 #'   \item{Threshold}{thresholds to be used for bounds and flags}
-#'   \item{nMinDenominator}{minimum denominator required to return a score and calculate a flag}
+#'   \item{AccrualThreshold}{minimum numerator required to return a score and calculate a flag}
+#'   \item{AccrualMetric}{metric used to apply threshold to}
 #'   \item{ID}{ID}
 #'   \item{Priority}{Priority in workflow}
-#'   \item{Output}{output}
-#'   \item{Name}{name}
-#'   \item{Description}{description}
 #'   \item{AnalysisType}{analysis type}
+#'   \item{Flag}{thresholds to be used for vFlags argument}
 #' }
 #' @source Generated from `reportingMetrics.csv` dataset in the `gsm.core` package.
 "reportingMetrics"
@@ -142,13 +141,12 @@
 #'   \item{Score}{type of score reported}
 #'   \item{Type}{statistical outcome type}
 #'   \item{Threshold}{thresholds to be used for bounds and flags}
-#'   \item{nMinDenominator}{minimum denominator required to return a score and calculate a flag}
+#'   \item{AccrualThreshold}{minimum numerator required to return a score and calculate a flag}
+#'   \item{AccrualMetric}{metric used to apply threshold to}
 #'   \item{ID}{ID}
 #'   \item{Priority}{Priority in workflow}
-#'   \item{Output}{output}
-#'   \item{Name}{name}
-#'   \item{Description}{description}
 #'   \item{AnalysisType}{analysis type}
+#'   \item{Flag}{thresholds to be used for vFlags argument}
 #' }
 #' @source Generated from `reportingMetrics_country.csv` dataset in the `gsm.core` package.
 "reportingMetrics_country"

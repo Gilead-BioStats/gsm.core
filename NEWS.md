@@ -1,3 +1,13 @@
+# gsm.core v1.1.0
+
+This minor release adds PK analysis functionality and updates package data to use `{gsm.datasim}`. Specifically:
+- `lSource` package data has been updated to include PK data
+- `analytics` and `reporting` package data is now generated using `{gsm.datasim}` simulated data as the source data.
+- Updates to the `Flag()` and `Summarize()` functions to make thresholds more flexible. 
+The `Flag_Accrual()` helper function now allows thresholds to be based on the Numerator, Denominator, or Difference between the two.
+
+For more details on the changes and new features, please refer to the documentation and pull requests linked to this release.
+
 # gsm.core v1.0.0
 
 We are excited to announce the first major release of the `gsm.core` package, which serves as the backbone of the GSM pipeline. This package provides the analytics framework for constructing metrics and includes utility functions to execute workflows. 

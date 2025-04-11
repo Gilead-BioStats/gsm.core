@@ -17,7 +17,8 @@ AE_workflow <- read_yaml(text=
   Score: Adjusted Z-Score
   AnalysisType: rate
   Threshold: -2,-1,2,3
-  nMinDenominator: 30
+  AccrualThreshold: 30
+  AccrualMetric: Denominator
 spec:
   Mapped_AE:
     subjid:
@@ -60,11 +61,12 @@ steps:
     params:
       dfAnalyzed: Analysis_Analyzed
       vThreshold: vThreshold
+      nAccrualThreshold: AccrualThreshold
+      strAccrualMetric: AccrualMetric
   - output: Analysis_Summary
     name: Summarize
     params:
       dfFlagged: Analysis_Flagged
-      nMinDenominator: nMinDenominator
   - output: lAnalysis
     name: list
     params:
@@ -78,8 +80,9 @@ steps:
 
 # Run the workflow
 lMappingWorkflows <- MakeWorkflowList(
-  c("AE", "SUBJ"),
-  strPath = here::here("tests/testthat/testdata/mappings"),
+  strNames = c("AE", "SUBJ"),
+  strPath = "workflow/1_mappings",
+  strPackage = "gsm.mapping",
   bExact = TRUE
 )
 mappings_spec <- gsm.mapping::CombineSpecs(lMappingWorkflows)
