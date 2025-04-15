@@ -1,10 +1,22 @@
+#' Initialize gsm Extension package
+#'
+#' @param package_dir path to package directory
+#' @param init_git boolean argument declaring whether or not to initialize this directory as a git repo. Default is `FALSE`.
+#' @param description_fields list of description fields, passed to [usethis::create_package()]. Default is `list()`.
+#' @param include_workflow_dir boolean argument declaring whether or not to include the `inst/workflow` directory in the root of the package. Default is `TRUE`.
+#'
+#' @export
 init_gsm_package <- function(package_dir,
+                             init_git = FALSE,
                              description_fields = list(),
                              include_workflow_dir = TRUE) {
   usethis::create_package(package_dir,
                           open = F,
                           fields = description_fields)
-  setwd(package_dir)
+  withr::with_dir(package_dir, {
+  if(init_git) {
+    usethis::use_git()
+  }
   usethis::use_pkgdown_github_pages()
   usethis::use_testthat()
   usethis::use_github_action("check-standard")
@@ -21,13 +33,5 @@ init_gsm_package <- function(package_dir,
     dir.create("inst/workflow/3_reporting")
     dir.create("inst/workflow/4_modules")
   }
-}
-
-gsm_styler <- function() {
-  double_indent_style <- styler::tidyverse_style()
-  double_indent_style$indention$unindent_fun_dec <- NULL
-  double_indent_style$indention$update_indention_ref_fun_dec <- NULL
-  double_indent_style$line_break$remove_line_breaks_in_fun_dec <- NULL
-  styler::style_dir('R', transformers = double_indent_style)
-  styler::style_dir('tests', recursive = TRUE, transformers = double_indent_style)
+  })
 }
