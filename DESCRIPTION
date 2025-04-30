@@ -1,9 +1,9 @@
 Package: gsm.core
 Title: Good Statistical Monitoring
-Version: 1.1.0
+Version: 1.1.0.9000
 Authors@R: c(
-    person("George", "Wu", , "george.wu@gilead.com", role = c("aut", "cre")),
-    person("Jeremy", "Wildfire", , "jwildfire@gmail.com", role = "aut"),
+    person("Jeremy", "Wildfire", , "jwildfire@gmail.com", role = "aut", "cre"),
+    person("George", "Wu", , "george.wu@gilead.com", role = c("aut")),
     person("Spencer", "Childress", , "spencer.childress@gilead.com", role = "aut",
            comment = c(ORCID = "0000-0001-6877-8511")),
     person("Laura", "Maxwell", , "laura.maxwell@atorusresearch.com", role = "aut"),
@@ -12,6 +12,8 @@ Authors@R: c(
     person("Zelos", "Zhu", , "zelos.zhu@atorusresearch.com", role = "aut"),
     person("Matt", "Roumaya", , "matthewroumaya@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0002-8009-2771")),
+    person("Anne", "Zheng", , "anne@a2-ai.com", role = "aut"),
+    person("Devin", "Pastoor", , "devin@a2-ai.com", role = "aut"),
     person("Nathan", "Kosiba", , "Nathan.Kosiba@atorusresearch.com", role = "aut"),
     person("Douglas", "Sanders", role = "aut"),
     person("Li", "Ge", role = "aut"),
@@ -20,8 +22,6 @@ Authors@R: c(
     person("Colleen", "McLaughlin", , "colleen.mclaughlin@atorusresearch.com", role = "aut"),
     person("Chelsea", "Dickens", , "chelsea.dickens@atorusresearch.com", role = "aut"),
     person("Maya", "Gans", , "maya.gans@atorusresearch.com", role = "aut"),
-    person("Anne", "Zheng", , "anne@a2-ai.com", role = "aut"),
-    person("Devin", "Pastoor", , "devin@a2-ai.com", role = "aut"),
     person("Gilead Sciences", role = "cph")
   )
 Description: The Good Statistical Monitoring or 'gsm' suite of R packages
