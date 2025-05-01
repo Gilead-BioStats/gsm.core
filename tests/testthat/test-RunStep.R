@@ -40,7 +40,7 @@ test_that("Passes direct value vector parameters correctly", {
   lMeta <- list(meta1 = 200)
 
   expect_message(RunStep(lStep, lData, lMeta), "y is of length 3")
-  result <- RunStep(lStep, lData, lMeta), "y is of length 3"
+  result <- RunStep(lStep, lData, lMeta)
   expect_equal(result$x, 200)
   expect_equal(result$y, c(1,2,3))
 })
