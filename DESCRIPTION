@@ -2,7 +2,7 @@ Package: gsm.core
 Title: Good Statistical Monitoring
 Version: 1.1.0.9000
 Authors@R: c(
-    person("Jeremy", "Wildfire", , "jwildfire@gmail.com", role = "aut", "cre"),
+    person("Jeremy", "Wildfire", , "jwildfire@gmail.com", role = c("aut", "cre")),
     person("George", "Wu", , "george.wu@gilead.com", role = c("aut")),
     person("Spencer", "Childress", , "spencer.childress@gilead.com", role = "aut",
            comment = c(ORCID = "0000-0001-6877-8511")),
