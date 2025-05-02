@@ -80,4 +80,3 @@ test_that("errors working as expected", {
   # Test with non-data frame dfAnalyzed
   expect_error(Flag(list(SiteID = 1:10, Score = c(-4, -3, -2.5, -2, -1, 0, 1, 2, 2.5, 3))), "dfAnalyzed is not a data frame")
 })
-

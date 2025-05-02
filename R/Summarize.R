@@ -68,9 +68,11 @@ Summarize <- function(
     arrange(match(.data$Flag, c(2, -2, 1, -1, 0)))
 
   if (lifecycle::is_present(nMinDenominator)) {
-    lifecycle::deprecate_warn(when = "1.0.0",
-                   what = "Summarize(nMinDenominator)",
-                   details = "Please use the `nAccrualThreshold` and `strAccrualMetric` arguments in `Flag()` instead")
+    lifecycle::deprecate_warn(
+      when = "1.0.0",
+      what = "Summarize(nMinDenominator)",
+      details = "Please use the `nAccrualThreshold` and `strAccrualMetric` arguments in `Flag()` instead"
+    )
     dfSummary$Score[dfSummary$Denominator < nMinDenominator] <- NA
     dfSummary$Flag[dfSummary$Denominator < nMinDenominator] <- NA
 

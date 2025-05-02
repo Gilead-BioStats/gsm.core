@@ -28,8 +28,9 @@
 #'   bExact = TRUE
 #' )
 #' lRawData <- list(
-#'           Raw_SUBJ = gsm.core::lSource$Raw_SUBJ,
-#'           Raw_AE = gsm.core::lSource$Raw_AE)
+#'   Raw_SUBJ = gsm.core::lSource$Raw_SUBJ,
+#'   Raw_AE = gsm.core::lSource$Raw_AE
+#' )
 #'
 #' lMappedData <- RunWorkflows(
 #'   lMappingWorkflows,
@@ -37,9 +38,11 @@
 #' )
 #'
 #' # Run the metric workflow.
-#' lMetricWorkflow <- MakeWorkflowList(strPath = "example_workflow/2_metrics",
-#'                               strNames = c("kri0001", "kri0002"),
-#'                               strPackage = "gsm.core")$kri0001
+#' lMetricWorkflow <- MakeWorkflowList(
+#'   strPath = "example_workflow/2_metrics",
+#'   strNames = c("kri0001", "kri0002"),
+#'   strPackage = "gsm.core"
+#' )$kri0001
 #' lMetricOutput <- RunWorkflow(
 #'   lMetricWorkflow,
 #'   lMappedData
@@ -87,10 +90,10 @@
 #'   SaveData = SaveData,
 #'   Domains = c(
 #'     Raw_AE = function() {
-#'        gsm.core::lSource$Raw_AE
+#'       gsm.core::lSource$Raw_AE
 #'     },
 #'     Raw_SUBJ = function() {
-#'        gsm.core::lSource$Raw_SUBJ
+#'       gsm.core::lSource$Raw_SUBJ
 #'     },
 #'     Mapped_AE = file.path(tempdir(), "mapped-ae.csv"),
 #'     Mapped_SUBJ = file.path(tempdir(), "mapped-subj.csv")
@@ -98,10 +101,11 @@
 #' )
 #'
 #' # Generate mapped input data to metric workflow.
-#' lMappingWorkflows <- MakeWorkflowList(strNames = c("AE", "SUBJ"),
-#'                                strPath = "example_workflow/1_mappings",
-#'                                strPackage = "gsm.core",
-#'                                bExact = TRUE
+#' lMappingWorkflows <- MakeWorkflowList(
+#'   strNames = c("AE", "SUBJ"),
+#'   strPath = "example_workflow/1_mappings",
+#'   strPackage = "gsm.core",
+#'   bExact = TRUE
 #' )
 #'
 #' lMappedData <- RunWorkflows(
@@ -110,9 +114,11 @@
 #' )
 #'
 #' # Run the metric workflow.
-#' lMetricWorkflow <- MakeWorkflowList(strPath = "example_workflow/2_metrics",
-#'                               strNames = c("kri0001", "kri0002"),
-#'                               strPackage = "gsm.core")$kri0001
+#' lMetricWorkflow <- MakeWorkflowList(
+#'   strPath = "example_workflow/2_metrics",
+#'   strNames = c("kri0001", "kri0002"),
+#'   strPackage = "gsm.core"
+#' )$kri0001
 #' lMetricOutput <- RunWorkflow(
 #'   lMetricWorkflow,
 #'   lConfig = lConfig

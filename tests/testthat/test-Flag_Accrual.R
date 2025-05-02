@@ -1,4 +1,3 @@
-
 test_that("Function correctly applies accrual threshold", {
   dfFlagged <- data.frame(
     GroupID = c(1:7),
@@ -15,5 +14,5 @@ test_that("Function correctly applies accrual threshold", {
   expect_true(all(is.na(result_n$Flag[which(result_n$Numerator < 5)])))
 
   result_diff <- Flag_Accrual(dfFlagged, nAccrualThreshold = 4, strAccrualMetric = "Difference")
-  expect_true(all(is.na(result_diff$Flag[which((result_diff$Denominator - result_diff$Numerator)  < 4)])))
+  expect_true(all(is.na(result_diff$Flag[which((result_diff$Denominator - result_diff$Numerator) < 4)])))
 })
