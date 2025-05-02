@@ -222,4 +222,4 @@ GitHub Actions are used in all `{gsm}` packages to automate processes and ensure
 -   `pkgdown`:
     -   Builds the [pkgdown site](https://gilead-biostats.github.io/gsm.core/) for the relevant package (`{gsm.core}` in this case).
 -   Qualification Report (`qualification-report`):
-    -   Builds the qualification vignette as an attached artifact to a release tagged with he Pull Request name via GHA dispatch to `{gsm.qc}`. This should be reviewed by the Pull Request Owner for completeness and correctness to ensure that the artifact added to the release is correct.
+    -   Builds the qualification vignette as an attached artifact to a release tagged with the Pull Request name via GHA dispatch to `{gsm.qc}`. This should be reviewed by the Pull Request Owner for completeness and correctness to ensure that the artifact added to the release is correct.
