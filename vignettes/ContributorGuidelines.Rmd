@@ -65,7 +65,7 @@ Code release follows a process using `release` branches. A release is initiated 
 
 # Style Guide {#style-guide}
 
-Code developers for the `{gsm}` packates use the [tidyverse style guide](https://style.tidyverse.org/) with minimal modifications. The code below is run to standardize styling before each release:
+Code developers for the `{gsm}` packages use the [tidyverse style guide](https://style.tidyverse.org/) with minimal modifications. The code below is run to standardize styling before each release:
 
     double_indent_style <- styler::tidyverse_style()
     double_indent_style$indention$unindent_fun_dec <- NULL
