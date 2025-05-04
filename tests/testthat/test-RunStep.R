@@ -63,3 +63,13 @@ test_that("RunStep will run a function without a namespace", {
   result <- RunStep(lStep, lData, lMeta)
   expect_equal(result, head(Theoph))
 })
+
+test_that("RunStep will run a function with no parameters", {
+  output_data <- list(x = 1, output = "fake.html")
+  fake_func <- function() {
+    return(output_data)
+  }
+  lStep <- list(name = "fake_func")
+  result <- RunStep(lStep, list(), list())
+  expect_equal(result, output_data)
+})
