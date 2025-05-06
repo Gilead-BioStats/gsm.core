@@ -62,6 +62,10 @@ RunStep <- function(lStep, lData, lMeta, lSpec = NULL) {
   # prepare parameter list inputs
   params <- lStep$params
 
+  # to make sure do.call can be invoked even if no params are provided in the step
+  if (is.null(params)) {
+    params <- list()
+  }
   LogMessage(
     level = "info",
     message = "Evaluating {length(params)} parameter(s) for `{lStep$name}`",
