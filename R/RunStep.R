@@ -66,6 +66,10 @@ RunStep <- function(lStep, lData, lMeta, lSpec = NULL) {
   # prepare parameter list inputs
   params <- lStep$params
 
+  # to make sure do.call can be invoked even if no params are provided in the step
+  if (is.null(params)) {
+    params <- list()
+  }
   LogMessage(
     level = "info",
     message = "Evaluating {length(params)} parameter(s) for `{lStep$name}`",
@@ -127,7 +131,7 @@ RunStep <- function(lStep, lData, lMeta, lSpec = NULL) {
       # If the parameter value is a vector, pass the vector as is.
       LogMessage(
         level = "info",
-        message = "{paramName} = {paramVal}: Parameter is a vector. Passing as is.",
+        message = "{paramName} is of length {length(paramVal)}: Parameter is a vector. Passing as is.",
         cli_detail = "alert_info"
       )
     }

@@ -35,6 +35,16 @@ test_that("Passes direct value parameters correctly", {
   expect_equal(result$y, "100")
 })
 
+test_that("Passes direct value vector parameters correctly", {
+  lStep <- list(name = "dummy_function", params = list(x = "meta1", y = c(1,2,3)))
+  lMeta <- list(meta1 = 200)
+
+  expect_message(RunStep(lStep, lData, lMeta), "y is of length 3")
+  result <- RunStep(lStep, lData, lMeta)
+  expect_equal(result$x, 200)
+  expect_equal(result$y, c(1,2,3))
+})
+
 test_that("Handles multiple parameters and function invocation correctly", {
   lStep <- list(name = "another_dummy_function", params = list(a = "meta1", b = "data1", c = "some_value"))
   lData <- list(data1 = 300)
@@ -62,4 +72,12 @@ test_that("RunStep will run a function without a namespace", {
 
   result <- RunStep(lStep, lData, lMeta)
   expect_equal(result, head(Theoph))
+})
+
+test_that("RunStep will run a function with no parameters", {
+  wd_path <- getwd()
+
+  lStep <- list(name = "getwd")
+  result <- RunStep(lStep, list(), list())
+  expect_equal(result, wd_path)
 })

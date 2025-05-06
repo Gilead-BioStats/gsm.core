@@ -71,6 +71,10 @@ CheckSpec <- function(lData, lSpec) {
       names(lSpec[[strDataFrame]]),
       function(so_far, x, idx) {
         if (!is.null(x$type) && idx %in% chrDataFrameColnames) {
+          # update timestamp to proper class
+          if (x$type == "timestamp") {
+            x$type <- c("POSIXct", "POSIXt")
+          }
           # check if data is the expected mode
           res <- all(x$type == class(lData[[strDataFrame]][[idx]]))
           if (!res) {
