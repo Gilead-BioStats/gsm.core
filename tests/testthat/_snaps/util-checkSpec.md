@@ -40,7 +40,7 @@
     Message
       > All 1 data.frame(s) in the spec are present in the data: reporting_results
       > All specified columns in reporting_results are in the expected format
-      > All 5 specified column(s) in the spec are present in the data: reporting_results$GroupID, reporting_results$GroupLevel, reporting_results$Numerator, reporting_results$Denominator, reporting_results$SnapshotDate
+      > All 6 specified column(s) in the spec are present in the data: reporting_results$GroupID, reporting_results$GroupLevel, reporting_results$Numerator, reporting_results$Denominator, reporting_results$SnapshotDate, reporting_results$SnapshotDateTime
 
 ---
 
@@ -52,7 +52,7 @@
       Warning:
       Not all columns of reporting_results in the spec are in the expected format, improperly formatted columns are: Numerator
     Message
-      > All 5 specified column(s) in the spec are present in the data: reporting_results$GroupID, reporting_results$GroupLevel, reporting_results$Numerator, reporting_results$Denominator, reporting_results$SnapshotDate
+      > All 6 specified column(s) in the spec are present in the data: reporting_results$GroupID, reporting_results$GroupLevel, reporting_results$Numerator, reporting_results$Denominator, reporting_results$SnapshotDate, reporting_results$SnapshotDateTime
 
 # skip column check when `_all` is specified
 
