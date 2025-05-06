@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gsm.core</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.1</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,13 +35,9 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/gsm.core-v1.1.1-rc/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/dev/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.1.1" id="gsmcore-v111">gsm.core v1.1.1<a class="anchor" aria-label="anchor" href="#gsmcore-v111"></a></h2>
-<p>This patch release fixes a few CLI messages from RunStep(), adds a new “timestamp” <code>type</code> to mapping specs, and addresses erroneous warning messages in the testing suite. It also prepares the package for CRAN release</p>
-</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="gsmcore-v110">gsm.core v1.1.0<a class="anchor" aria-label="anchor" href="#gsmcore-v110"></a></h2>
 <p>This minor release adds PK analysis functionality and updates package data to use <code>{gsm.datasim}</code>. Specifically: - <code>lSource</code> package data has been updated to include PK data - <code>analytics</code> and <code>reporting</code> package data is now generated using <code>{gsm.datasim}</code> simulated data as the source data. - Updates to the <code><a href="../reference/Flag.html">Flag()</a></code> and <code><a href="../reference/Summarize.html">Summarize()</a></code> functions to make thresholds more flexible. The <code><a href="../reference/Flag_Accrual.html">Flag_Accrual()</a></code> helper function now allows thresholds to be based on the Numerator, Denominator, or Difference between the two.</p>
