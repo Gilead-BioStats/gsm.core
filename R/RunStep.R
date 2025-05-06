@@ -127,7 +127,7 @@ RunStep <- function(lStep, lData, lMeta, lSpec = NULL) {
       # If the parameter value is a vector, pass the vector as is.
       LogMessage(
         level = "info",
-        message = "{paramName} = {paramVal}: Parameter is a vector. Passing as is.",
+        message = "{paramName} is of length {length(paramVal)}: Parameter is a vector. Passing as is.",
         cli_detail = "alert_info"
       )
     }
