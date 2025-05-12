@@ -9,7 +9,10 @@ test_that("Flag function works correctly with z-score data", {
   expect_equal(dfFlagged$Flag, c(-2, -2, -1, -1, -1, 0, 0, 0, 1, 1, 2, 2))
 
   # sorted
-  dfFlagged <- Flag(dfAnalyzed)
+  expect_message(
+    {dfFlagged <- Flag(dfAnalyzed)},
+    "Sorted dfFlagged using custom Flag order"
+  )
   expect_equal(dfFlagged$Flag, c(2, 2, -2, -2, 1, 1, -1, -1, -1, 0, 0, 0))
 
   # Test with custom thresholds and flags
@@ -27,13 +30,31 @@ test_that("Flag function works correctly with rate data", {
     GroupID = 1:9,
     Score = c(0.1, 0.2, 0.5, 0.6, 0.8, 0.85, 0.86, 0.9, 0.99)
   )
-  dfFlagged_Rate <- Flag_NormalApprox(dfAnalyzed_Rate, vFlag = c(2, 1, 0), vThreshold = c(0.85, 0.9))
+  expect_message(
+    {
+      dfFlagged_Rate <- Flag_NormalApprox(
+        dfAnalyzed_Rate,
+        vFlag = c(2, 1, 0),
+        vThreshold = c(0.85, 0.9)
+      )
+    },
+    "Mismatch in vFlagOrder and vFlag values"
+  )
   expect_equal(dfFlagged_Rate$Flag, c(2, 2, 2, 2, 2, 1, 1, 0, 0))
 
-  dfFlagged_Rate <- Flag_NormalApprox(dfAnalyzed_Rate, vFlag = c(2, 1, 0), vThreshold = c(0.85, 0.9), vFlagOrder = c(0, 1, 2))
+  expect_message(
+    {
+      dfFlagged_Rate <- Flag_NormalApprox(
+        dfAnalyzed_Rate,
+        vFlag = c(2, 1, 0),
+        vThreshold = c(0.85, 0.9),
+        vFlagOrder = c(0, 1, 2)
+      )
+    },
+    "Sorted dfFlagged using custom Flag order"
+  )
   expect_equal(dfFlagged_Rate$Flag, c(0, 0, 1, 1, 2, 2, 2, 2, 2))
 })
-
 
 test_that("Flag function works correctly with poisson data", {
   # Test with Poisson Data
@@ -45,7 +66,10 @@ test_that("Flag function works correctly with poisson data", {
     "80", 5L, 678L, 0.00737463126843658, 11, 4.86523613634436
   )
 
-  dfFlagged <- Flag_Poisson(dfAnalyzedCustom, vThreshold = c(-10, -5, 5, 10))
+  expect_message(
+    {dfFlagged <- Flag_Poisson(dfAnalyzedCustom, vThreshold = c(-10, -5, 5, 10))},
+    "Sorted dfFlagged using custom Flag order"
+  )
   expect_equal(dfFlagged$Flag, c(2, -2, 1, -1))
   expect_equal(dfFlagged$GroupID, c("80", "166", "86", "76"))
 })

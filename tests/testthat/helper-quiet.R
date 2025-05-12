@@ -23,3 +23,9 @@ quiet_Analyze_NormalApprox_PredictBounds <- function(...) {
     Analyze_NormalApprox_PredictBounds(...)
   })
 }
+
+quiet_Analyze_Poisson_PredictBounds <- function(...) {
+  suppressMessages({
+    Analyze_Poisson_PredictBounds(...)
+  })
+}

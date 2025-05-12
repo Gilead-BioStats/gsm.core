@@ -1,4 +1,3 @@
-# output is created as expected -------------------------------------------
 test_that("output is created as expected", {
   assessment_list <- MakeWorkflowList(strPath = test_path("testdata/mappings"))
 

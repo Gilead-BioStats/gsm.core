@@ -49,11 +49,12 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
       imap(function(spec, name) {
         mapping <- list(target = name)
 
-        # use `source_col` for `source` if using mapping and it hasn't gone through ApplySpec()
-        mapping$source <- spec$source %||% spec$source_col %||% name
+        # use `source_col` for `source` if using mapping and it hasn't gone
+        # through ApplySpec()
+        mapping$source <- spec[["source"]] %||% spec[["source_col"]] %||% name
 
         # NULL type breaks things below
-        mapping$type <- spec$type %||% ""
+        mapping$type <- spec[["type"]] %||% ""
 
         return(mapping)
       })
