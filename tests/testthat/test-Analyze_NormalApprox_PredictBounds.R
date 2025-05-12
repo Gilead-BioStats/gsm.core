@@ -1,3 +1,6 @@
+# We use quiet_Analyze_NormalApprox_PredictBounds() in tests where messaging
+# isn't being tested.
+
 test_that("Analyze_NormalApprox_PredictBounds handles missing nStep correctly", {
   expect_warning(
     {dfTransformed <- Transform_Rate(analyticsInput)},
@@ -36,13 +39,16 @@ test_that("Analyze_NormalApprox_PredictBounds handles missing vThreshold correct
   )
 
   expect_message(
-    {
-      dfBounds <- quiet_Analyze_NormalApprox_PredictBounds(
-        dfTransformed,
-        vThreshold = NULL,
-      )
-    },
-    "vThreshold was not provided"
+    expect_message(
+      {
+        dfBounds <- Analyze_NormalApprox_PredictBounds(
+          dfTransformed,
+          vThreshold = NULL,
+        )
+      },
+      "vThreshold was not provided"
+    ),
+    "nStep was not provided"
   )
 
   expect_equal(sort(unique(dfBounds$Threshold)), sort(c(-3, -2, 0, 2, 3)))
