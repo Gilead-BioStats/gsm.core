@@ -9,7 +9,7 @@ reporting. Created by passing an \code{lWorkflow} object to \code{\link[gsm.repo
 Expected columns: \code{File}, \code{MetricID}, \code{Group}, \code{Abbreviation}, \code{Metric},
 \code{Numerator}, \code{Denominator}, \code{Model}, \code{Score}, and \code{Threshold}. For more
 details see the
-\href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}..}
+\href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model article}.}
 
 \item{dfResults}{\code{data.frame} A stacked summary of analysis pipeline output.
 Created by passing a list of results returned by \code{\link[=Summarize]{Summarize()}} to
@@ -37,7 +37,7 @@ reporting. Created by passing an \code{lWorkflow} object to \code{\link[gsm.repo
 turing it into a list. Expected columns: \code{File},\code{MetricID}, \code{Group},
 \code{Abbreviation}, \code{Metric}, \code{Numerator}, \code{Denominator}, \code{Model}, \code{Score}, and
 \code{strThreshold}. For more details see the
-\href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}.}
+\href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model article}.}
 
 \item{lParamLabels}{\code{list} Labels for parameters, with the parameters as
 names, and the label as value.}

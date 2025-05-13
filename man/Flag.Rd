@@ -40,7 +40,7 @@ method is used.
 }
 \details{
 This function provides a generalized framework for flagging sites as part of the
-GSM data model (see \href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}).
+GSM data model (see the \href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model article}).
 }
 \section{Data Specification}{
 
