@@ -29,10 +29,6 @@
 #'
 #' @export
 RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
-  rlang::check_installed("DBI")
-  rlang::check_installed("duckdb")
-  rlang::check_installed("dbplyr")
-
   stop_if(cnd = !is.character(strQuery), message = "strQuery must be a query")
 
   # Check that strQuery contains "FROM df"

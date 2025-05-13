@@ -36,7 +36,10 @@ Depends:
     R (>= 4.0)
 Imports:
     cli,
+    DBI,
+    dbplyr,
     dplyr,
+    duckdb,
     glue,
     lifecycle,
     log4r,
@@ -48,9 +51,6 @@ Imports:
 Suggests:
     broom,
     covr,
-    DBI,
-    dbplyr,
-    duckdb,
     gt,
     knitr,
     lamW,
