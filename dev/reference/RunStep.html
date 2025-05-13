@@ -132,7 +132,8 @@ include the name of the function to run (<code>lStep$name</code>), name of the o
 
 
 <dt id="arg-lspec">lSpec<a class="anchor" aria-label="anchor" href="#arg-lspec"></a></dt>
-<dd><p><code>list</code> a data specification containing required columns. See <code><a href="../articles/gsmExtensions.html">vignette("gsmExtensions", package = "gsm.core")</a></code>.</p></dd>
+<dd><p><code>list</code> a data specification containing required columns. See the
+<a href="https://gilead-biostats.github.io/gsm.core/articles/gsmExtensions.html">gsm Extensions Vignette</a>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -143,20 +144,24 @@ parameter with results from <code>is_mapping_vald</code> for each domain in <cod
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">wf_mapping</span> <span class="op">&lt;-</span> <span class="fu"><a href="MakeWorkflowList.html">MakeWorkflowList</a></span><span class="op">(</span>strNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AE"</span>, <span class="st">"SUBJ"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                               strPath <span class="op">=</span> <span class="st">"example_workflow/1_mappings"</span>,</span></span>
-<span class="r-in"><span>                               strPackage <span class="op">=</span> <span class="st">"gsm.core"</span>,</span></span>
-<span class="r-in"><span>                               bExact <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">wf_mapping</span> <span class="op">&lt;-</span> <span class="fu"><a href="MakeWorkflowList.html">MakeWorkflowList</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  strNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AE"</span>, <span class="st">"SUBJ"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  strPath <span class="op">=</span> <span class="st">"example_workflow/1_mappings"</span>,</span></span>
+<span class="r-in"><span>  strPackage <span class="op">=</span> <span class="st">"gsm.core"</span>,</span></span>
+<span class="r-in"><span>  bExact <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">lWorkflow</span> <span class="op">&lt;-</span> <span class="fu"><a href="MakeWorkflowList.html">MakeWorkflowList</a></span><span class="op">(</span>strPath <span class="op">=</span> <span class="st">"example_workflow/2_metrics"</span>,</span></span>
-<span class="r-in"><span>                              strNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kri0001"</span>, <span class="st">"kri0002"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                              strPackage <span class="op">=</span> <span class="st">"gsm.core"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">lWorkflow</span> <span class="op">&lt;-</span> <span class="fu"><a href="MakeWorkflowList.html">MakeWorkflowList</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  strPath <span class="op">=</span> <span class="st">"example_workflow/2_metrics"</span>,</span></span>
+<span class="r-in"><span>  strNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kri0001"</span>, <span class="st">"kri0002"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  strPackage <span class="op">=</span> <span class="st">"gsm.core"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">lStep</span> <span class="op">&lt;-</span> <span class="va">lWorkflow</span><span class="op">[[</span><span class="st">"kri0001"</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="st">"steps"</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">lMeta</span> <span class="op">&lt;-</span> <span class="va">lWorkflow</span><span class="op">[[</span><span class="st">"kri0001"</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="st">"meta"</span><span class="op">]</span><span class="op">]</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">lRaw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>          Raw_SUBJ <span class="op">=</span> <span class="fu">gsm.core</span><span class="fu">::</span><span class="va"><a href="lSource.html">lSource</a></span><span class="op">$</span><span class="va">Raw_SUBJ</span>,</span></span>
-<span class="r-in"><span>          Raw_AE <span class="op">=</span> <span class="fu">gsm.core</span><span class="fu">::</span><span class="va"><a href="lSource.html">lSource</a></span><span class="op">$</span><span class="va">Raw_AE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  Raw_SUBJ <span class="op">=</span> <span class="fu">gsm.core</span><span class="fu">::</span><span class="va"><a href="lSource.html">lSource</a></span><span class="op">$</span><span class="va">Raw_SUBJ</span>,</span></span>
+<span class="r-in"><span>  Raw_AE <span class="op">=</span> <span class="fu">gsm.core</span><span class="fu">::</span><span class="va"><a href="lSource.html">lSource</a></span><span class="op">$</span><span class="va">Raw_AE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mapped</span> <span class="op">&lt;-</span> <span class="fu"><a href="RunWorkflows.html">RunWorkflows</a></span><span class="op">(</span><span class="va">wf_mapping</span>, <span class="va">lRaw</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>

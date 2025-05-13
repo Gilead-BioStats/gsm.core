@@ -66,7 +66,7 @@
       <h1>gsm Extensions</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/gsm.core-v1.1.1-rc/vignettes/gsmExtensions.Rmd" class="external-link"><code>vignettes/gsmExtensions.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/gsm.core-v1.1.1-rc/vignettes/articles/gsmExtensions.Rmd" class="external-link"><code>vignettes/articles/gsmExtensions.Rmd</code></a></small>
       <div class="d-none name"><code>gsmExtensions.Rmd</code></div>
     </div>
 
@@ -75,15 +75,17 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>This vignette describes how to extend <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> by
+<p>This article describes how to extend <a href="https://github.com/Gilead-BioStats/gsm.core" class="external-link">gsm.core</a> by
 creating new “modules”, including metrics, reports and shiny apps that
 can be run using the standard <code>gsm</code> pipeline described in
-these vignettes (<code><a href="../articles/DataAnalysis.html">vignette("DataAnalysis")</a></code>, and <a href="https://gilead-biostats.github.io/gsm.reporting/articles/DataReporting.html" class="external-link">DataReporting</a>.
-As shown in the <code><a href="../articles/DataAnalysis.html">vignette("DataAnalysis")</a></code>, the existing
-<code>gsm</code> data pipeline can be used to capture a monitoring
-‘snapshot’ for a study that includes a variety of “modules” including <a href="https://github.com/Gilead-BioStats/gsm.mapping/tree/dev/inst/workflow/metrics/kri0001.yaml" class="external-link">metrics</a>
+these articles: <a href="https://gilead-biostats.github.io/gsm.core/articles/DataAnalysis.html">Data
+Analysis</a> and <a href="https://gilead-biostats.github.io/gsm.reporting/articles/DataReporting.html" class="external-link">DataReporting</a>.
+As shown in the <a href="https://gilead-biostats.github.io/gsm.core/articles/DataAnalysis.html">Data
+Analysis article</a>, the existing <code>gsm</code> data pipeline can be
+used to capture a monitoring ‘snapshot’ for a study that includes a
+variety of “modules” including <a href="https://github.com/Gilead-BioStats/gsm.mapping/tree/dev/inst/workflow/metrics/kri0001.yaml" class="external-link">metrics</a>
 and <a href="https://github.com/Gilead-BioStats/gsm.kri/blob/dev/inst/workflow/reports/report_kri_site.yaml" class="external-link">reports</a>.</p>
-<p>This vignette provide detailed specifications for creating new
+<p>This article provides detailed specifications for creating new
 modules, a description of the directory structure for the yaml workflows
 that comprise a module pipeline, and links to resources that can be used
 to configure study-level gsm pipelines that utilize these
@@ -259,10 +261,10 @@ this:</p>
 requirements for the workflow, including the data tables that are
 required and the columns that are needed from each table. The
 <code>gsm</code> data pipeline is designed to be highly customizable,
-but for the purposes of this vignette, we will assume usage of the
-standard <code>gsm</code> data model described in
-<code><a href="../articles/DataModel.html">vignette("DataModel")</a></code>. For this standard use case, modules
-will pull primarily from the “Mapped” and “Reporting” data layers.</p>
+but for the purposes of this article, we will assume usage of the
+standard <code>gsm</code> data model described in the <a href="https://gilead-biostats.github.io/gsm.core/articles/DataModel.html">Data
+Model article</a>. For this standard use case, modules will pull
+primarily from the “Mapped” and “Reporting” data layers.</p>
 <p>The <code>spec</code> section of the workflow YAML is formatted as a
 list of data tables, with each table containing a list of columns.
 Finally, each column contains the following parameters:</p>
@@ -596,14 +598,14 @@ analysis steps, converting mapped data into metrics that are displayed
 in a report. In the case of <a href="https://github.com/Gilead-BioStats/gsm.kri" class="external-link">gsm.kri</a>, these metrics are
 the 12 Key Risk Indicators, calculated at both the site- and
 country-level, that are discussed in the Data Analysis Step-by-Step
-Vignette. Each yaml in this file produces a list of analysis data tables
+article. Each yaml in this file produces a list of analysis data tables
 that capture the formatted input table, the transformed table, the
 flagged table, and the summary table. In general, these yamls should at
 least provide a summary table that contains statistics about the metric
 at the specified level of aggregation.</p>
 <p>Examples of these yamls can be found above in the
-<code>Module Configuration</code> section, as well as in the
-(<code><a href="../articles/DataAnalysis.html">vignette("DataAnalysis")</a></code>) vignette.</p>
+<code>Module Configuration</code> section, as well as in the <a href="https://gilead-biostats.github.io/gsm.core/articles/DataAnalysis.html">Data
+Analysis article</a>.</p>
 </div>
 <div class="section level4">
 <h4 id="reporting">
@@ -618,8 +620,8 @@ must be taken from the analysis output, such as study/site/group/metric
 metadata and supporting statistics will be constructed through workflows
 in this folder.</p>
 <p>Examples of these yamls can be found above in the
-<code>Module Configuration</code> section, as well as in
-<code>vignette("DataReporting")</code>.</p>
+<code>Module Configuration</code> section, as well as in the <a href="https://gilead-biostats.github.io/gsm.reporting/articles/DataReporting.html" class="external-link">Data
+Reporting article</a>.</p>
 </div>
 <div class="section level4">
 <h4 id="modules">
