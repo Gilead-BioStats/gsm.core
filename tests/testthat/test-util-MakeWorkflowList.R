@@ -1,4 +1,4 @@
-################################################################################################################
+################################################################################
 
 test_that("output is generated as expected", {
   wf_list <- MakeWorkflowList(strPath = test_path("testdata/mappings"))
@@ -8,15 +8,14 @@ test_that("output is generated as expected", {
   expect_snapshot(map(wf_list, ~ names(.)))
 })
 
-################################################################################################################
+################################################################################
 
 test_that("Metadata is returned as expected", {
   wf_list <- MakeWorkflowList(strPath = test_path("testdata/mappings"))
   expect_snapshot(map(wf_list, ~ .x$steps))
 })
 
-################################################################################################################
-
+################################################################################
 
 test_that(
   "invalid data returns list NULL elements",
@@ -63,3 +62,13 @@ test_that(
     expect_length(wf_list, 4)
   }
 )
+
+################################################################################
+
+test_that("output is created as expected", {
+  assessment_list <- MakeWorkflowList(strPath = test_path("testdata/mappings"))
+
+  expect_snapshot(names(assessment_list))
+  expect_type(assessment_list, "list")
+  expect_true(all(map_lgl(assessment_list, ~ all(c("meta", "steps", "path") %in% names(.)))))
+})
