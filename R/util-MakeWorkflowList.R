@@ -96,8 +96,11 @@ MakeWorkflowList <- function(
 
       return(workflow)
     }
-  ) %>%
-    stats::setNames(purrr::map_chr(., ~ .x$meta$ID))
+  )
+  workflows <- stats::setNames(
+    workflows,
+    purrr::map_chr(workflows, list("meta", "ID"))
+  )
 
   # Sort the list according to the $meta$priority property
 
