@@ -34,7 +34,7 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
   stop_if(cnd = !is.character(strQuery), message = "strQuery must be a query")
 
   # Check that strQuery contains "FROM df"
-  stop_if(cnd = !stringr::str_detect(strQuery, "FROM df"), message = "strQuery must contain 'FROM df'")
+  stop_if(cnd = !grepl("FROM df", strQuery), message = "strQuery must contain 'FROM df'")
 
   # Check that columnMapping exists if use_schema == TRUE
 
@@ -109,7 +109,7 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
     table_name <- temp_table_name
   }
 
-  strQuery <- stringr::str_replace(strQuery, "FROM df", paste0("FROM ", table_name))
+  strQuery <- gsub("FROM df", paste0("FROM ", table_name), strQuery)
 
   result <- tryCatch({
     result <- DBI::dbGetQuery(con, strQuery)

@@ -78,7 +78,7 @@ Analyze_Poisson_PredictBounds <- function(
   }
 
   # Fit GLM of number of events at each site predicted by total exposure.
-  cModel <- glm(
+  cModel <- stats::glm(
     Numerator ~ stats::offset(LogDenominator),
     family = poisson(link = "log"),
     data = dfTransformed

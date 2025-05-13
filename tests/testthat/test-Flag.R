@@ -58,7 +58,7 @@ test_that("Flag function works correctly with rate data", {
 
 test_that("Flag function works correctly with poisson data", {
   # Test with Poisson Data
-  dfAnalyzedCustom <- tibble::tribble(
+  dfAnalyzedCustom <- dplyr::tribble(
     ~GroupID, ~Numerator, ~Denominator, ~Metric, ~Score, ~PredictedCount,
     "166", 5L, 857L, 0.0058343057176196, -11, 5.12722560489132,
     "76", 2L, 13L, 0.153846153846154, -6, 2.00753825876477,

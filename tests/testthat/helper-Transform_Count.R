@@ -1,5 +1,5 @@
 makeTransformCountInput <- function() {
-  tibble::tribble(
+  dplyr::tribble(
     ~SubjectID, ~SiteID, ~StudyID, ~CountryID, ~CustomGroupID, ~RandDate, ~Count,
     "0496", "5", "AA-AA-000-0000", "US", "0X167", "2013-11-26", 1,
     "1350", "78", "AA-AA-000-0000", "US", "0X002", "2017-10-02", 1,

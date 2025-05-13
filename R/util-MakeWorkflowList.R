@@ -77,16 +77,16 @@ MakeWorkflowList <- function(
       workflow$path <- yaml_file
 
       # each workflow should have an $meta and $steps $meta$ID attributes
-      if (!utils::hasName(workflow, "meta")) {
+      if (!rlang::has_name(workflow, "meta")) {
         LogMessage(level = "fatal", message = "{file_name} must contain `meta` attributes.")
       }
-      if (!utils::hasName(workflow, "steps")) {
+      if (!rlang::has_name(workflow, "steps")) {
         LogMessage(level = "fatal", message = "{file_name} must contain `steps` attributes.")
       }
-      if (!utils::hasName(workflow$meta, "Type")) {
+      if (!rlang::has_name(workflow$meta, "Type")) {
         LogMessage(level = "fatal", message = "{file_name} must contain `Type` attribute in `meta` section.")
       }
-      if (!utils::hasName(workflow$meta, "ID")) {
+      if (!rlang::has_name(workflow$meta, "ID")) {
         LogMessage(level = "fatal", message = "{file_name} must contain `ID` attribute in `meta` section.")
       }
       # warn user if file name doesn't match ID specified

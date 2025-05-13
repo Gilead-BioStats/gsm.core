@@ -40,48 +40,31 @@ Imports:
     DBI,
     dbplyr,
     dplyr,
-    ggplot2,
     glue,
-    gt,
-    htmltools,
-    htmlwidgets,
-    jsonlite,
     lifecycle,
     log4r,
     magrittr,
     purrr,
     rlang (>= 0.4.11),
     stats,
-    stringr,
-    tibble,
     tidyr,
-    utils,
     yaml
 Suggests:
     covr,
-    DT,
     duckdb,
-    fontawesome (>= 0.2.2),
-    gggenes,
-    ggiraph,
-    here,
+    gt,
     knitr,
     lamW,
-    lubridate,
-    pander,
-    pkgdown,
-    riskmetric,
     rmarkdown,
     roxygen2,
-    safetyData,
     styler,
     testthat,
-    usethis,
-    withr
+    usethis
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
 Config/testthat/parallel: true
+Config/Needs/website: DT, here, pkgdown
 Encoding: UTF-8
 Language: en-US
 LazyData: true

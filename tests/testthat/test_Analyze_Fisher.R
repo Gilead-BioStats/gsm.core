@@ -1,5 +1,5 @@
 test_that("output created as expected and has correct structure", {
-  df <- tibble::tibble(
+  df <- dplyr::tibble(
     GroupID     = c("83", "43", "75"),
     Numerator   = c(6, 8, 10),
     Denominator = c(100, 50, 300),
@@ -21,7 +21,7 @@ test_that("output created as expected and has correct structure", {
 })
 
 test_that("incorrect inputs throw errors", {
-  df <- tibble::tibble(
+  df <- dplyr::tibble(
     GroupID     = c("83", "43", "75"),
     Numerator   = c(6, 8, 10),
     Denominator = c(100, 50, 300),
@@ -37,7 +37,7 @@ test_that("incorrect inputs throw errors", {
 })
 
 test_that("error given if required column not found", {
-  df <- tibble::tibble(
+  df <- dplyr::tibble(
     GroupID     = c("83", "43", "75"),
     Numerator   = c(6, 8, 10),
     Denominator = c(100, 50, 300),
@@ -52,7 +52,7 @@ test_that("error given if required column not found", {
 })
 
 test_that("NAs are handled correctly", {
-  df <- tibble::tibble(
+  df <- dplyr::tibble(
     GroupID     = c("83", "43", "75"),
     Numerator   = c(6, 8, 10),
     Denominator = c(100, 50, 300),

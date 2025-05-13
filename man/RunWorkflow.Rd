@@ -13,7 +13,8 @@ RunWorkflow(
 )
 }
 \arguments{
-\item{lWorkflow}{\code{list} A named list of metadata defining how the workflow should be run.}
+\item{lWorkflow}{\code{list} A named list of metadata defining how the workflow
+should be run.}
 
 \item{lData}{\code{list} A named list of domain-level data frames.}
 
@@ -23,25 +24,27 @@ RunWorkflow(
 \item \code{SaveData}: A function that saves data returned by the last step in \code{lWorkflow$steps}.
 }}
 
-\item{bReturnResult}{\code{boolean} should \emph{only} the result from the last step (\code{lResults}) be returned? If false, the full workflow (including \code{lResults}) is returned. Default is \code{TRUE}.}
+\item{bReturnResult}{\code{boolean} should \emph{only} the result from the last step
+(\code{lResults}) be returned? If false, the full workflow (including
+\code{lResults}) is returned. Default is \code{TRUE}.}
 
-\item{bKeepInputData}{\code{boolean} should the input data be included in \code{lData} after the workflow is run? Only relevant when bReturnResult is FALSE. Default is \code{TRUE}.}
+\item{bKeepInputData}{\code{boolean} should the input data be included in \code{lData}
+after the workflow is run? Only relevant when bReturnResult is FALSE.
+Default is \code{TRUE}.}
 }
 \value{
-Object containing the results of the workflow's last step (if \code{bLastResult} is \code{TRUE}) or the full workflow object (if \code{bReturnResults} is \code{TRUE}) or the full workflow object (if \code{bReturnResults} is \code{FALSE}).
-
-\code{list} contains just lData if \code{bReturnData} is \code{TRUE}, otherwise returns the full \code{lWorkflow} object.
+Object containing the results of the workflow's last step (if
+\code{bLastResult} is \code{TRUE}) or the full workflow object (if \code{bReturnResults}
+is \code{TRUE}) or the full workflow object (if \code{bReturnResults} is \code{FALSE}).
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 
-Attempts to run a single assessment (\code{lWorkflow}) using shared data (\code{lData}) and metadata (\code{lMapping}).
-Calls \code{RunStep} for each item in \code{lWorkflow$workflow} and saves the results to \code{lWorkflow}.
+Attempts to run a single assessment (\code{lWorkflow}) using shared data (\code{lData})
+and metadata (\code{lMapping}). Calls \code{RunStep} for each item in
+\code{lWorkflow$workflow} and saves the results to \code{lWorkflow}.
 }
 \examples{
-# ----
-# Workflow using in-memory data.
-
 # Generate mapped input data to metric workflow.
 lMappingWorkflows <- MakeWorkflowList(
   strNames = c("AE", "SUBJ"),
@@ -69,81 +72,5 @@ lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lMappedData
 )
-\dontrun{
-# ----
-# Workflow using data read/write functions.
 
-# Define a function that loads data.
-LoadData <- function(lWorkflow, lConfig, lData) {
-  lData <- lData
-  purrr::imap(
-    lWorkflow$spec,
-    ~ {
-      input <- lConfig$Domains[[.y]]
-
-      if (is.function(input)) {
-        data <- input()
-      } else if (is.character(input)) {
-        data <- read.csv(input)
-      }
-
-      lData[[.y]] <- ApplySpec(data, .x)
-    }
-  )
-  return(lData)
-}
-
-# Define a function that saves data to .csv.
-SaveData <- function(lWorkflow, lConfig) {
-  domain <- paste0(lWorkflow$meta$Type, "_", lWorkflow$meta$ID)
-  if (domain \%in\% names(lConfig$Domains)) {
-    output <- lConfig$Domains[[domain]]
-
-    write.csv(
-      lWorkflow$lResult,
-      output
-    )
-  }
-}
-
-# Define a configuration object with LoadData/SaveData functions and a list of named data sources.
-lConfig <- list(
-  LoadData = LoadData,
-  SaveData = SaveData,
-  Domains = c(
-    Raw_AE = function() {
-      gsm.core::lSource$Raw_AE
-    },
-    Raw_SUBJ = function() {
-      gsm.core::lSource$Raw_SUBJ
-    },
-    Mapped_AE = file.path(tempdir(), "mapped-ae.csv"),
-    Mapped_SUBJ = file.path(tempdir(), "mapped-subj.csv")
-  )
-)
-
-# Generate mapped input data to metric workflow.
-lMappingWorkflows <- MakeWorkflowList(
-  strNames = c("AE", "SUBJ"),
-  strPath = "example_workflow/1_mappings",
-  strPackage = "gsm.core",
-  bExact = TRUE
-)
-
-lMappedData <- RunWorkflows(
-  lMappingWorkflows,
-  lConfig = lConfig
-)
-
-# Run the metric workflow.
-lMetricWorkflow <- MakeWorkflowList(
-  strPath = "example_workflow/2_metrics",
-  strNames = c("kri0001", "kri0002"),
-  strPackage = "gsm.core"
-)$kri0001
-lMetricOutput <- RunWorkflow(
-  lMetricWorkflow,
-  lConfig = lConfig
-)
-}
 }
