@@ -8,7 +8,8 @@
 reporting. Created by passing an \code{lWorkflow} object to \code{\link[gsm.reporting:MakeMetric]{gsm.reporting::MakeMetric()}}.
 Expected columns: \code{File}, \code{MetricID}, \code{Group}, \code{Abbreviation}, \code{Metric},
 \code{Numerator}, \code{Denominator}, \code{Model}, \code{Score}, and \code{Threshold}. For more
-details see the Data Model vignette: \code{vignette("DataModel", package = "gsm.core")}.}
+details see the
+\href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}..}
 
 \item{dfResults}{\code{data.frame} A stacked summary of analysis pipeline output.
 Created by passing a list of results returned by \code{\link[=Summarize]{Summarize()}} to
@@ -35,8 +36,8 @@ by passing Raw+ data into \code{\link[=Input_Rate]{Input_Rate()}}. Expected colu
 reporting. Created by passing an \code{lWorkflow} object to \code{\link[gsm.reporting:MakeMetric]{gsm.reporting::MakeMetric()}} and
 turing it into a list. Expected columns: \code{File},\code{MetricID}, \code{Group},
 \code{Abbreviation}, \code{Metric}, \code{Numerator}, \code{Denominator}, \code{Model}, \code{Score}, and
-\code{strThreshold}. For more details see the Data Model vignette:
-\code{vignette("DataModel", package = "gsm.core")}.}
+\code{strThreshold}. For more details see the
+\href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}.}
 
 \item{lParamLabels}{\code{list} Labels for parameters, with the parameters as
 names, and the label as value.}
