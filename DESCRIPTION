@@ -35,22 +35,21 @@ BugReports: https://github.com/Gilead-BioStats/gsm.core/issues
 Depends: 
     R (>= 4.0)
 Imports:
-    broom,
     cli,
-    DBI,
-    dbplyr,
     dplyr,
     glue,
     lifecycle,
     log4r,
-    magrittr,
     purrr,
     rlang (>= 0.4.11),
     stats,
     tidyr,
     yaml
 Suggests:
+    broom,
     covr,
+    DBI,
+    dbplyr,
     duckdb,
     gt,
     knitr,
