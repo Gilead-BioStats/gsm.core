@@ -3,7 +3,7 @@ Title: Good Statistical Monitoring
 Version: 1.1.1
 Authors@R: c(
     person("Jeremy", "Wildfire", , "jwildfire@gmail.com", role = c("aut", "cre")),
-    person("George", "Wu", , "george.wu@gilead.com", role = c("aut")),
+    person("George", "Wu", , "george.wu@gilead.com", role = "aut"),
     person("Spencer", "Childress", , "spencer.childress@gilead.com", role = "aut",
            comment = c(ORCID = "0000-0001-6877-8511")),
     person("Laura", "Maxwell", , "laura.maxwell@atorusresearch.com", role = "aut"),
@@ -29,59 +29,41 @@ Description: The Good Statistical Monitoring or 'gsm' suite of R packages
     provides the analytics framework for constructing metrics, and the
     utility functions to run workflows.
 License: Apache License (>= 2)
-URL: https://github.com/Gilead-BioStats/gsm.core,
-    https://gilead-biostats.github.io/gsm.core
+URL: https://gilead-biostats.github.io/gsm.core,
+    https://github.com/Gilead-BioStats/gsm.core,
 BugReports: https://github.com/Gilead-BioStats/gsm.core/issues
 Depends: 
     R (>= 4.0)
 Imports:
-    broom,
     cli,
     DBI,
     dbplyr,
     dplyr,
-    ggplot2,
+    duckdb,
     glue,
-    gt,
-    htmltools,
-    htmlwidgets,
-    jsonlite,
     lifecycle,
     log4r,
-    magrittr,
     purrr,
     rlang (>= 0.4.11),
     stats,
-    stringr,
-    tibble,
     tidyr,
-    utils,
     yaml
 Suggests:
+    broom,
     covr,
-    DT,
-    duckdb,
-    fontawesome (>= 0.2.2),
-    gggenes,
-    ggiraph,
-    here,
+    gt,
     knitr,
     lamW,
-    lubridate,
-    pander,
-    pkgdown,
-    riskmetric,
     rmarkdown,
     roxygen2,
-    safetyData,
     styler,
     testthat,
-    usethis,
-    withr
+    usethis
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
 Config/testthat/parallel: true
+Config/Needs/website: DT, here, pkgdown
 Encoding: UTF-8
 Language: en-US
 LazyData: true

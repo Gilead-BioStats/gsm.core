@@ -27,7 +27,7 @@
 #' @return `data.frame` with one row per site with columns: GroupID, Numerator,
 #'   Denominator, Metric, Score, and PredictedCount.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("broom")
 #' dfTransformed <- Transform_Rate(analyticsInput)
 #'
 #' dfAnalyzed <- Analyze_Poisson(dfTransformed)
@@ -35,6 +35,7 @@
 #' @export
 
 Analyze_Poisson <- function(dfTransformed) {
+  rlang::check_installed("broom")
   stop_if(cnd = !is.data.frame(dfTransformed), message = "dfTransformed is not a data.frame")
   stop_if(
     cnd = !all(c("GroupID", "GroupLevel", "Denominator", "Numerator", "Metric") %in% names(dfTransformed)),

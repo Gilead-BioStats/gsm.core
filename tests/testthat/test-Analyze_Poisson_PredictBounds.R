@@ -5,7 +5,13 @@ test_that("Analyze_Poisson_PredictBounds handles missing vThreshold correctly", 
     stringsAsFactors = FALSE
   )
 
-  dfBounds <- Analyze_Poisson_PredictBounds(dfTransformed, vThreshold = NULL)
+  expect_message(
+    expect_message(
+      {dfBounds <- Analyze_Poisson_PredictBounds(dfTransformed, vThreshold = NULL)},
+      "vThreshold was not provided"
+    ),
+    "nStep was not provided"
+  )
 
   expect_equal(sort(unique(dfBounds$Threshold)), sort(c(-5, 0, 5)))
 })
@@ -17,8 +23,7 @@ test_that("Analyze_Poisson_PredictBounds processes data correctly", {
     stringsAsFactors = FALSE
   )
 
-  dfBounds <- Analyze_Poisson_PredictBounds(dfTransformed)
-
+  dfBounds <- quiet_Analyze_Poisson_PredictBounds(dfTransformed)
   expect_true(all(c("Threshold", "LogDenominator", "Denominator", "Numerator") %in% names(dfBounds)))
   expect_equal(dfBounds$Threshold[1], -5)
 })
@@ -30,8 +35,7 @@ test_that("Analyze_Poisson_PredictBounds handles edge cases for vThreshold", {
     stringsAsFactors = FALSE
   )
 
-  dfBounds <- Analyze_Poisson_PredictBounds(dfTransformed, vThreshold = c(0))
-
+  dfBounds <- quiet_Analyze_Poisson_PredictBounds(dfTransformed, vThreshold = c(0))
   expect_equal(unique(dfBounds$Threshold), 0)
 })
 
@@ -42,7 +46,7 @@ test_that("Analyze_Poisson_PredictBounds calculates correct bounds", {
     stringsAsFactors = FALSE
   )
 
-  dfBounds <- Analyze_Poisson_PredictBounds(dfTransformed)
+  dfBounds <- quiet_Analyze_Poisson_PredictBounds(dfTransformed)
 
   cModel <- glm(
     Numerator ~ offset(log(Denominator)),

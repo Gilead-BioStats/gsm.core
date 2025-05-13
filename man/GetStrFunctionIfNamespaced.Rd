@@ -18,5 +18,5 @@ This will return a function.
 }
 \examples{
 fn <- GetStrFunctionIfNamespaced("dplyr::glimpse")
-fn(head(Theoph))
+fn(Theoph[1:6,])
 }

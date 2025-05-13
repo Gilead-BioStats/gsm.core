@@ -97,7 +97,7 @@ The resulting `dfTransformed` data frame will contain site-level transformed dat
 
 ```{r, echo = FALSE}
 datatable(dfTransformed) %>%
-formatRound(columns = "Metric", digits = 3)
+  formatRound(columns = "Metric", digits = 3)
 ```
 
 ------------------------------------------------------------------------

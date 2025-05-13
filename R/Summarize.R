@@ -1,9 +1,9 @@
 #' Make Summary Data Frame
 #'
-#' @description
-#' `r lifecycle::badge("stable")`
+#' @description `r lifecycle::badge("stable")`
 #'
-#' Create a concise summary of assessment results that is easy to aggregate across assessments
+#' Create a concise summary of assessment results that is easy to aggregate
+#' across assessments
 #'
 #' @details
 #'
@@ -11,17 +11,18 @@
 #'
 #' @section Data Specification:
 #'
-#' (`dfFlagged`) has the following required columns:
+#'   (`dfFlagged`) has the following required columns:
 #' - `GroupID` - Group ID
 #' - `GroupLevel` - Group Type
 #' - `Flag` - Flagging value of -1, 0, or 1
 #' - `Score` - Column from analysis results.
 #'
 #' @param dfFlagged data.frame in format produced by [Flag()].
-#' @param nMinDenominator `numeric` Specifies the minimum denominator required to return a `score` and calculate a `flag`. Default: NULL
+#' @param nMinDenominator `numeric` Specifies the minimum denominator required
+#'   to return a `score` and calculate a `flag`. Default: NULL
 #'
-#' @return Simplified finding data.frame with columns for GroupID, GroupType, Metric, Score, Flag
-#' when associated with a workflow.
+#' @return Simplified finding data.frame with columns for GroupID, GroupType,
+#'   Metric, Score, Flag when associated with a workflow.
 #'
 #' @examples
 #'

@@ -13,7 +13,8 @@ RunWorkflow(
 )
 }
 \arguments{
-\item{lWorkflow}{\code{list} A named list of metadata defining how the workflow should be run.}
+\item{lWorkflow}{\code{list} A named list of metadata defining how the workflow
+should be run.}
 
 \item{lData}{\code{list} A named list of domain-level data frames.}
 
@@ -23,25 +24,29 @@ RunWorkflow(
 \item \code{SaveData}: A function that saves data returned by the last step in \code{lWorkflow$steps}.
 }}
 
-\item{bReturnResult}{\code{boolean} should \emph{only} the result from the last step (\code{lResults}) be returned? If false, the full workflow (including \code{lResults}) is returned. Default is \code{TRUE}.}
+\item{bReturnResult}{\code{boolean} should \emph{only} the result from the last step
+(\code{lResults}) be returned? If false, the full workflow (including
+\code{lResults}) is returned. Default is \code{TRUE}.}
 
-\item{bKeepInputData}{\code{boolean} should the input data be included in \code{lData} after the workflow is run? Only relevant when bReturnResult is FALSE. Default is \code{TRUE}.}
+\item{bKeepInputData}{\code{boolean} should the input data be included in \code{lData}
+after the workflow is run? Only relevant when bReturnResult is FALSE.
+Default is \code{TRUE}.}
 }
 \value{
-Object containing the results of the workflow's last step (if \code{bLastResult} is \code{TRUE}) or the full workflow object (if \code{bReturnResults} is \code{TRUE}) or the full workflow object (if \code{bReturnResults} is \code{FALSE}).
+Object containing the results of the workflow's last step (if
+\code{bLastResult} is \code{TRUE}) or the full workflow object (if \code{bReturnResults}
+is \code{TRUE}) or the full workflow object (if \code{bReturnResults} is \code{FALSE}).
 
 \code{list} contains just lData if \code{bReturnData} is \code{TRUE}, otherwise returns the full \code{lWorkflow} object.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 
-Attempts to run a single assessment (\code{lWorkflow}) using shared data (\code{lData}) and metadata (\code{lMapping}).
-Calls \code{RunStep} for each item in \code{lWorkflow$workflow} and saves the results to \code{lWorkflow}.
+Attempts to run a single assessment (\code{lWorkflow}) using shared data (\code{lData})
+and metadata (\code{lMapping}). Calls \code{RunStep} for each item in
+\code{lWorkflow$workflow} and saves the results to \code{lWorkflow}.
 }
 \examples{
-# ----
-# Workflow using in-memory data.
-
 # Generate mapped input data to metric workflow.
 lMappingWorkflows <- MakeWorkflowList(
   strNames = c("AE", "SUBJ"),

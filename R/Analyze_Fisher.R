@@ -35,7 +35,7 @@
 #'   Numerator_Other, Denominator, Denominator_Other, Prop, Prop_Other, Metric,
 #'   Estimate, and Score.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("broom")
 #' dfTransformed <- Transform_Rate(
 #'   analyticsInput[1:20, ]
 #' )
@@ -47,6 +47,7 @@ Analyze_Fisher <- function(
   dfTransformed,
   strOutcome = "Numerator"
 ) {
+  rlang::check_installed("broom")
   stop_if(cnd = !is.data.frame(dfTransformed), message = "dfTransformed is not a data.frame")
   stop_if(cnd = !all(c("GroupID", strOutcome) %in% names(dfTransformed)), message = "GroupID or the value in strOutcome not found in dfTransformed")
   stop_if(cnd = !all(!is.na(dfTransformed[["GroupID"]])), message = "NA value(s) found in GroupID")
