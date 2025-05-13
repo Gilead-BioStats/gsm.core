@@ -8,8 +8,8 @@
 #'   reporting. Created by passing an `lWorkflow` object to [gsm.reporting::MakeMetric()].
 #'   Expected columns: `File`, `MetricID`, `Group`, `Abbreviation`, `Metric`,
 #'   `Numerator`, `Denominator`, `Model`, `Score`, and `Threshold`. For more
-#'   details see the Data Model vignette: `vignette("DataModel", package =
-#'   "gsm.core")`.
+#'   details see the
+#'   \href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}..
 #' @param dfResults `data.frame` A stacked summary of analysis pipeline output.
 #'   Created by passing a list of results returned by [Summarize()] to
 #'   [gsm.reporting::BindResults()]. Expected columns: `GroupID`, `GroupLevel`, `Numerator`,
