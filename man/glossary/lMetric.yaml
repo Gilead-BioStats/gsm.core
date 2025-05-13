@@ -4,5 +4,5 @@ definition: >
   passing an `lWorkflow` object to [MakeMetric()] and turing it into a list.
   Expected columns: `File`,`MetricID`, `Group`, `Abbreviation`, `Metric`,
   `Numerator`, `Denominator`, `Model`, `Score`, and `strThreshold`.
-  For more details see the Data Model vignette:
-  `vignette("DataModel", package = "gsm.core")`.
+  For more details see the
+  \href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}.

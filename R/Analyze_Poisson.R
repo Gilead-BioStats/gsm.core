@@ -19,9 +19,9 @@
 #'
 #' @param dfTransformed `data.frame` Transformed data for analysis. Data should
 #'   have one record per site with expected columns: `GroupID`, `GroupLevel`,
-#'   `Numerator`, `Denominator`, and `Metric`. For more details see the Data
-#'   Model vignette: `vignette("DataModel", package = "gsm.core")`. For this
-#'   function, `dfTransformed` should typically be created using
+#'   `Numerator`, `Denominator`, and `Metric`. For more details see the
+#'   \href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}.
+#'   For this function, `dfTransformed` should typically be created using
 #'   [Transform_Rate()].
 #'
 #' @return `data.frame` with one row per site with columns: GroupID, Numerator,

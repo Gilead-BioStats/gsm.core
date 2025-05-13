@@ -31,8 +31,8 @@
 #'   reporting. Created by passing an `lWorkflow` object to [gsm.reporting::MakeMetric()] and
 #'   turing it into a list. Expected columns: `File`,`MetricID`, `Group`,
 #'   `Abbreviation`, `Metric`, `Numerator`, `Denominator`, `Model`, `Score`, and
-#'   `strThreshold`. For more details see the Data Model vignette:
-#'   `vignette("DataModel", package = "gsm.core")`.
+#'   `strThreshold`. For more details see the
+#'   \href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}.
 #' @param lParamLabels `list` Labels for parameters, with the parameters as
 #'   names, and the label as value.
 #' @param bDebug `logical` Print debug messages? Default: `FALSE`.
