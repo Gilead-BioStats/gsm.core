@@ -8,7 +8,7 @@
 #'
 #' @details
 #' This function provides a generalized framework for flagging sites as part of the
-#' GSM data model (see \href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}).
+#' GSM data model (see the [Data Model article](https://gilead-biostats.github.io/gsm.core/articles/DataModel.html)).
 #'
 #' @section Data Specification:
 #' \code{Flag} is designed to support the input data (`dfAnalyzed`) from the `Analyze_Identity()`

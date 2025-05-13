@@ -9,7 +9,7 @@
 #'   Expected columns: `File`, `MetricID`, `Group`, `Abbreviation`, `Metric`,
 #'   `Numerator`, `Denominator`, `Model`, `Score`, and `Threshold`. For more
 #'   details see the
-#'   \href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}..
+#'   [Data Model article](https://gilead-biostats.github.io/gsm.core/articles/DataModel.html).
 #' @param dfResults `data.frame` A stacked summary of analysis pipeline output.
 #'   Created by passing a list of results returned by [Summarize()] to
 #'   [gsm.reporting::BindResults()]. Expected columns: `GroupID`, `GroupLevel`, `Numerator`,
@@ -32,7 +32,7 @@
 #'   turing it into a list. Expected columns: `File`,`MetricID`, `Group`,
 #'   `Abbreviation`, `Metric`, `Numerator`, `Denominator`, `Model`, `Score`, and
 #'   `strThreshold`. For more details see the
-#'   \href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}.
+#'   [Data Model article](https://gilead-biostats.github.io/gsm.core/articles/DataModel.html).
 #' @param lParamLabels `list` Labels for parameters, with the parameters as
 #'   names, and the label as value.
 #' @param bDebug `logical` Print debug messages? Default: `FALSE`.
