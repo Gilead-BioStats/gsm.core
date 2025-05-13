@@ -14,7 +14,7 @@ Analyze_Poisson_PredictBounds(
 \item{dfTransformed}{\code{data.frame} Transformed data for analysis. Data should
 have one record per site with expected columns: \code{GroupID}, \code{GroupLevel},
 \code{Numerator}, \code{Denominator}, and \code{Metric}. For more details see the Data
-Model vignette: \code{vignette("DataModel", package = "gsm.core")}. For this
+Model vignette: \href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}. For this
 function, \code{dfTransformed} should typically be created using
 \code{\link[=Transform_Rate]{Transform_Rate()}}.}
 

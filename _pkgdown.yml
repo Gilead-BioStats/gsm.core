@@ -23,10 +23,10 @@ navbar:
 articles:
   - title: Articles
     contents:
-      - Cookbook
-      - DataAnalysis
-      - DataModel
-      - gsmExtensions
+      - articles/Cookbook
+      - articles/DataAnalysis
+      - articles/DataModel
+      - articles/gsmExtensions
       - KRIMethod
       - ContributorGuidelines
 reference:
