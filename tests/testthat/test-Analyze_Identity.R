@@ -1,10 +1,12 @@
-expect_warning(
-  {dfTransformed <- Transform_Rate(analyticsInput)},
-  "value of 0 removed"
-)
-dfAnalyzed <- Analyze_Identity(dfTransformed)
-
 test_that("output created as expected and has correct structure", {
+  expect_warning(
+    {dfTransformed <- Transform_Rate(analyticsInput)},
+    "value of 0 removed"
+  )
+  expect_message(
+    {dfAnalyzed <- Analyze_Identity(dfTransformed)},
+    "`Score` column created from `Metric`"
+  )
   expect_true(is.data.frame(dfAnalyzed))
   expect_equal(names(dfAnalyzed), c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric", "Score"))
   expect_equal(dfAnalyzed$Metric, dfAnalyzed$Score)
@@ -20,11 +22,17 @@ test_that("incorrect inputs throw errors", {
 
 
 test_that("strValueCol works as intended", {
+  expect_warning(
+    {dfTransformed <- Transform_Rate(analyticsInput)},
+    "value of 0 removed"
+  )
   dfTransformed <- dfTransformed %>%
-    rename(customKRI = Metric)
+    rename(customKRI = "Metric")
 
-  dfAnalyzed <- Analyze_Identity(dfTransformed, strValueCol = "customKRI")
+  expect_message(
+    {dfAnalyzed <- Analyze_Identity(dfTransformed, strValueCol = "customKRI")},
+    "`Score` column created from `customKRI`"
+  )
 
-  # expect_silent(Analyze_Identity(dfTransformed, strValueCol = "customKRI"))
   expect_equal(names(dfAnalyzed), c("GroupID", "GroupLevel", "Numerator", "Denominator", "customKRI", "Score"))
 })

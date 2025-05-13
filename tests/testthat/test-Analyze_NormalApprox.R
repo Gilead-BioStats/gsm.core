@@ -1,5 +1,5 @@
 test_that("binary output created as expected and has correct structure", {
-  dfTransformed <- tibble::tibble(
+  dfTransformed <- dplyr::tibble(
     GroupID = c("166", "76", "86"),
     GroupLevel = c("site", "site", "site"),
     Numerator = c(0, 1, 0),
@@ -32,11 +32,11 @@ test_that("rate output created as expected and has correct structure", {
   expect_equal(names(rate), c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric", "OverallMetric", "Factor", "Score"))
   expect_type(rate$GroupID, "character")
   expect_type(c(rate$Numerator, rate$Denominator, rate$Metric, rate$OverallMetric, rate$Factor, rate$Score), "double")
-  expect_true(all(stringr::str_detect(rate$GroupID[1:5], "0X")))
+  expect_true(all(grepl("0X", rate$GroupID[1:5])))
 })
 
 test_that("incorrect inputs throw errors", {
-  dfTransformed <- tibble::tibble(
+  dfTransformed <- dplyr::tibble(
     GroupID = c("166", "76", "86"),
     GroupLevel = c("site", "site", "site"),
     Numerator = c(0, 1, 0),
@@ -50,7 +50,7 @@ test_that("incorrect inputs throw errors", {
 })
 
 test_that("error given if required column not found", {
-  dfTransformed <- tibble::tibble(
+  dfTransformed <- dplyr::tibble(
     GroupID = c("166", "76", "86"),
     GroupLevel = c("site", "site", "site"),
     Numerator = c(0, 1, 0),
@@ -64,7 +64,7 @@ test_that("error given if required column not found", {
 })
 
 test_that("NAs are handled correctly", {
-  dfTransformed <- tibble::tibble(
+  dfTransformed <- dplyr::tibble(
     GroupID = c("166", "76", "86"),
     GroupLevel = c("site", "site", "site"),
     Numerator = c(0, 1, 0),
@@ -79,7 +79,7 @@ test_that("NAs are handled correctly", {
 })
 
 test_that("Score (z_i) is 0 when vMu is 1 or 0", {
-  dfTransformed <- tibble::tibble(
+  dfTransformed <- dplyr::tibble(
     GroupID = c("166", "76", "86"),
     GroupLevel = c("site", "site", "site"),
     Numerator = c(0, 1, 0),

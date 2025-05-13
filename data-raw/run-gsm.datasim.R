@@ -21,4 +21,4 @@ basic_sim <- gsm.datasim::generate_rawdata_for_single_study(
 )
 
 lSource <- basic_sim[[1]]
-usethis::use_data(lSource, overwrite = TRUE)
+usethis::use_data(lSource, overwrite = TRUE, compress = "bbzip2")

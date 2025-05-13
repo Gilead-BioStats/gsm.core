@@ -10,7 +10,7 @@ Analyze_Fisher(dfTransformed, strOutcome = "Numerator")
 \item{dfTransformed}{\code{data.frame} Transformed data for analysis. Data should
 have one record per site with expected columns: \code{GroupID}, \code{GroupLevel},
 \code{Numerator}, \code{Denominator}, and \code{Metric}. For more details see the
-\href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model Vignette}.
+\href{https://gilead-biostats.github.io/gsm.core/articles/DataModel.html}{Data Model article}.
 For this function, \code{dfTransformed} should typically be created using
 \code{\link[=Transform_Rate]{Transform_Rate()}}.}
 
@@ -46,9 +46,10 @@ choice.
 }
 
 \examples{
+\dontshow{if (rlang::is_installed("broom")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 dfTransformed <- Transform_Rate(
   analyticsInput[1:20, ]
 )
 dfAnalyzed <- Analyze_Fisher(dfTransformed)
-
+\dontshow{\}) # examplesIf}
 }

@@ -18,14 +18,14 @@ quiet_Analyze_NormalApprox <- function(...) {
   })
 }
 
-quiet_Analyze_NormalApprox_PredictBounds <- function(
-  ...,
-  msg_classes = c("default_nStep", "default_vThreshold")
-) {
-  suppressMessages(
-    {
-      Analyze_NormalApprox_PredictBounds(...)
-    },
-    classes = glue::glue("gsm_msg-{msg_classes}")
-  )
+quiet_Analyze_NormalApprox_PredictBounds <- function(...) {
+  suppressMessages({
+    Analyze_NormalApprox_PredictBounds(...)
+  })
+}
+
+quiet_Analyze_Poisson_PredictBounds <- function(...) {
+  suppressMessages({
+    Analyze_Poisson_PredictBounds(...)
+  })
 }

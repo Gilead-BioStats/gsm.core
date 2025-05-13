@@ -3,7 +3,10 @@ test_that("output created as expected and has correct structure", {
     {ae_prep <- Transform_Rate(analyticsInput)},
     "value of 0 removed"
   )
-  ae_anly <- Analyze_Poisson(ae_prep)
+  expect_message(
+    {ae_anly <- Analyze_Poisson(ae_prep)},
+    "Fitting log-linked Poisson generalized linear model"
+  )
   expect_true(is.data.frame(ae_anly))
   expect_equal(sort(unique(analyticsInput$GroupID[which(analyticsInput$Denominator != 0)])), sort(ae_anly$GroupID))
   expect_equal(names(ae_anly), c("GroupID", "GroupLevel", "Numerator", "Denominator", "Metric", "Score", "PredictedCount"))
@@ -13,7 +16,6 @@ test_that("incorrect inputs throw errors", {
   expect_error(Analyze_Poisson(list()))
   expect_error(Analyze_Poisson("Hi"))
 })
-
 
 test_that("error given if required column not found", {
   expect_warning(

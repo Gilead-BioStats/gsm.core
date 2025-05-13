@@ -9,16 +9,18 @@ Summarize(dfFlagged, nMinDenominator = lifecycle::deprecated())
 \arguments{
 \item{dfFlagged}{data.frame in format produced by \code{\link[=Flag]{Flag()}}.}
 
-\item{nMinDenominator}{\code{numeric} Specifies the minimum denominator required to return a \code{score} and calculate a \code{flag}. Default: NULL}
+\item{nMinDenominator}{\code{numeric} Specifies the minimum denominator required
+to return a \code{score} and calculate a \code{flag}. Default: NULL}
 }
 \value{
-Simplified finding data.frame with columns for GroupID, GroupType, Metric, Score, Flag
-when associated with a workflow.
+Simplified finding data.frame with columns for GroupID, GroupType,
+Metric, Score, Flag when associated with a workflow.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 
-Create a concise summary of assessment results that is easy to aggregate across assessments
+Create a concise summary of assessment results that is easy to aggregate
+across assessments
 }
 \details{
 \code{Summarize} supports the input data (\code{dfFlagged}) from the \code{Flag} function.

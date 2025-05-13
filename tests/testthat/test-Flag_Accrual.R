@@ -7,12 +7,39 @@ test_that("Function correctly applies accrual threshold", {
     Flag = c(-2, -1, 0, 0, 0, 1, 2)
   )
 
-  result_d <- Flag_Accrual(dfFlagged, nAccrualThreshold = 10, strAccrualMetric = "Denominator")
+  expect_message(
+    {
+      result_d <- Flag_Accrual(
+        dfFlagged,
+        nAccrualThreshold = 10,
+        strAccrualMetric = "Denominator"
+      )
+    },
+    "have insufficient sample size due to KRI denominator less than 10"
+  )
   expect_true(all(is.na(result_d$Flag[which(result_d$Denominator < 10)])))
 
-  result_n <- Flag_Accrual(dfFlagged, nAccrualThreshold = 5, strAccrualMetric = "Numerator")
+  expect_message(
+    {
+      result_n <- Flag_Accrual(
+        dfFlagged,
+        nAccrualThreshold = 5,
+        strAccrualMetric = "Numerator"
+      )
+    },
+    "have insufficient sample size due to KRI denominator less than 5"
+  )
   expect_true(all(is.na(result_n$Flag[which(result_n$Numerator < 5)])))
 
-  result_diff <- Flag_Accrual(dfFlagged, nAccrualThreshold = 4, strAccrualMetric = "Difference")
+  expect_message(
+    {
+      result_diff <- Flag_Accrual(
+        dfFlagged,
+        nAccrualThreshold = 4,
+        strAccrualMetric = "Difference"
+      )
+    },
+    "have insufficient sample size due to KRI denominator less than 4"
+  )
   expect_true(all(is.na(result_diff$Flag[which((result_diff$Denominator - result_diff$Numerator) < 4)])))
 })
