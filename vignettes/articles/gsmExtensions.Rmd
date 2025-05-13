@@ -17,9 +17,9 @@ knitr::opts_chunk$set(
 
 # Overview
 
-This vignette describes how to extend `{gsm.core}` by creating new "modules", including metrics, reports and shiny apps that can be run using the standard `gsm` pipeline described in these articles: [Data Analysis](https://gilead-biostats.github.io/gsm.core/articles/DataAnalysis.html) and  [DataReporting](https://gilead-biostats.github.io/gsm.reporting/articles/DataReporting.html). As shown in the [Data Analysis article](https://gilead-biostats.github.io/gsm.core/articles/DataAnalysis.html), the existing `gsm` data pipeline can be used to capture a monitoring 'snapshot' for a study that includes a variety of "modules" including [metrics](https://github.com/Gilead-BioStats/gsm.mapping/tree/dev/inst/workflow/metrics/kri0001.yaml) and [reports](https://github.com/Gilead-BioStats/gsm.kri/blob/dev/inst/workflow/reports/report_kri_site.yaml). 
+This article describes how to extend `{gsm.core}` by creating new "modules", including metrics, reports and shiny apps that can be run using the standard `gsm` pipeline described in these articles: [Data Analysis](https://gilead-biostats.github.io/gsm.core/articles/DataAnalysis.html) and  [DataReporting](https://gilead-biostats.github.io/gsm.reporting/articles/DataReporting.html). As shown in the [Data Analysis article](https://gilead-biostats.github.io/gsm.core/articles/DataAnalysis.html), the existing `gsm` data pipeline can be used to capture a monitoring 'snapshot' for a study that includes a variety of "modules" including [metrics](https://github.com/Gilead-BioStats/gsm.mapping/tree/dev/inst/workflow/metrics/kri0001.yaml) and [reports](https://github.com/Gilead-BioStats/gsm.kri/blob/dev/inst/workflow/reports/report_kri_site.yaml). 
 
-This vignette provide detailed specifications for creating new modules, a description of the directory structure for the yaml workflows that comprise a module pipeline, and links to resources that can be used to configure study-level gsm pipelines that utilize these extensions.
+This article provides detailed specifications for creating new modules, a description of the directory structure for the yaml workflows that comprise a module pipeline, and links to resources that can be used to configure study-level gsm pipelines that utilize these extensions.
 
 # Module Configuration
 
@@ -326,7 +326,7 @@ steps:
 
 ### `/2_metrics`
 
-The metrics directory contains all of the workflows that perform analysis steps, converting mapped data into metrics that are displayed in a report. In the case of `{gsm.kri}`, these metrics are the 12 Key Risk Indicators, calculated at both the site- and country-level, that are discussed in the Data Analysis Step-by-Step Vignette. Each yaml in this file produces a list of analysis data tables that capture the formatted input table, the transformed table, the flagged table, and the summary table. In general, these yamls should at least provide a summary table that contains statistics about the metric at the specified level of aggregation.
+The metrics directory contains all of the workflows that perform analysis steps, converting mapped data into metrics that are displayed in a report. In the case of `{gsm.kri}`, these metrics are the 12 Key Risk Indicators, calculated at both the site- and country-level, that are discussed in the Data Analysis Step-by-Step article. Each yaml in this file produces a list of analysis data tables that capture the formatted input table, the transformed table, the flagged table, and the summary table. In general, these yamls should at least provide a summary table that contains statistics about the metric at the specified level of aggregation.
 
 Examples of these yamls can be found above in the `Module Configuration` section, as well as in the [Data Analysis article](https://gilead-biostats.github.io/gsm.core/articles/DataAnalysis.html).
 
