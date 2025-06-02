@@ -36,6 +36,8 @@ Default is \code{TRUE}.}
 Object containing the results of the workflow's last step (if
 \code{bLastResult} is \code{TRUE}) or the full workflow object (if \code{bReturnResults}
 is \code{TRUE}) or the full workflow object (if \code{bReturnResults} is \code{FALSE}).
+
+\code{list} contains just lData if \code{bReturnData} is \code{TRUE}, otherwise returns the full \code{lWorkflow} object.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
@@ -72,5 +74,4 @@ lMetricOutput <- RunWorkflow(
   lMetricWorkflow,
   lMappedData
 )
-
 }

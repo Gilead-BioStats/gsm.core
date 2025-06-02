@@ -51,6 +51,7 @@
 #'   lMetricWorkflow,
 #'   lMappedData
 #' )
+#' @return `list` contains just lData if `bReturnData` is `TRUE`, otherwise returns the full `lWorkflow` object.
 #'
 #' @export
 

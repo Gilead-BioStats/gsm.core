@@ -59,7 +59,6 @@ reference:
      -  CheckSpec
      -  GetStrFunctionIfNamespaced
      -  LogMessage
-     -  MakeWideGroups
      -  MakeWorkflowList
      -  ParseThreshold
      -  RunStep
