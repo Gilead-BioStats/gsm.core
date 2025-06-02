@@ -84,7 +84,8 @@ test_that("RunQuery applies schema appropriately", {
     Age = c(25, 30, 35),
     Salary = c(50000, 60000, "70000"),
     Birthday = c("1990-01-01", "1987-02-02", "1985-03-03"),
-    Birthtime = c("1990-01-01 06:47:00", "1987-02-02T08:15:34", "1985-03-03")
+    Birthtime = c("1990-01-01 06:47:00", "1987-02-02T08:15:34", "1985-03-03"),
+    Tenured = c(FALSE, TRUE, TRUE)
   )
   lColumnMapping <- list(
     Name = list(
@@ -102,10 +103,14 @@ test_that("RunQuery applies schema appropriately", {
     ),
     Birthtime = list(
       type = "timestamp"
+    ),
+    Tenured = list(
+      type = "logical"
     )
   )
 
-  query <- "SELECT Name, Age, Salary, Birthday AS Birthdate, Birthtime FROM df WHERE Age >= 30"
+  # Define the query and mapping
+  query <- "SELECT Name, Age, Salary, Birthday AS Birthdate, Birthtime, Tenured FROM df WHERE Age >= 30"
 
   expect_no_error({
     suppressMessages({
@@ -122,6 +127,7 @@ test_that("RunQuery applies schema appropriately", {
   expect_equal(class(result$Salary), "integer")
   expect_equal(class(result$Age), "integer")
   expect_equal(class(result$Name), "character")
+  expect_equal(class(result$Tenured), "logical")
 })
 
 test_that("RunQuery applies incomplete schema appropriately", {
