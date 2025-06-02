@@ -93,6 +93,7 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
             integer = "INTEGER",
             character = "VARCHAR",
             timestamp = "DATETIME",
+            logical = "BOOLEAN",
             "VARCHAR"
           )
           glue("{mapping$source} {type}")
