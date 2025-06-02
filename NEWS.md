@@ -1,6 +1,6 @@
 # gsm.core v1.1.1
 
-This patch release fixes a few CLI messages from RunStep(), adds a new "timestamp" `type` to mapping specs, and addresses erroneous warning messages in the testing suite. It also prepares the package for CRAN release 
+This patch release fixes a few CLI messages from RunStep(), adds new "timestamp" and "logical" `types` to mapping specs, and addresses erroneous warning messages in the testing suite. It also prepares the package for CRAN release 
 
 
 # gsm.core v1.1.0
