@@ -26,7 +26,7 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: |
-            any::pkgdown
+            cran::pkgdown
             github::Gilead-BioStats/gsm.kri@main
             any::devtools
           needs: website
