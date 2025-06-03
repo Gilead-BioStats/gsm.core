@@ -54,11 +54,6 @@ all_reportingGroups <- reporting[[snap]]$Reporting_Groups
 all_reportingBounds <- do.call(bind_rows, lapply(reporting, function(x) x$Reporting_Bounds))
 all_reportingMetrics <- reporting[[snap]]$Reporting_Metrics
 
-#check that the sites from mapped$site match the sites in reporting$results
-#source_sites <- unique(basic_sim[[3]]$Raw_SITE$pi_number)
-#reporting_sites <- unique(all_reportingResults$GroupID)
-#table(source_sites %in% reporting_sites)
-
 #save site and country data separately
 lReporting_site <- list()
 lReporting_country <- list()
