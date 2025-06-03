@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">gsm.core</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.1</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Parameters used in multiple functions</h1>
-      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/gsm.core-v1.1.1-rc/R/aaa-shared.R" class="external-link"><code>R/aaa-shared.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Gilead-BioStats/gsm.core/blob/dev/R/aaa-shared.R" class="external-link"><code>R/aaa-shared.R</code></a></small>
       <div class="d-none name"><code>shared-params.Rd</code></div>
     </div>
 
@@ -48,11 +48,34 @@
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-dfbounds">dfBounds<a class="anchor" aria-label="anchor" href="#arg-dfbounds"></a></dt>
+<dl><dt id="arg-dfmetrics">dfMetrics<a class="anchor" aria-label="anchor" href="#arg-dfmetrics"></a></dt>
+<dd><p><code>data.frame</code> Metric-specific metadata for use in charts and
+reporting. Created by passing an <code>lWorkflow</code> object to <code>gsm.reporting::MakeMetric()</code>.
+Expected columns: <code>File</code>, <code>MetricID</code>, <code>Group</code>, <code>Abbreviation</code>, <code>Metric</code>,
+<code>Numerator</code>, <code>Denominator</code>, <code>Model</code>, <code>Score</code>, and <code>Threshold</code>. For more
+details see the Data Model vignette: <code><a href="../articles/DataModel.html">vignette("DataModel", package = "gsm.core")</a></code>.</p></dd>
+
+
+<dt id="arg-dfresults">dfResults<a class="anchor" aria-label="anchor" href="#arg-dfresults"></a></dt>
+<dd><p><code>data.frame</code> A stacked summary of analysis pipeline output.
+Created by passing a list of results returned by <code><a href="Summarize.html">Summarize()</a></code> to
+<code>gsm.reporting::BindResults()</code>. Expected columns: <code>GroupID</code>, <code>GroupLevel</code>, <code>Numerator</code>,
+<code>Denominator</code>, <code>Metric</code>, <code>Score</code>, <code>Flag</code>, <code>MetricID</code>, <code>StudyID</code>,
+<code>SnapshotDate</code>.</p></dd>
+
+
+<dt id="arg-dfbounds">dfBounds<a class="anchor" aria-label="anchor" href="#arg-dfbounds"></a></dt>
 <dd><p><code>data.frame</code> Set of predicted percentages/rates and upper-
 and lower-bounds across the full range of sample sizes/total exposure
-values for reporting. Expected columns: <code>Threshold</code>, <code>Denominator</code>,
-<code>Numerator</code>, <code>Metric</code>, <code>MetricID</code>, <code>StudyID</code>, <code>SnapshotDate</code>.</p></dd>
+values for reporting. Created by passing <code>dfResults</code> and <code>dfMetrics</code> to
+<code>gsm.reporting::MakeBounds()</code>. Expected columns: <code>Threshold</code>, <code>Denominator</code>, <code>Numerator</code>,
+<code>Metric</code>, <code>MetricID</code>, <code>StudyID</code>, <code>SnapshotDate</code>.</p></dd>
+
+
+<dt id="arg-dfgroups">dfGroups<a class="anchor" aria-label="anchor" href="#arg-dfgroups"></a></dt>
+<dd><p><code>data.frame</code> Group-level metadata dictionary. Created by
+passing CTMS site and study data to <code>gsm.mapping::MakeLongMeta()</code>. Expected columns:
+<code>GroupID</code>, <code>GroupLevel</code>, <code>Param</code>, <code>Value</code>.</p></dd>
 
 
 <dt id="arg-dfinput">dfInput<a class="anchor" aria-label="anchor" href="#arg-dfinput"></a></dt>
@@ -60,6 +83,15 @@ values for reporting. Expected columns: <code>Threshold</code>, <code>Denominato
 by passing Raw+ data into <code><a href="Input_Rate.html">Input_Rate()</a></code>. Expected columns: <code>GroupID</code>,
 <code>GroupLevel</code>, <code>Numerator</code>, <code>Denominator</code> and/or columns specified in
 <code>strCountCol</code> and <code>strGroupCol</code>.</p></dd>
+
+
+<dt id="arg-lmetric">lMetric<a class="anchor" aria-label="anchor" href="#arg-lmetric"></a></dt>
+<dd><p><code>list</code> Metric-specific metadata for use in charts and
+reporting. Created by passing an <code>lWorkflow</code> object to <code>gsm.reporting::MakeMetric()</code> and
+turing it into a list. Expected columns: <code>File</code>,<code>MetricID</code>, <code>Group</code>,
+<code>Abbreviation</code>, <code>Metric</code>, <code>Numerator</code>, <code>Denominator</code>, <code>Model</code>, <code>Score</code>, and
+<code>strThreshold</code>. For more details see the Data Model vignette:
+<code><a href="../articles/DataModel.html">vignette("DataModel", package = "gsm.core")</a></code>.</p></dd>
 
 
 <dt id="arg-lparamlabels">lParamLabels<a class="anchor" aria-label="anchor" href="#arg-lparamlabels"></a></dt>
