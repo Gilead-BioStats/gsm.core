@@ -1,8 +1,5 @@
 test_that("output created as expected and has correct structure", {
-  expect_warning(
-    {ae_prep <- Transform_Rate(analyticsInput)},
-    "value of 0 removed"
-  )
+  ae_prep <- Transform_Rate(analyticsInput)
   ae_anly <- Analyze_Poisson(ae_prep)
   expect_true(is.data.frame(ae_anly))
   expect_equal(sort(unique(analyticsInput$GroupID[which(analyticsInput$Denominator != 0)])), sort(ae_anly$GroupID))
@@ -16,10 +13,8 @@ test_that("incorrect inputs throw errors", {
 
 
 test_that("error given if required column not found", {
-  expect_warning(
-    {ae_prep <- Transform_Rate(analyticsInput)},
-    "value of 0 removed"
-  )
+  ae_prep <- Transform_Rate(analyticsInput)
+
   expect_error(Analyze_Poisson(ae_prep %>% select(-GroupID)))
   expect_error(Analyze_Poisson(ae_prep %>% select(-N)))
   expect_error(Analyze_Poisson(ae_prep %>% select(-Numerator)))
@@ -29,11 +24,8 @@ test_that("error given if required column not found", {
 
 test_that("NA values are caught", {
   createNA <- function(x) {
-    expect_warning(
-      {df <- analyticsInput %>%
-      Transform_Rate()},
-      "value of 0 removed"
-    )
+    df <- analyticsInput %>%
+      Transform_Rate()
 
     df[[x]][1] <- NA
 
