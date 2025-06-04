@@ -26,10 +26,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: |
-            any::pkgdown
-            github::Gilead-BioStats/gsm.kri@main
-            any::devtools
+          extra-packages: github::Gilead-BioStats/gsm.kri@main
           needs: website
 
       - name: Generate sample reports
