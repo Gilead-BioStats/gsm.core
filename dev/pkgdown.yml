@@ -3,12 +3,12 @@ pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   ContributorGuidelines: ContributorGuidelines.html
-  Cookbook: Cookbook.html
-  DataAnalysis: DataAnalysis.html
-  DataModel: DataModel.html
-  gsmExtensions: gsmExtensions.html
+  articles/Cookbook: Cookbook.html
+  articles/DataAnalysis: DataAnalysis.html
+  articles/DataModel: DataModel.html
+  articles/gsmExtensions: gsmExtensions.html
   KRIMethod: KRIMethod.html
-last_built: 2025-06-04T16:39Z
+last_built: 2025-06-04T17:53Z
 urls:
   reference: https://gilead-biostats.github.io/gsm.core/reference
   article: https://gilead-biostats.github.io/gsm.core/articles
