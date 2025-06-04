@@ -5,7 +5,9 @@ test_that("output created as expected and has correct structure", {
   dfTransformed <- Transform_Rate(analyticsInput)
 
   expect_message(
-    {dfAnalyzed <- Analyze_Identity(dfTransformed)},
+    {
+      dfAnalyzed <- Analyze_Identity(dfTransformed)
+    },
     "`Score` column created from `Metric`"
   )
   expect_true(is.data.frame(dfAnalyzed))
@@ -28,7 +30,9 @@ test_that("strValueCol works as intended", {
     rename(customKRI = "Metric")
 
   expect_message(
-    {dfAnalyzed <- Analyze_Identity(dfTransformed, strValueCol = "customKRI")},
+    {
+      dfAnalyzed <- Analyze_Identity(dfTransformed, strValueCol = "customKRI")
+    },
     "`Score` column created from `customKRI`"
   )
 

@@ -10,7 +10,9 @@ test_that("Flag function works correctly with z-score data", {
 
   # sorted
   expect_message(
-    {dfFlagged <- Flag(dfAnalyzed)},
+    {
+      dfFlagged <- Flag(dfAnalyzed)
+    },
     "Sorted dfFlagged using custom Flag order"
   )
   expect_equal(dfFlagged$Flag, c(2, 2, -2, -2, 1, 1, -1, -1, -1, 0, 0, 0))
@@ -67,7 +69,9 @@ test_that("Flag function works correctly with poisson data", {
   )
 
   expect_message(
-    {dfFlagged <- Flag_Poisson(dfAnalyzedCustom, vThreshold = c(-10, -5, 5, 10))},
+    {
+      dfFlagged <- Flag_Poisson(dfAnalyzedCustom, vThreshold = c(-10, -5, 5, 10))
+    },
     "Sorted dfFlagged using custom Flag order"
   )
   expect_equal(dfFlagged$Flag, c(2, -2, 1, -1))

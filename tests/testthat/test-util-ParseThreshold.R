@@ -1,7 +1,9 @@
 # Test Case 1 - Valid Input
 test_that("ParseThreshold with valid input returns sorted numeric vector", {
   expect_message(
-    {test_result <- ParseThreshold("3,1,4,2")},
+    {
+      test_result <- ParseThreshold("3,1,4,2")
+    },
     "to numeric vector"
   )
   expect_equal(test_result, c(1, 2, 3, 4))
@@ -26,7 +28,9 @@ test_that("ParseThreshold with empty string returns NULL", {
 # Test Case 4 - Single Value
 test_that("ParseThreshold with single value returns numeric vector with one element", {
   expect_message(
-    {test_result <- ParseThreshold("42")},
+    {
+      test_result <- ParseThreshold("42")
+    },
     "Parsed 42 to numeric vector"
   )
   expect_equal(test_result, c(42))
@@ -34,12 +38,16 @@ test_that("ParseThreshold with single value returns numeric vector with one elem
 
 # Test Case 5 - Negative Values
 test_that("ParseThreshold with negative values returns sorted numeric vector", {
-  expect_equal(suppressMessages({ParseThreshold("-3,-1,-4,-2")}), c(-4, -3, -2, -1))
+  expect_equal(suppressMessages({
+    ParseThreshold("-3,-1,-4,-2")
+  }), c(-4, -3, -2, -1))
 })
 
 # Test Case 6 - Floating Point Numbers
 test_that("ParseThreshold with floating point numbers returns sorted numeric vector", {
-  expect_equal(suppressMessages({ParseThreshold("3.5,1.2,4.8,2.3")}), c(1.2, 2.3, 3.5, 4.8))
+  expect_equal(suppressMessages({
+    ParseThreshold("3.5,1.2,4.8,2.3")
+  }), c(1.2, 2.3, 3.5, 4.8))
 })
 
 # Test Case 7 - Mixed Valid and Invalid Input

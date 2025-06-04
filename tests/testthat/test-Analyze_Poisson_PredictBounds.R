@@ -7,7 +7,9 @@ test_that("Analyze_Poisson_PredictBounds handles missing vThreshold correctly", 
 
   expect_message(
     expect_message(
-      {dfBounds <- Analyze_Poisson_PredictBounds(dfTransformed, vThreshold = NULL)},
+      {
+        dfBounds <- Analyze_Poisson_PredictBounds(dfTransformed, vThreshold = NULL)
+      },
       "vThreshold was not provided"
     ),
     "nStep was not provided"

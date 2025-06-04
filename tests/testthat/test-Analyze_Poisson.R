@@ -1,7 +1,9 @@
 test_that("output created as expected and has correct structure", {
   ae_prep <- Transform_Rate(analyticsInput)
   expect_message(
-    {ae_anly <- Analyze_Poisson(ae_prep)},
+    {
+      ae_anly <- Analyze_Poisson(ae_prep)
+    },
     "Fitting log-linked Poisson generalized linear model"
   )
   expect_true(is.data.frame(ae_anly))
@@ -32,7 +34,7 @@ test_that("NA values are caught", {
     df[[x]][1] <- NA
 
     Analyze_Poisson(df)
-    }
+  }
 
   expect_error(createNA("GroupID"))
 })

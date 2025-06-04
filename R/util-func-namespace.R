@@ -10,7 +10,7 @@
 #' @export
 #' @examples
 #' fn <- GetStrFunctionIfNamespaced("dplyr::glimpse")
-#' fn(Theoph[1:6,])
+#' fn(Theoph[1:6, ])
 GetStrFunctionIfNamespaced <- function(strFunction) {
   fn_pieces <- strsplit(strFunction, "::")[[1]]
   if (length(fn_pieces) > 2) {

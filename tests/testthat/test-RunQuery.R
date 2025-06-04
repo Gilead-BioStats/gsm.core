@@ -10,7 +10,9 @@ test_that("RunQuery returns correct result", {
   expect_message(
     expect_message(
       expect_message(
-        {result <- RunQuery(query, df)},
+        {
+          result <- RunQuery(query, df)
+        },
         "Creating a new temporary DuckDB connection"
       ),
       "SQL Query complete"
