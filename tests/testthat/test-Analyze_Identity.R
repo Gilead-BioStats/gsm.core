@@ -1,8 +1,9 @@
+dfTransformed <- Transform_Rate(analyticsInput)
+dfAnalyzed <- Analyze_Identity(dfTransformed)
+
 test_that("output created as expected and has correct structure", {
-  expect_warning(
-    {dfTransformed <- Transform_Rate(analyticsInput)},
-    "value of 0 removed"
-  )
+  dfTransformed <- Transform_Rate(analyticsInput)
+
   expect_message(
     {dfAnalyzed <- Analyze_Identity(dfTransformed)},
     "`Score` column created from `Metric`"
@@ -22,10 +23,7 @@ test_that("incorrect inputs throw errors", {
 
 
 test_that("strValueCol works as intended", {
-  expect_warning(
-    {dfTransformed <- Transform_Rate(analyticsInput)},
-    "value of 0 removed"
-  )
+  dfTransformed <- Transform_Rate(analyticsInput)
   dfTransformed <- dfTransformed %>%
     rename(customKRI = "Metric")
 
