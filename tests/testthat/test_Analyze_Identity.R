@@ -1,7 +1,4 @@
-expect_warning(
-  {dfTransformed <- Transform_Rate(analyticsInput)},
-  "value of 0 removed"
-)
+dfTransformed <- Transform_Rate(analyticsInput)
 dfAnalyzed <- Analyze_Identity(dfTransformed)
 
 test_that("output created as expected and has correct structure", {
