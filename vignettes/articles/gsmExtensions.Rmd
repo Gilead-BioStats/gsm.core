@@ -17,9 +17,9 @@ knitr::opts_chunk$set(
 
 # Overview
 
-This vignette describes how to extend `{gsm.core}` by creating new "modules", including metrics, reports and shiny apps that can be run using the standard `gsm` pipeline described in these vignettes (`vignette("DataAnalysis")`, and  [DataReporting](https://gilead-biostats.github.io/gsm.reporting/articles/DataReporting.html). As shown in the `vignette("DataAnalysis")`, the existing `gsm` data pipeline can be used to capture a monitoring 'snapshot' for a study that includes a variety of "modules" including [metrics](https://github.com/Gilead-BioStats/gsm.mapping/tree/dev/inst/workflow/metrics/kri0001.yaml) and [reports](https://github.com/Gilead-BioStats/gsm.kri/blob/dev/inst/workflow/reports/report_kri_site.yaml). 
+This article describes how to extend `{gsm.core}` by creating new "modules", including metrics, reports and shiny apps that can be run using the standard `gsm` pipeline described in these articles: [Data Analysis](https://gilead-biostats.github.io/gsm.core/articles/DataAnalysis.html) and  [DataReporting](https://gilead-biostats.github.io/gsm.reporting/articles/DataReporting.html). As shown in the [Data Analysis article](https://gilead-biostats.github.io/gsm.core/articles/DataAnalysis.html), the existing `gsm` data pipeline can be used to capture a monitoring 'snapshot' for a study that includes a variety of "modules" including [metrics](https://github.com/Gilead-BioStats/gsm.mapping/tree/dev/inst/workflow/metrics/kri0001.yaml) and [reports](https://github.com/Gilead-BioStats/gsm.kri/blob/dev/inst/workflow/reports/report_kri_site.yaml). 
 
-This vignette provide detailed specifications for creating new modules, a description of the directory structure for the yaml workflows that comprise a module pipeline, and links to resources that can be used to configure study-level gsm pipelines that utilize these extensions.
+This article provides detailed specifications for creating new modules, a description of the directory structure for the yaml workflows that comprise a module pipeline, and links to resources that can be used to configure study-level gsm pipelines that utilize these extensions.
 
 # Module Configuration
 
@@ -35,7 +35,7 @@ Detailed specifications for each of these sections are provided below.
 
 Here are links to several sample module configuration files:
 
-- [12 Standard gsm KRIs](https://github.com/Gilead-BioStats/gsm.kri/tree/dev/inst/workflow/2_metrics) (e.g. [Adverse Event KRI Metric](https://github.com/Gilead-BioStats/gsm.kri/tree/dev/inst/workflow/2_metrics/kri0001.yaml))
+- [13 Standard gsm KRIs](https://github.com/Gilead-BioStats/gsm.kri/tree/dev/inst/workflow/2_metrics) (e.g. [Adverse Event KRI Metric](https://github.com/Gilead-BioStats/gsm.kri/tree/dev/inst/workflow/2_metrics/kri0001.yaml))
 - [Site-](https://github.com/Gilead-BioStats/gsm.kri/blob/dev/inst/workflow/4_modules/report_kri_site.yaml) and [Country-level KRI Report](https://github.com/Gilead-BioStats/gsm.kri/blob/dev/inst/workflow/4_modules/report_kri_country.yaml)
 
 ## `meta` Specification
@@ -70,7 +70,10 @@ Additional `meta` header required fields for `{gsm.kri}` **metrics**:
 - `AnalysisType`: The analysis type. Common values: `rate`, `binary`
 - `Model`: The model used to calculate the metric. Common values: `Normal Approximation`, `Exact`, `Bayesian`.
 - `Score`: The score used to calculate the metric. Common values: `Z-Score`, `Adjusted Z-Score`, `P-Value`.
-- `Threshold`: The thresholds needed to flag.
+- `Threshold`: The thresholds to flag. Used in `gsm.core::Flag()`.
+- `Flag`: *optional* The numeric values assigned to each flag. Used in `gsm.core::Flag()`.
+- `AccrualThreshold`: The minimum threshold needed to apply a flag.
+- `AccrualMetric`: The metric on which to apply the minimum threshold needed to apply a flag. Accepted values: `Denominator`, `Numerator`, `Difference`.
 
 
 
@@ -93,7 +96,7 @@ A simple `meta` section for a report might look like this:
 
 ## `spec` Specification
 
-The `spec` section of the workflow YAML specifies the data requirements for the workflow, including the data tables that are required and the columns that are needed from each table. The `gsm` data pipeline is designed to be highly customizable, but for the purposes of this vignette, we will assume usage of the standard `gsm` data model described in `vignette("DataModel")`. For this standard use case, modules will pull primarily from the "Mapped" and "Reporting" data layers. 
+The `spec` section of the workflow YAML specifies the data requirements for the workflow, including the data tables that are required and the columns that are needed from each table. The `gsm` data pipeline is designed to be highly customizable, but for the purposes of this article, we will assume usage of the standard `gsm` data model described in the [Data Model article](https://gilead-biostats.github.io/gsm.core/articles/DataModel.html). For this standard use case, modules will pull primarily from the "Mapped" and "Reporting" data layers. 
 
 The `spec` section of the workflow YAML is formatted as a list of data tables, with each table containing a list of columns. Finally, each column contains the following parameters:
 
@@ -323,15 +326,15 @@ steps:
 
 ### `/2_metrics`
 
-The metrics directory contains all of the workflows that perform analysis steps, converting mapped data into metrics that are displayed in a report. In the case of `{gsm.kri}`, these metrics are the 12 Key Risk Indicators, calculated at both the site- and country-level, that are discussed in the Data Analysis Step-by-Step Vignette. Each yaml in this file produces a list of analysis data tables that capture the formatted input table, the transformed table, the flagged table, and the summary table. In general, these yamls should at least provide a summary table that contains statistics about the metric at the specified level of aggregation.
+The metrics directory contains all of the workflows that perform analysis steps, converting mapped data into metrics that are displayed in a report. In the case of `{gsm.kri}`, these metrics are the 12 Key Risk Indicators, calculated at both the site- and country-level, that are discussed in the Data Analysis Step-by-Step article. Each yaml in this file produces a list of analysis data tables that capture the formatted input table, the transformed table, the flagged table, and the summary table. In general, these yamls should at least provide a summary table that contains statistics about the metric at the specified level of aggregation.
 
-Examples of these yamls can be found above in the `Module Configuration` section, as well as in the (`vignette("DataAnalysis")`) vignette.
+Examples of these yamls can be found above in the `Module Configuration` section, as well as in the [Data Analysis article](https://gilead-biostats.github.io/gsm.core/articles/DataAnalysis.html).
 
 ### `/3_reporting`
 
 The reporting directory is intended to hold all of the workflows that produce the data that is required for the module outputs. This typically requires the stacking of analysis data from all of the relevant metrics into a single `results` data frame that can be surfaced in a report, or multiple reports. Additionally, any further information that must be taken from the analysis output, such as study/site/group/metric metadata and supporting statistics will be constructed through workflows in this folder.
 
-Examples of these yamls can be found above in the `Module Configuration` section, as well as in `vignette("DataReporting")`.
+Examples of these yamls can be found above in the `Module Configuration` section, as well as in the [Data Reporting article](https://gilead-biostats.github.io/gsm.reporting/articles/DataReporting.html).
 
 ### `/4_modules`
 

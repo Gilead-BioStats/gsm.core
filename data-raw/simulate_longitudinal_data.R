@@ -3,6 +3,7 @@ library(gsm.mapping)
 library(gsm.datasim)
 library(gsm.kri)
 library(dplyr)
+library(stringr)
 set.seed(1234)
 
 core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
@@ -23,37 +24,36 @@ basic_sim[[1]]$Raw_SITE$site_status <- "Active"
 basic_sim[[2]]$Raw_SITE$site_status <- "Active"
 basic_sim[[3]]$Raw_SITE$site_status <- "Active"
 
+## Run Data pipeline for each snapshot 
 analyzed <- list()
 reporting <- list()
 dates <- as.Date(c("2025-02-01", "2025-03-01", "2025-04-01"))
 for(snap in seq_along(basic_sim)){
   lSource <- basic_sim[[snap]]
 
-mappings_wf <- gsm.core::MakeWorkflowList(strNames = core_mappings, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
-mappings_spec <- gsm.mapping::CombineSpecs(mappings_wf)
-lRaw <- gsm.mapping::Ingest(lSource, mappings_spec)
+  mappings_wf <- gsm.core::MakeWorkflowList(strNames = core_mappings, strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
+  mappings_spec <- gsm.mapping::CombineSpecs(mappings_wf)
+  lRaw <- gsm.mapping::Ingest(lSource, mappings_spec)
 
-# Step 1 - Create Mapped Data Layer - filter, aggregate and join raw data to create mapped data layer
-mapped <- gsm.core::RunWorkflows(mappings_wf, lRaw)
+  # Step 1 - Create Mapped Data Layer - filter, aggregate and join raw data to create mapped data layer
+  mapped <- gsm.core::RunWorkflows(mappings_wf, lRaw)
 
-# Step 2 - Create Metrics - calculate metrics using mapped data
-metrics_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/2_metrics", strPackage = "gsm.kri")
-analyzed[[snap]] <- gsm.core::RunWorkflows(metrics_wf, mapped)
+  # Step 2 - Create Metrics - calculate metrics using mapped data
+  metrics_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/2_metrics", strPackage = "gsm.kri")
+  analyzed[[snap]] <- gsm.core::RunWorkflows(metrics_wf, mapped)
 
-# Step 3 - Create Reporting Layer - create reports using metrics data
-reporting_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/3_reporting", strPackage = "gsm.reporting")
-reporting[[snap]] <- gsm.core::RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed[[snap]],
-                                                                 lWorkflows = metrics_wf)))
-reporting[[snap]]$Reporting_Results$SnapshotDate = dates[snap]
-reporting[[snap]]$Reporting_Bounds$SnapshotDate = dates[snap]
+  # Step 3 - Create Reporting Layer - create reports using metrics data
+  reporting_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/3_reporting", strPackage = "gsm.reporting")
+  reporting[[snap]] <- gsm.core::RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed[[snap]],
+                                                                  lWorkflows = metrics_wf)))
+  reporting[[snap]]$Reporting_Results$SnapshotDate = dates[snap]
+  reporting[[snap]]$Reporting_Bounds$SnapshotDate = dates[snap]
 }
 
 all_reportingResults <- do.call(bind_rows, lapply(reporting, function(x) x$Reporting_Results))
 all_reportingGroups <- reporting[[snap]]$Reporting_Groups
 all_reportingBounds <- do.call(bind_rows, lapply(reporting, function(x) x$Reporting_Bounds))
 all_reportingMetrics <- reporting[[snap]]$Reporting_Metrics
-
-
 
 #save site and country data separately
 lReporting_site <- list()
@@ -83,8 +83,11 @@ lReports_site <- RunWorkflows(wf_report_site, lReporting_site)
 # wf_report_country <- MakeWorkflowList(strNames = "report_kri_country")
 # lReports_country <- RunWorkflows(wf_report_country, lReporting_country)
 
-# write CSVs
+# Output Raw data from last snapshot as gsm.core::lSource 
+lSource <- basic_sim[[3]]
+usethis::use_data(lSource, overwrite = TRUE)
 
+# write CSVs
 # analysis data
 ## site
 write.csv(file = "data-raw/analyticsSummary.csv",

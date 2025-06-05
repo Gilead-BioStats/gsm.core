@@ -30,12 +30,10 @@ The contents of `{gsm}` have been split out among 4 packages as follows:
 
 The `{gsm.core}` package lays the framework to perform risk assessments primarily focused on detecting differences in quality at the site-level. "High quality" is defined as the absence of errors that matter. We interpret this as focusing on detecting potential issues related to critical data or process across the major risk categories of safety, efficacy, disposition, treatment, and general quality, where each category consists of one or more risk assessment(s). Each risk assessment will analyze the data to flag sites with potential issues and provide a visualization to help the user understand the issue. Some relevant references are provided below. 
 
-- Centralized Statistical Monitoring: [1](https://documents.pub/reader/full/centralized-statistical-monitoring-to-detect-data-integrity-issues-statisticalcentralized), [2](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7308734/), [3](https://www.magiworld.org/Journal/2014/1411_Centralized.pdf).
-[4](https://pubmed.ncbi.nlm.nih.gov/38796099/)
-- EMA/FDA Guidance on Risk Based Management: [1](https://www.fda.gov/media/121479/download), [2](https://www.fda.gov/media/116754/download), [3](https://www.fda.gov/media/129527/download), [4](https://www.ema.europa.eu/en/documents/scientific-guideline/reflection-paper-risk-based-quality-management-clinical-trials_en.pdf)
-- Risk Based Quality Management: [1](https://www.acrohealth.org/wp-content/uploads/2019/10/CRO-Forum-RBQM-Oversight-Paper-FINAL-Oct-2019.pdf), [2](http://www.transceleratebiopharmainc.com/wp-content/uploads/2017/09/Risk-Based-Quality-Managment.pdf), [3](https://www.magiworld.org/Journal/2014/1411_Centralized.pdf)
-[4](https://pubmed.ncbi.nlm.nih.gov/38722529/)
-- Related tools: [1](https://cluepoints.com/), [2](https://www.saama.com/case-study/rbm-success-story/)
+- Centralized Statistical Monitoring: [1](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7308734/), [2](https://pubmed.ncbi.nlm.nih.gov/38796099/)
+- EMA/FDA Guidance on Risk Based Management: [1](https://www.fda.gov/media/121479/download), [2](https://www.fda.gov/media/116754/download), [3](https://www.fda.gov/media/157718/download), [4](https://www.ema.europa.eu/en/documents/scientific-guideline/reflection-paper-risk-based-quality-management-clinical-trials_en.pdf)
+- Risk Based Quality Management: [1](https://www.lexjansen.com/phuse-us/2024/ar/PAP_AR04.pdf), [2](http://www.transceleratebiopharmainc.com/wp-content/uploads/2017/09/Risk-Based-Quality-Managment.pdf), [3](https://pubmed.ncbi.nlm.nih.gov/38722529/)
+- Related tools: [1](https://cluepoints.com/)
 
 # Process Overview
 
@@ -63,7 +61,7 @@ All `{gsm.core}` assessments use a standardized 6 step data pipeline:
 5.  **Flag** - Uses `analyzed` data and numeric `thresholds` to create `flagged` data.
 6.  **Summarize** - Selects key columns from `flagged` data to create `summary` data.
 
-To learn more about `{gsm.core}`'s data pipeline, visit the [Data Pipeline Vignette](https://gilead-biostats.github.io/gsm.core/articles/DataModel.html).
+To learn more about `{gsm.core}`'s data pipeline, visit the [Data Pipeline article](https://gilead-biostats.github.io/gsm.core/articles/DataModel.html).
 
 # Reporting
 
@@ -86,13 +84,13 @@ Full reports for a sample trial run with [`{clindata}`](https://github.com/Gilea
 
 Since {gsm.core} is designed for use in a [GCP](https://en.wikipedia.org/wiki/Good_clinical_practice) framework, we have conducted extensive quality control as part of our development process. In particular, we do the following:  
 
-- **Qualification Workflow** - All assessments have been Qualified as described in the Qualification Workflow Vignette. A Qualification Report Vignette is generated and attached to each release. 
+- **Qualification Workflow** - All assessments have been Qualified as described in the Qualification Workflow article. A Qualification Report article is generated and attached to each release. 
 - **Unit Tests** - Unit tests are written for all core functions.
 - **Workflow Tests** - Additional unit tests confirm that core workflows behave as expected.
 - **Contributor Guidelines** - Detailed contributor guidelines including step-by-step processes for code development and releases are provided as a vignette.
-- **Data Model** - Vignettes providing detailed descriptions of the data model.
-- **Code Examples** - The Cookbook Vignette provides a series of simple examples, and all functions include examples as part of Roxygen documentation. 
-- **Code Review** - Code review is conducted using GitHub Pull Requests (PRs), and a log of all PRs is included in the Qualification Report Vignette.
+- **Data Model** - Article providing detailed descriptions of the data model.
+- **Code Examples** - The Cookbook article provides a series of simple examples, and all functions include examples as part of Roxygen documentation. 
+- **Code Review** - Code review is conducted using GitHub Pull Requests (PRs), and a log of all PRs is included in the Qualification Report article.
 - **Function Documentation** - Detailed documentation for each function is maintained with Roxygen.
 - **Package Checks** - Standard package checks are run using GitHub Actions and must be passing before PRs are merged.
 - **Data Specifications** - Machine-readable data specifications are maintained for all KRIs. Specifications are automatically added to relevant function documentation.

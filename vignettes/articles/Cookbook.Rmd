@@ -81,3 +81,12 @@ This example extends the previous examples to generate charts and reports for mu
 ```{r file = system.file("examples", "3_ReportingWorkflow.R", package = "gsm.core"), eval = FALSE, include = TRUE}
 
 ```
+
+# Example 4 - Reading and Writing from External Data Sources
+
+This example extends the previous examples to use data from an external source, by specifying `LoadData()` and `SaveData()` functions to be used in `RunWorkflows()` `lConfig` argument.
+
+
+```{r file = system.file("examples", "4_WorkflowIO.R", package = "gsm.core"), eval = FALSE, include = TRUE}
+
+```

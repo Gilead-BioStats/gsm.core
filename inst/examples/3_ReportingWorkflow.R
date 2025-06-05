@@ -4,7 +4,7 @@ library(gsm.kri)
 library(gsm.reporting)
 library(dplyr)
 
-#### 3.1 - Create a KRI Report using 12 standard metrics in a step-by-step workflow
+#### 3.1 - Create a KRI Report using 13 standard metrics in a step-by-step workflow
 
 core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB", "PK",
                    "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
@@ -55,8 +55,7 @@ analyzed <- gsm.core::RunWorkflows(metrics_wf, mapped)
 
 # Step 3 - Create Reporting Layer - create reports using metrics data
 reporting_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/3_reporting", strPackage = "gsm.reporting")
-reporting <- gsm.core::RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed,
-                                                       lWorkflows = metrics_wf)))
+reporting <- gsm.core::RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed, lWorkflows = metrics_wf)))
 
 # Step 4 - Create KRI Reports - create KRI report using reporting data
 module_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/4_modules", strPackage = "gsm.kri")
@@ -77,8 +76,7 @@ analyzed <- gsm.core::RunWorkflows(metrics_wf, mapped)
 
 # Step 3 - Create Reporting Layer - create reports using metrics data
 reporting_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/3_reporting", strPackage = "gsm.reporting")
-reporting <- gsm.core::RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed,
-                                                       lWorkflows = metrics_wf)))
+reporting <- gsm.core::RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed, lWorkflows = metrics_wf)))
 
 # Step 4 - Create KRI Report - create KRI report using reporting data
 module_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/4_modules", strPackage = "gsm.kri")
@@ -100,3 +98,12 @@ kri_report_path <- gsm.kri::Report_KRI(
   dfGroups =  gsm.core::reportingGroups,
   dfMetrics = gsm.core::reportingMetrics
 )
+
+#### 3.4 Reporting Results with Changes from previous snapshot
+
+# Prepare historical data
+historical <- gsm.core::reportingResults %>% filter(SnapshotDate == "2025-03-01")
+
+# Re-run reporting model and KRI report with historical data
+reporting_long <- gsm.core::RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed, Reporting_Results_Longitudinal = historical, lWorkflows = metrics_wf)))
+lReports_long <- gsm.core::RunWorkflows(module_wf, reporting_long)

@@ -15,8 +15,8 @@
 #'
 #' @param dfTransformed `data.frame` Transformed data for analysis. Data should
 #'   have one record per site with expected columns: `GroupID`, `GroupLevel`,
-#'   `Numerator`, `Denominator`, and `Metric`. For more details see the Data
-#'   Model vignette: `vignette("DataModel", package = "gsm.core")`. For this
+#'   `Numerator`, `Denominator`, and `Metric`. For more details see the [Data Model article](https://gilead-biostats.github.io/gsm.core/articles/DataModel.html).
+#'   For this
 #'   function, `dfTransformed` should typically be created using
 #'   [Transform_Rate()].
 #' @param vThreshold `numeric` upper and lower boundaries in residual space.
@@ -78,7 +78,7 @@ Analyze_Poisson_PredictBounds <- function(
   }
 
   # Fit GLM of number of events at each site predicted by total exposure.
-  cModel <- glm(
+  cModel <- stats::glm(
     Numerator ~ stats::offset(LogDenominator),
     family = poisson(link = "log"),
     data = dfTransformed

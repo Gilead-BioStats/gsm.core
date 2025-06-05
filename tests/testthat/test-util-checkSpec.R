@@ -90,13 +90,16 @@ test_that("Multiple missing columns are correctly reported", {
 
 test_that("Validate column type works", {
   lData <- list(reporting_results = gsm.core::reportingResults)
+  lData$reporting_results$SnapshotDateTime <- paste0(lData$reporting_results$SnapshotDate, "T01:01:01") %>%
+    as.POSIXct(format = "%Y-%m-%dT%H:%M:%S")
   lSpec <- list(
     reporting_results = list(
       GroupID = list(type = "character"),
       GroupLevel = list(type = "character"),
       Numerator = list(type = "integer"),
       Denominator = list(type = "integer"),
-      SnapshotDate = list(type = "Date")
+      SnapshotDate = list(type = "Date"),
+      SnapshotDateTime = list(type = "timestamp")
     )
   )
   expect_snapshot(CheckSpec(lData, lSpec))
@@ -107,7 +110,8 @@ test_that("Validate column type works", {
       GroupLevel = list(type = "character"),
       Numerator = list(type = "character"),
       Denominator = list(type = "integer"),
-      SnapshotDate = list(type = "Date")
+      SnapshotDate = list(type = "Date"),
+      SnapshotDateTime = list(type = "timestamp")
     )
   )
   expect_snapshot(CheckSpec(lData, lSpec))

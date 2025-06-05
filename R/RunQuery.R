@@ -17,7 +17,7 @@
 #'
 #' @return `data.frame` containing the results of the SQL query.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed(c("DBI", "dbplyr", "duckdb"))
 #' df <- data.frame(
 #'   Name = c("John", "Jane", "Bob"),
 #'   Age = c(25, 30, 35),
@@ -29,12 +29,10 @@
 #'
 #' @export
 RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
-  rlang::check_installed("duckdb")
-
   stop_if(cnd = !is.character(strQuery), message = "strQuery must be a query")
 
   # Check that strQuery contains "FROM df"
-  stop_if(cnd = !stringr::str_detect(strQuery, "FROM df"), message = "strQuery must contain 'FROM df'")
+  stop_if(cnd = !grepl("FROM df", strQuery), message = "strQuery must contain 'FROM df'")
 
   # Check that columnMapping exists if use_schema == TRUE
 
@@ -49,11 +47,12 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
       imap(function(spec, name) {
         mapping <- list(target = name)
 
-        # use `source_col` for `source` if using mapping and it hasn't gone through ApplySpec()
-        mapping$source <- spec$source %||% spec$source_col %||% name
+        # use `source_col` for `source` if using mapping and it hasn't gone
+        # through ApplySpec()
+        mapping$source <- spec[["source"]] %||% spec[["source_col"]] %||% name
 
         # NULL type breaks things below
-        mapping$type <- spec$type %||% ""
+        mapping$type <- spec[["type"]] %||% ""
 
         return(mapping)
       })
@@ -92,22 +91,28 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
             numeric = "DOUBLE",
             integer = "INTEGER",
             character = "VARCHAR",
+            timestamp = "DATETIME",
+            logical = "BOOLEAN",
             "VARCHAR"
           )
           glue("{mapping$source} {type}")
         }) %>%
         paste(collapse = ", ")
       create_tab_query <- glue("CREATE TABLE {temp_table_name} ({create_tab_query})")
-      dbExecute(con, create_tab_query)
+      DBI::dbExecute(con, create_tab_query)
       # set up arguments for dbWriteTable
       append_tab <- TRUE
-      df <- df %>% select(map_chr(lColumnMapping, function(x) x$source) %>% unname()) # need this to be an unnamed vector to avoid using target colnames here
+      df <- select(
+        df,
+        # need this to be an unnamed vector to avoid using target colnames here
+        map_chr(lColumnMapping, function(x) x$source) %>% unname()
+      )
     }
     DBI::dbWriteTable(con, temp_table_name, df, append = append_tab)
     table_name <- temp_table_name
   }
 
-  strQuery <- stringr::str_replace(strQuery, "FROM df", paste0("FROM ", table_name))
+  strQuery <- gsub("FROM df", paste0("FROM ", table_name), strQuery)
 
   result <- tryCatch({
     result <- DBI::dbGetQuery(con, strQuery)

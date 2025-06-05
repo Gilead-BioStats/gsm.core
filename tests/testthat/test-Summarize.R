@@ -1,5 +1,5 @@
 test_that("output created as expected and has correct structure", {
-  dfFlagged <- tibble::tibble(
+  dfFlagged <- dplyr::tibble(
     GroupID = c("702", "703", "701"),
     GroupLevel = rep("site", 3),
     Numerator = c(1, 3, 5),
@@ -27,7 +27,7 @@ test_that("output created as expected and has correct structure", {
 })
 
 test_that("incorrect inputs throw errors", {
-  dfFlagged <- tibble::tibble(
+  dfFlagged <- dplyr::tibble(
     GroupID = c("702", "703", "701"),
     GroupLevel = rep("site", 3),
     Numerator = c(1, 3, 5),

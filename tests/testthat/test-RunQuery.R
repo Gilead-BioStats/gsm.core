@@ -1,16 +1,24 @@
 test_that("RunQuery returns correct result", {
-  # Create a sample data frame
   df <- data.frame(
     Name = c("John", "Jane", "Bob"),
     Age = c(25, 30, 35),
     Salary = c(50000, 60000, 70000)
   )
 
-  # Define the query and mapping
   query <- "SELECT * FROM df WHERE Age >= 30"
 
-  # Call the RunQuery function
-  result <- RunQuery(query, df)
+  expect_message(
+    expect_message(
+      expect_message(
+        {
+          result <- RunQuery(query, df)
+        },
+        "Creating a new temporary DuckDB connection"
+      ),
+      "SQL Query complete"
+    ),
+    "Disconnected from temporary DuckDB connection"
+  )
 
   # Check if the result is correct
   expect_equal(nrow(result), 2)
@@ -21,24 +29,19 @@ test_that("RunQuery returns correct result", {
 })
 
 test_that("RunQuery handles empty df", {
-  # Create an empty data frame
   df <- data.frame()
 
-  # Define the query and mapping
   query <- "SELECT * FROM df WHERE Age >= 30"
 
-  # Call the RunQuery function
   expect_warning(
     result <- RunQuery(query, df),
     regexp = "empty data frame"
   )
 
-  # Check if the result is empty
   expect_equal(nrow(result), 0)
 })
 
 test_that("RunQuery handles invalid input", {
-  # Create a sample data frame
   df <- data.frame(
     Name = c("John", "Jane", "Bob"),
     Age = c(25, 30, 35),
@@ -48,47 +51,43 @@ test_that("RunQuery handles invalid input", {
   # Define the query and mapping with invalid input types
   query <- 123
 
-  # Call the RunQuery function and expect an error
   expect_error(RunQuery(query, df))
 })
 
 test_that("RunQuery checks if strQuery contains 'FROM df'", {
-  # Create a sample data frame
   df <- data.frame(
     Name = c("John", "Jane", "Bob"),
     Age = c(25, 30, 35),
     Salary = c(50000, 60000, 70000)
   )
 
-  # Define the query and mapping
   query <- "SELECT * FROM mydata WHERE Age >= 30"
 
-  # Call the RunQuery function and expect an error
   expect_error(RunQuery(query, df), "strQuery must contain 'FROM df'")
 })
 
 test_that("RunQuery checks if all templated columns are found in lMapping", {
-  # Create a sample data frame
   df <- data.frame(
     Name = c("John", "Jane", "Bob"),
     Age = c(25, 30, 35),
     Salary = c(50000, 60000, 70000)
   )
 
-  # Define the query and mapping
   query <- "SELECT * FROM df WHERE Age >= 30"
 
-  # Call the RunQuery function and expect no error
-  expect_no_error(RunQuery(query, df))
+  expect_no_error(
+    suppressMessages(RunQuery(query, df))
+  )
 })
 
 test_that("RunQuery applies schema appropriately", {
-  # Create a sample data frame
   df <- data.frame(
     Name = c("John", "Jane", "Bob"),
     Age = c(25, 30, 35),
     Salary = c(50000, 60000, "70000"),
-    Birthday = c("1990-01-01", "1987-02-02", "1985-03-03")
+    Birthday = c("1990-01-01", "1987-02-02", "1985-03-03"),
+    Birthtime = c("1990-01-01 06:47:00", "1987-02-02T08:15:34", "1985-03-03"),
+    Tenured = c(FALSE, TRUE, TRUE)
   )
   lColumnMapping <- list(
     Name = list(
@@ -103,22 +102,37 @@ test_that("RunQuery applies schema appropriately", {
     Birthdate = list(
       type = "Date",
       source_col = "Birthday"
+    ),
+    Birthtime = list(
+      type = "timestamp"
+    ),
+    Tenured = list(
+      type = "logical"
     )
   )
 
   # Define the query and mapping
-  query <- "SELECT Name, Age, Salary, Birthday AS Birthdate FROM df WHERE Age >= 30"
+  query <- "SELECT Name, Age, Salary, Birthday AS Birthdate, Birthtime, Tenured FROM df WHERE Age >= 30"
 
-  # Call the RunQuery function and expect no error
-  expect_no_error(result <- RunQuery(query, df, bUseSchema = T, lColumnMapping = lColumnMapping))
+  expect_no_error({
+    suppressMessages({
+      result <- RunQuery(
+        query,
+        df,
+        bUseSchema = T,
+        lColumnMapping = lColumnMapping
+      )
+    })
+  })
+  expect_equal(class(result$Birthtime), c("POSIXct", "POSIXt"))
   expect_equal(class(result$Birthdate), "Date")
   expect_equal(class(result$Salary), "integer")
   expect_equal(class(result$Age), "integer")
   expect_equal(class(result$Name), "character")
+  expect_equal(class(result$Tenured), "logical")
 })
 
 test_that("RunQuery applies incomplete schema appropriately", {
-  # Create a sample data frame
   df <- data.frame(
     Name = c("John", "Jane", "Bob"),
     Age = c(25, 30, 35),
@@ -131,10 +145,12 @@ test_that("RunQuery applies incomplete schema appropriately", {
     )
   )
 
-  # Define the query and mapping
   query <- "SELECT Name as emaN FROM df WHERE Name LIKE '%o%'"
 
-  # Call the RunQuery function and expect no error
-  expect_no_error(result <- RunQuery(query, df, bUseSchema = T, lColumnMapping = lColumnMapping))
+  expect_no_error({
+    suppressMessages({
+      result <- RunQuery(query, df, bUseSchema = T, lColumnMapping = lColumnMapping)
+    })
+  })
   expect_equal(class(result$emaN), "character")
 })
