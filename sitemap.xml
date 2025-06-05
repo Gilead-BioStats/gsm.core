@@ -25,7 +25,6 @@
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/GetStrFunctionIfNamespaced.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/Input_Rate.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/LogMessage.html</loc></url>
-<url><loc>https://gilead-biostats.github.io/gsm.core/reference/MakeWideGroups.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/MakeWorkflowList.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/ParseThreshold.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/RunQuery.html</loc></url>
@@ -42,7 +41,6 @@
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/gsm.core-package.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/index.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/lSource.html</loc></url>
-<url><loc>https://gilead-biostats.github.io/gsm.core/reference/pipe.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/reportingBounds.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/reportingBounds_country.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/reportingGroups.html</loc></url>
@@ -53,7 +51,6 @@
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/reportingResults_country.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/shared-params.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/reference/stop_if.html</loc></url>
-<url><loc>https://gilead-biostats.github.io/gsm.core/reference/tidyeval.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/report_kri_country.html</loc></url>
 <url><loc>https://gilead-biostats.github.io/gsm.core/report_kri_site.html</loc></url>
 </urlset>
