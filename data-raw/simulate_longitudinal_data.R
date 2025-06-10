@@ -1,12 +1,12 @@
 library(gsm.core)
 library(gsm.mapping)
-library(gsm.datasim)
+library(gsm.datasim) # >= 1.1.0
 library(gsm.kri)
 library(dplyr)
 library(stringr)
 set.seed(1234)
 
-core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
+core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "IE", "LB",
                    "PD", "PK", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
 
 basic_sim <- gsm.datasim::generate_rawdata_for_single_study(
