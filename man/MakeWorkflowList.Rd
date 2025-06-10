@@ -33,7 +33,9 @@ MakeWorkflowList(
 }
 \examples{
 # get specific workflow files
-workflow <- MakeWorkflowList(strPath = "example_workflow/1_mappings",
-                             strPackage = "gsm.core")
+workflow <- MakeWorkflowList(
+  strPath = "example_workflow/1_mappings",
+  strPackage = "gsm.core"
+)
 
 }

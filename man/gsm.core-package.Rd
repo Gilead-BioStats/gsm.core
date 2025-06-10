@@ -11,8 +11,8 @@ The Good Statistical Monitoring or 'gsm' suite of R packages provides a framewor
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/Gilead-BioStats/gsm.core}
   \item \url{https://gilead-biostats.github.io/gsm.core}
+  \item \url{https://github.com/Gilead-BioStats/gsm.core,}
   \item Report bugs at \url{https://github.com/Gilead-BioStats/gsm.core/issues}
 }
 

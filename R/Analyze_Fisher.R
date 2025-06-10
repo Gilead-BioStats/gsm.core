@@ -24,9 +24,9 @@
 #'
 #' @param dfTransformed `data.frame` Transformed data for analysis. Data should
 #'   have one record per site with expected columns: `GroupID`, `GroupLevel`,
-#'   `Numerator`, `Denominator`, and `Metric`. For more details see the Data
-#'   Model vignette: `vignette("DataModel", package = "gsm.core")`. For this
-#'   function, `dfTransformed` should typically be created using
+#'   `Numerator`, `Denominator`, and `Metric`. For more details see the
+#'   [Data Model article](https://gilead-biostats.github.io/gsm.core/articles/DataModel.html).
+#'   For this function, `dfTransformed` should typically be created using
 #'   [Transform_Rate()].
 #' @param strOutcome `character` required, name of column in `dfTransformed`
 #'   dataset to perform Fisher's exact test on. Default is "Numerator".
@@ -35,9 +35,9 @@
 #'   Numerator_Other, Denominator, Denominator_Other, Prop, Prop_Other, Metric,
 #'   Estimate, and Score.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("broom")
 #' dfTransformed <- Transform_Rate(
-#'   analyticsInput[1:20,]
+#'   analyticsInput[1:20, ]
 #' )
 #' dfAnalyzed <- Analyze_Fisher(dfTransformed)
 #'
@@ -47,6 +47,7 @@ Analyze_Fisher <- function(
   dfTransformed,
   strOutcome = "Numerator"
 ) {
+  rlang::check_installed("broom")
   stop_if(cnd = !is.data.frame(dfTransformed), message = "dfTransformed is not a data.frame")
   stop_if(cnd = !all(c("GroupID", strOutcome) %in% names(dfTransformed)), message = "GroupID or the value in strOutcome not found in dfTransformed")
   stop_if(cnd = !all(!is.na(dfTransformed[["GroupID"]])), message = "NA value(s) found in GroupID")

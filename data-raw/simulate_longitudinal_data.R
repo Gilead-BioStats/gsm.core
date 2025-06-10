@@ -3,6 +3,7 @@ library(gsm.mapping)
 library(gsm.datasim)
 library(gsm.kri)
 library(dplyr)
+library(stringr)
 set.seed(1234)
 
 core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",

@@ -8,7 +8,7 @@
 #'
 #' @details
 #' This function provides a generalized framework for flagging sites as part of the
-#' GSM data model (see `vignette("DataModel", package = "gsm.core")`).
+#' gsm data model (see the [Data Model article](https://gilead-biostats.github.io/gsm.core/articles/DataModel.html)).
 #'
 #' @section Data Specification:
 #' \code{Flag} is designed to support the input data (`dfAnalyzed`) from the `Analyze_Identity()`
@@ -77,11 +77,13 @@ Flag <- function(
     as.character() %>%
     as.numeric() # Parse from factor to numeric
 
-  #filter to site with enough observations via AccrualThreshold and AccrualMetric
+  # filter to site with enough observations via AccrualThreshold and AccrualMetric
   if (!is.null(nAccrualThreshold) && !is.null(strAccrualMetric)) {
-    dfFlagged <- Flag_Accrual(dfFlagged = dfFlagged,
-                              nAccrualThreshold = nAccrualThreshold,
-                              strAccrualMetric = strAccrualMetric)
+    dfFlagged <- Flag_Accrual(
+      dfFlagged = dfFlagged,
+      nAccrualThreshold = nAccrualThreshold,
+      strAccrualMetric = strAccrualMetric
+    )
   }
 
   # Apply custom sort order using vFlagOrder
@@ -154,13 +156,13 @@ Flag_Poisson <- Flag
 #'
 #' @keywords internal
 Flag_Accrual <- function(dfFlagged,
-                         nAccrualThreshold,
-                         strAccrualMetric) {
-  if(strAccrualMetric == "Denominator"){
+  nAccrualThreshold,
+  strAccrualMetric) {
+  if (strAccrualMetric == "Denominator") {
     Accrual_Flag <- dfFlagged$Denominator < nAccrualThreshold
-  } else if(strAccrualMetric == "Numerator"){
-    Accrual_Flag <-  dfFlagged$Numerator < nAccrualThreshold
-  } else if(strAccrualMetric == "Difference"){
+  } else if (strAccrualMetric == "Numerator") {
+    Accrual_Flag <- dfFlagged$Numerator < nAccrualThreshold
+  } else if (strAccrualMetric == "Difference") {
     Accrual_Flag <- (dfFlagged$Denominator - dfFlagged$Numerator) < nAccrualThreshold
   }
   dfFlagged$Score[Accrual_Flag] <- NA
