@@ -1,12 +1,12 @@
 library(gsm.core)
 library(gsm.mapping)
-library(gsm.datasim) # >= 1.1.0
+library(gsm.datasim)
 library(gsm.kri)
 library(dplyr)
 library(stringr)
 set.seed(1234)
 
-core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "IE", "LB",
+core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
                    "PD", "PK", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
 
 basic_sim <- gsm.datasim::generate_rawdata_for_single_study(
@@ -24,7 +24,7 @@ basic_sim[[1]]$Raw_SITE$site_status <- "Active"
 basic_sim[[2]]$Raw_SITE$site_status <- "Active"
 basic_sim[[3]]$Raw_SITE$site_status <- "Active"
 
-## Run Data pipeline for each snapshot 
+## Run Data pipeline for each snapshot
 analyzed <- list()
 reporting <- list()
 dates <- as.Date(c("2025-02-01", "2025-03-01", "2025-04-01"))
@@ -83,54 +83,54 @@ lReports_site <- RunWorkflows(wf_report_site, lReporting_site)
 # wf_report_country <- MakeWorkflowList(strNames = "report_kri_country")
 # lReports_country <- RunWorkflows(wf_report_country, lReporting_country)
 
-# Output Raw data from last snapshot as gsm.core::lSource 
-lSource <- basic_sim[[3]]
-usethis::use_data(lSource, overwrite = TRUE)
-
-# write CSVs
-# analysis data
-## site
-write.csv(file = "data-raw/analyticsSummary.csv",
-          x = analyzed[[3]]$Analysis_kri0001$Analysis_Summary,
-          row.names = F)
-write.csv(file = "data-raw/analyticsInput.csv",
-          x = analyzed[[3]]$Analysis_kri0001$Analysis_Input,
-          row.names = F)
-
-## country
-write.csv(file = "data-raw/analyticsSummary_country.csv",
-          x = analyzed[[3]]$Analysis_cou0001$Analysis_Summary,
-          row.names = F)
-write.csv(file = "data-raw/analyticsInput_country.csv",
-          x = analyzed[[3]]$Analysis_cou0001$Analysis_Input,
-          row.names = F)
-
-
-# reporting data
-## site
-write.csv(file = "data-raw/reportingGroups.csv",
-          x = lReporting_site$Reporting_Groups,
-          row.names = F)
-write.csv(file = "data-raw/reportingBounds.csv",
-          x = lReporting_site$Reporting_Bounds,
-          row.names = F)
-write.csv(file = "data-raw/reportingMetrics.csv",
-          x = lReporting_site$Reporting_Metrics,
-          row.names = F)
-write.csv(file = "data-raw/reportingResults.csv",
-          x = lReporting_site$Reporting_Results,
-          row.names = F)
-
-##country
-write.csv(file = "data-raw/reportingGroups_country.csv",
-          x = lReporting_country$Reporting_Groups,
-          row.names = F)
-write.csv(file = "data-raw/reportingBounds_country.csv",
-          x = lReporting_country$Reporting_Bounds,
-          row.names = F)
-write.csv(file = "data-raw/reportingMetrics_country.csv",
-          x = lReporting_country$Reporting_Metrics,
-          row.names = F)
-write.csv(file = "data-raw/reportingResults_country.csv",
-          x = lReporting_country$Reporting_Results,
-          row.names = F)
+# Output Raw data from last snapshot as gsm.core::lSource
+# lSource <- basic_sim[[3]]
+# usethis::use_data(lSource, overwrite = TRUE)
+#
+# # write CSVs
+# # analysis data
+# ## site
+# write.csv(file = "data-raw/analyticsSummary.csv",
+#           x = analyzed[[3]]$Analysis_kri0001$Analysis_Summary,
+#           row.names = F)
+# write.csv(file = "data-raw/analyticsInput.csv",
+#           x = analyzed[[3]]$Analysis_kri0001$Analysis_Input,
+#           row.names = F)
+#
+# ## country
+# write.csv(file = "data-raw/analyticsSummary_country.csv",
+#           x = analyzed[[3]]$Analysis_cou0001$Analysis_Summary,
+#           row.names = F)
+# write.csv(file = "data-raw/analyticsInput_country.csv",
+#           x = analyzed[[3]]$Analysis_cou0001$Analysis_Input,
+#           row.names = F)
+#
+#
+# # reporting data
+# ## site
+# write.csv(file = "data-raw/reportingGroups.csv",
+#           x = lReporting_site$Reporting_Groups,
+#           row.names = F)
+# write.csv(file = "data-raw/reportingBounds.csv",
+#           x = lReporting_site$Reporting_Bounds,
+#           row.names = F)
+# write.csv(file = "data-raw/reportingMetrics.csv",
+#           x = lReporting_site$Reporting_Metrics,
+#           row.names = F)
+# write.csv(file = "data-raw/reportingResults.csv",
+#           x = lReporting_site$Reporting_Results,
+#           row.names = F)
+#
+# ##country
+# write.csv(file = "data-raw/reportingGroups_country.csv",
+#           x = lReporting_country$Reporting_Groups,
+#           row.names = F)
+# write.csv(file = "data-raw/reportingBounds_country.csv",
+#           x = lReporting_country$Reporting_Bounds,
+#           row.names = F)
+# write.csv(file = "data-raw/reportingMetrics_country.csv",
+#           x = lReporting_country$Reporting_Metrics,
+#           row.names = F)
+# write.csv(file = "data-raw/reportingResults_country.csv",
+#           x = lReporting_country$Reporting_Results,
+#           row.names = F)
