@@ -45,7 +45,7 @@ for(snap in seq_along(basic_sim)){
   # Step 3 - Create Reporting Layer - create reports using metrics data
   reporting_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/3_reporting", strPackage = "gsm.reporting")
   reporting[[snap]] <- gsm.core::RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed[[snap]],
-                                                                  lWorkflows = metrics_wf)))
+                                                                           lWorkflows = metrics_wf)))
   reporting[[snap]]$Reporting_Results$SnapshotDate = dates[snap]
   reporting[[snap]]$Reporting_Bounds$SnapshotDate = dates[snap]
 }
@@ -84,53 +84,53 @@ lReports_site <- RunWorkflows(wf_report_site, lReporting_site)
 # lReports_country <- RunWorkflows(wf_report_country, lReporting_country)
 
 # Output Raw data from last snapshot as gsm.core::lSource
-# lSource <- basic_sim[[3]]
-# usethis::use_data(lSource, overwrite = TRUE)
-#
-# # write CSVs
-# # analysis data
-# ## site
-# write.csv(file = "data-raw/analyticsSummary.csv",
-#           x = analyzed[[3]]$Analysis_kri0001$Analysis_Summary,
-#           row.names = F)
-# write.csv(file = "data-raw/analyticsInput.csv",
-#           x = analyzed[[3]]$Analysis_kri0001$Analysis_Input,
-#           row.names = F)
-#
-# ## country
-# write.csv(file = "data-raw/analyticsSummary_country.csv",
-#           x = analyzed[[3]]$Analysis_cou0001$Analysis_Summary,
-#           row.names = F)
-# write.csv(file = "data-raw/analyticsInput_country.csv",
-#           x = analyzed[[3]]$Analysis_cou0001$Analysis_Input,
-#           row.names = F)
-#
-#
-# # reporting data
-# ## site
-# write.csv(file = "data-raw/reportingGroups.csv",
-#           x = lReporting_site$Reporting_Groups,
-#           row.names = F)
-# write.csv(file = "data-raw/reportingBounds.csv",
-#           x = lReporting_site$Reporting_Bounds,
-#           row.names = F)
-# write.csv(file = "data-raw/reportingMetrics.csv",
-#           x = lReporting_site$Reporting_Metrics,
-#           row.names = F)
-# write.csv(file = "data-raw/reportingResults.csv",
-#           x = lReporting_site$Reporting_Results,
-#           row.names = F)
-#
-# ##country
-# write.csv(file = "data-raw/reportingGroups_country.csv",
-#           x = lReporting_country$Reporting_Groups,
-#           row.names = F)
-# write.csv(file = "data-raw/reportingBounds_country.csv",
-#           x = lReporting_country$Reporting_Bounds,
-#           row.names = F)
-# write.csv(file = "data-raw/reportingMetrics_country.csv",
-#           x = lReporting_country$Reporting_Metrics,
-#           row.names = F)
-# write.csv(file = "data-raw/reportingResults_country.csv",
-#           x = lReporting_country$Reporting_Results,
-#           row.names = F)
+lSource <- basic_sim[[3]]
+usethis::use_data(lSource, overwrite = TRUE)
+
+# write CSVs
+# analysis data
+## site
+write.csv(file = "data-raw/analyticsSummary.csv",
+          x = analyzed[[3]]$Analysis_kri0001$Analysis_Summary,
+          row.names = F)
+write.csv(file = "data-raw/analyticsInput.csv",
+          x = analyzed[[3]]$Analysis_kri0001$Analysis_Input,
+          row.names = F)
+
+## country
+write.csv(file = "data-raw/analyticsSummary_country.csv",
+          x = analyzed[[3]]$Analysis_cou0001$Analysis_Summary,
+          row.names = F)
+write.csv(file = "data-raw/analyticsInput_country.csv",
+          x = analyzed[[3]]$Analysis_cou0001$Analysis_Input,
+          row.names = F)
+
+
+# reporting data
+## site
+write.csv(file = "data-raw/reportingGroups.csv",
+          x = lReporting_site$Reporting_Groups,
+          row.names = F)
+write.csv(file = "data-raw/reportingBounds.csv",
+          x = lReporting_site$Reporting_Bounds,
+          row.names = F)
+write.csv(file = "data-raw/reportingMetrics.csv",
+          x = lReporting_site$Reporting_Metrics,
+          row.names = F)
+write.csv(file = "data-raw/reportingResults.csv",
+          x = lReporting_site$Reporting_Results,
+          row.names = F)
+
+##country
+write.csv(file = "data-raw/reportingGroups_country.csv",
+          x = lReporting_country$Reporting_Groups,
+          row.names = F)
+write.csv(file = "data-raw/reportingBounds_country.csv",
+          x = lReporting_country$Reporting_Bounds,
+          row.names = F)
+write.csv(file = "data-raw/reportingMetrics_country.csv",
+          x = lReporting_country$Reporting_Metrics,
+          row.names = F)
+write.csv(file = "data-raw/reportingResults_country.csv",
+          x = lReporting_country$Reporting_Results,
+          row.names = F)
