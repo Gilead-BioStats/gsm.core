@@ -48,7 +48,7 @@ jobs:
 
       - uses: r-lib/actions/check-r-package@v2
         with:
-          extra-packages: any::pkgdown
+          extra-packages: cran::pkgdown
 
       - name: build pkgdown reference index
         run: pkgdown::build_reference_index()
