@@ -34,8 +34,9 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: local::.
-          needs: website
+          extra-packages: |
+            cran::pkgdown
+            local::.
 
       - name: build pkgdown reference index
         run: pkgdown::build_reference_index()
