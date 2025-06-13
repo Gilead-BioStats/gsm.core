@@ -6,15 +6,15 @@
       # A tibble: 145 x 5
          GroupID GroupLevel Numerator Denominator Metric
          <chr>   <chr>          <int>       <dbl>  <dbl>
-       1 0X101   Site               8         131 0.0611
-       2 0X1040  Site               2          16 0.125 
-       3 0X1231  Site               6          83 0.0723
-       4 0X1257  Site              11         115 0.0957
-       5 0X1268  Site               6         161 0.0373
-       6 0X1280  Site               8          68 0.118 
-       7 0X1321  Site              14         138 0.101 
-       8 0X1376  Site              30         301 0.0997
-       9 0X1543  Site               2          15 0.133 
-      10 0X1581  Site              11         129 0.0853
+       1 0X101   Site              15         125 0.12  
+       2 0X111   Site              12          95 0.126 
+       3 0X1146  Site              18         285 0.0632
+       4 0X1189  Site              18         155 0.116 
+       5 0X1257  Site              14         212 0.0660
+       6 0X1339  Site               4          76 0.0526
+       7 0X1382  Site               4          49 0.0816
+       8 0X1562  Site              14         140 0.1   
+       9 0X1568  Site               2          20 0.1   
+      10 0X1712  Site               4          18 0.222 
       # i 135 more rows
 
