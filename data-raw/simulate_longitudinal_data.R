@@ -6,7 +6,7 @@ library(dplyr)
 library(stringr)
 set.seed(1234)
 
-core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
+core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB", "VISIT",
                    "PD", "PK", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
 
 basic_sim <- gsm.datasim::generate_rawdata_for_single_study(
@@ -78,8 +78,8 @@ lReporting_country$Reporting_Metrics <- all_reportingMetrics %>%
   filter(stringr::str_detect(MetricID, "Analysis_cou"))
 
 ## test out the data on a report
-wf_report_site <- MakeWorkflowList(strNames = "report_kri_site", strPackage = "gsm.kri")
-lReports_site <- RunWorkflows(wf_report_site, lReporting_site)
+# wf_report_site <- MakeWorkflowList(strNames = "report_kri_site", strPackage = "gsm.kri")
+# lReports_site <- RunWorkflows(wf_report_site, lReporting_site)
 # wf_report_country <- MakeWorkflowList(strNames = "report_kri_country")
 # lReports_country <- RunWorkflows(wf_report_country, lReporting_country)
 
