@@ -107,8 +107,6 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
         # need this to be an unnamed vector to avoid using target colnames here
         map_chr(lColumnMapping, function(x) x$source) %>% unname()
       )
-      # Sanitize Date and timestamp columns
-      library(purrr)
 
       # Sanitize Date and timestamp columns
       for (mapping in lColumnMapping) {
