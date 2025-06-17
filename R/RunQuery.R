@@ -113,7 +113,8 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
         if (mapping$type %in% c("Date", "timestamp") && mapping$source %in% names(df)) {
           raw_vals <- df[[mapping$source]]
 
-          if (!inherits(raw_vals, mapping$type)) {
+          if ((mapping$type == "timestamp" && !inherits(raw_vals, c("POSIXct", "POSIXt"))) ||
+              (mapping$type != "timestamp" && !inherits(raw_vals, mapping$type))) {
             parsed <- map(raw_vals, ~ tryCatch(
               as.POSIXct(.x, tz = "UTC"),
               error = function(e) NA_real_
