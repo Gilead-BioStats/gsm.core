@@ -107,6 +107,37 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
         # need this to be an unnamed vector to avoid using target colnames here
         map_chr(lColumnMapping, function(x) x$source) %>% unname()
       )
+
+      # Sanitize Date and timestamp columns
+      for (mapping in lColumnMapping) {
+        if (mapping$type %in% c("Date", "timestamp") && mapping$source %in% names(df)) {
+          raw_vals <- df[[mapping$source]]
+
+          if ((mapping$type == "timestamp" && !inherits(raw_vals, c("POSIXct", "POSIXt"))) ||
+              (mapping$type != "timestamp" && !inherits(raw_vals, mapping$type))) {
+            parsed <- map(raw_vals, ~ tryCatch(
+              as.POSIXct(.x, tz = "UTC"),
+              error = function(e) NA_real_
+            ))
+
+            parsed <- flatten_dbl(parsed) %>% as.POSIXct(origin = "1970-01-01", tz = "UTC")
+
+            if (mapping$type == "Date") {
+              parsed <- as.Date(parsed)
+            }
+
+            n_bad <- sum(!is.na(raw_vals) & is.na(parsed))
+            if (n_bad > 0) {
+              LogMessage(
+                level = "warn",
+                message = glue("Field `{mapping$source}`: {n_bad} unparsable {mapping$type}(s) set to NA")
+              )
+            }
+
+            df[[mapping$source]] <- parsed
+          }
+        }
+      }
     }
     DBI::dbWriteTable(con, temp_table_name, df, append = append_tab)
     table_name <- temp_table_name
