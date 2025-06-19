@@ -1,3 +1,7 @@
+# gsm.core v1.1.2
+
+The patch releases a new `lSource` .rda object used across example reports and workflows in other `gsm` ecosystem packages, as well as fixes a bug so that missing dates are handled appropriately upon ingestion.
+
 # gsm.core v1.1.1
 
 This patch release fixes a few CLI messages from RunStep(), adds new "timestamp" and "logical" `types` to mapping specs, and addresses erroneous warning messages in the testing suite. It also prepares the package for CRAN release 

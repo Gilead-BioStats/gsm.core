@@ -6,7 +6,7 @@ library(dplyr)
 library(stringr)
 set.seed(1234)
 
-core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
+core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB", "VISIT",
                    "PD", "PK", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
 
 basic_sim <- gsm.datasim::generate_rawdata_for_single_study(
@@ -24,7 +24,7 @@ basic_sim[[1]]$Raw_SITE$site_status <- "Active"
 basic_sim[[2]]$Raw_SITE$site_status <- "Active"
 basic_sim[[3]]$Raw_SITE$site_status <- "Active"
 
-## Run Data pipeline for each snapshot 
+## Run Data pipeline for each snapshot
 analyzed <- list()
 reporting <- list()
 dates <- as.Date(c("2025-02-01", "2025-03-01", "2025-04-01"))
@@ -45,7 +45,7 @@ for(snap in seq_along(basic_sim)){
   # Step 3 - Create Reporting Layer - create reports using metrics data
   reporting_wf <- gsm.core::MakeWorkflowList(strPath = "workflow/3_reporting", strPackage = "gsm.reporting")
   reporting[[snap]] <- gsm.core::RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed[[snap]],
-                                                                  lWorkflows = metrics_wf)))
+                                                                           lWorkflows = metrics_wf)))
   reporting[[snap]]$Reporting_Results$SnapshotDate = dates[snap]
   reporting[[snap]]$Reporting_Bounds$SnapshotDate = dates[snap]
 }
@@ -78,12 +78,12 @@ lReporting_country$Reporting_Metrics <- all_reportingMetrics %>%
   filter(stringr::str_detect(MetricID, "Analysis_cou"))
 
 ## test out the data on a report
-wf_report_site <- MakeWorkflowList(strNames = "report_kri_site", strPackage = "gsm.kri")
-lReports_site <- RunWorkflows(wf_report_site, lReporting_site)
+# wf_report_site <- MakeWorkflowList(strNames = "report_kri_site", strPackage = "gsm.kri")
+# lReports_site <- RunWorkflows(wf_report_site, lReporting_site)
 # wf_report_country <- MakeWorkflowList(strNames = "report_kri_country")
 # lReports_country <- RunWorkflows(wf_report_country, lReporting_country)
 
-# Output Raw data from last snapshot as gsm.core::lSource 
+# Output Raw data from last snapshot as gsm.core::lSource
 lSource <- basic_sim[[3]]
 usethis::use_data(lSource, overwrite = TRUE)
 

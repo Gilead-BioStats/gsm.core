@@ -154,3 +154,40 @@ test_that("RunQuery applies incomplete schema appropriately", {
   })
   expect_equal(class(result$emaN), "character")
 })
+
+
+test_that("RunQuery parses invalid date/times correctly", {
+  df <- data.frame(
+    Name = c("John", "Jane", "Bob"),
+    Birthday = c("1990JAN01", "1987-02-30", ""),
+    Birthtime = c("1990-01-32 06:47", "28FEB1987 01:45:32", ""),
+    Tenured = c(FALSE, TRUE, TRUE)
+  )
+  lColumnMapping <- list(
+    Name = list(
+      type = "character"
+    ),
+    Birthday = list(
+      type = "Date"
+    ),
+    Birthtime = list(
+      type = "timestamp"
+    )
+  )
+
+  # Define the query and mapping
+  query <- "SELECT * FROM df"
+
+  suppressWarnings(
+    suppressMessages(
+      result <- RunQuery(
+        query,
+        df,
+        bUseSchema = T,
+        lColumnMapping = lColumnMapping
+      )
+    )
+  )
+  expect_true(all(is.na(result$Birthday)))
+  expect_true(all(is.na(result$Birthtime)))
+})
