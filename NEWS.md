@@ -1,5 +1,6 @@
 # gsm.core v1.1.2
-The patch releases a new `lSource` .rda object used across example reports and workflows in other `gsm` ecosystem packages.
+
+The patch releases a new `lSource` .rda object used across example reports and workflows in other `gsm` ecosystem packages, as well as fixes a bug so that missing dates are handled appropriately upon ingestion.
 
 # gsm.core v1.1.1
 
