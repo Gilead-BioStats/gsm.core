@@ -43,6 +43,7 @@ Imports:
     glue,
     lifecycle,
     log4r,
+    magrittr,
     purrr,
     rlang (>= 0.4.11),
     stats,
