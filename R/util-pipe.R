@@ -1,3 +1,5 @@
-#' @importFrom dplyr %>%
+#' @name %>%
+#' @noRd
 #' @export
+#' @importFrom dplyr %>%
 NULL
