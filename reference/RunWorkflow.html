@@ -13,7 +13,7 @@ lWorkflow$workflow and saves the results to lWorkflow."><link href="pkgdown/extr
 
     <a class="navbar-brand me-2" href="../index.html">gsm.core</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -159,12 +159,12 @@ is <code>TRUE</code>) or the full workflow object (if <code>bReturnResults</code
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `gsm.core::RunQuery` </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Creating a new temporary DuckDB connection.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> SQL Query complete: 744 rows returned.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> SQL Query complete: 763 rows returned.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Disconnected from temporary DuckDB connection.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 744x15 data.frame saved as `lData$Mapped_SUBJ`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 763x15 data.frame saved as `lData$Mapped_SUBJ`. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Returning results from final step: 744x15 data.frame`.</span> ──</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Returning results from final step: 763x15 data.frame`.</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Completed `Mapped_SUBJ` Workflow</span> <span style="color: #00BBBB;">────────────────────────────────────────────</span></span>
 <span class="r-in"><span></span></span>
@@ -212,7 +212,7 @@ is <code>TRUE</code>) or the full workflow object (if <code>bReturnResults</code
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `gsm.core::Input_Rate` </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 744x6 data.frame saved as `lData$Analysis_Input`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 763x6 data.frame saved as `lData$Analysis_Input`. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 3 of 7: `gsm.core::Transform_Rate`</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
@@ -221,7 +221,7 @@ is <code>TRUE</code>) or the full workflow object (if <code>bReturnResults</code
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `gsm.core::Transform_Rate` </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 144x5 data.frame saved as `lData$Analysis_Transformed`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 145x5 data.frame saved as `lData$Analysis_Transformed`. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 4 of 7: `gsm.core::Analyze_NormalApprox`</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
@@ -233,7 +233,7 @@ is <code>TRUE</code>) or the full workflow object (if <code>bReturnResults</code
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `OverallMetric`, `Factor`, and `Score` columns created from normal</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> approximation.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 144x8 data.frame saved as `lData$Analysis_Analyzed`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 145x8 data.frame saved as `lData$Analysis_Analyzed`. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 5 of 7: `gsm.core::Flag`</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
@@ -244,11 +244,11 @@ is <code>TRUE</code>) or the full workflow object (if <code>bReturnResults</code
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> strAccrualMetric = AccrualMetric: Passing lMeta$AccrualMetric.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `gsm.core::Flag` </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 20 Group(s) have insufficient sample size due to KRI denominator less than 30: 0X9842, 0X8952, 0X3326, 0X2081, 0X500, 0X5524, 0X3858, 0X3192, 0X1426, 0X554, 0X2278, 0X8593, 0X1595, 0X5785, 0X4707, 0X832, 0X6741, 0X2633, 0X9715, 0X2814</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 20 Group(s) have insufficient sample size due to KRI denominator less than 30: 0X4185, 0X5579, 0X8592, 0X7147, 0X5182, 0X7844, 0X3556, 0X9364, 0X2508, 0X3857, 0X3214, 0X1800, 0X155, 0X5503, 0X439, 0X6041, 0X3777, 0X8547, 0X3565, 0X283</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> These group(s) will not have KRI score and flag summarized.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Sorted dfFlagged using custom Flag order: 2.Sorted dfFlagged using custom Flag order: -2.Sorted dfFlagged using custom Flag order: 1.Sorted dfFlagged using custom Flag order: -1.Sorted dfFlagged using custom Flag order: 0.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 144x9 data.frame saved as `lData$Analysis_Flagged`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 145x9 data.frame saved as `lData$Analysis_Flagged`. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 6 of 7: `gsm.core::Summarize`</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
@@ -257,7 +257,7 @@ is <code>TRUE</code>) or the full workflow object (if <code>bReturnResults</code
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── Calling `gsm.core::Summarize` </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 144x7 data.frame saved as `lData$Analysis_Summary`. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── 145x7 data.frame saved as `lData$Analysis_Summary`. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Workflow Step 7 of 7: `list`</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
