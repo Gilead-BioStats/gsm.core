@@ -1,3 +1,7 @@
+# gsm.core v1.1.3
+
+This patch addresses a bug in the `lSource` .rda object found in the `STUDCOMP` domain, affecting only examples and reports that use it.
+
 # gsm.core v1.1.2
 
 The patch releases a new `lSource` .rda object used across example reports and workflows in other `gsm` ecosystem packages, as well as fixes a bug so that missing dates are handled appropriately upon ingestion.
