@@ -39,7 +39,7 @@ RunWorkflows <- function(
 
   lResults <- list()
   for (wf in lWorkflows) {
-    lResult <-   tryCatch(
+    lResult <- tryCatch(
       {
         RunWorkflow(
           lWorkflow = wf,
@@ -50,7 +50,11 @@ RunWorkflows <- function(
         )
       },
       error = function(e) {
-        message(glue::glue("Error in RunWorkflow {wf$meta$ID}: "), conditionMessage(e))
+        LogMessage(
+          level = "warn",
+          message = glue::glue("Issue with {wf$meta$ID}: ", {conditionMessage(e)}),
+          cli_detail = "warn"
+        )
         NULL  # or return a list with an error field if needed
       }
     )
