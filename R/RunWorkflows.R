@@ -39,12 +39,20 @@ RunWorkflows <- function(
 
   lResults <- list()
   for (wf in lWorkflows) {
-    lResult <- RunWorkflow(
-      lWorkflow = wf,
-      lData = c(lResults, lData),
-      lConfig = lConfig,
-      bReturnResult = bReturnResult,
-      bKeepInputData = bKeepInputData
+    lResult <-   tryCatch(
+      {
+        RunWorkflow(
+          lWorkflow = wf,
+          lData = c(lResults, lData),
+          lConfig = lConfig,
+          bReturnResult = bReturnResult,
+          bKeepInputData = bKeepInputData
+        )
+      },
+      error = function(e) {
+        message(glue::glue("Error in RunWorkflow {wf$meta$ID}: "), conditionMessage(e))
+        NULL  # or return a list with an error field if needed
+      }
     )
 
     resultName <- strResultNames %>%
