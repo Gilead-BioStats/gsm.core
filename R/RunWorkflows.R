@@ -50,7 +50,7 @@ RunWorkflows <- function(
         )
       },
       error = function(e) {
-        message(glue::glue("Issue with {wf$meta$ID}: ", {conditionMessage(e)}))
+        message(glue::glue("Error with {wf$meta$ID}: ", {conditionMessage(e)}))
         NULL  # or return a list with an error field if needed
       }
     )
