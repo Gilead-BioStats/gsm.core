@@ -15,6 +15,7 @@
 #' - `SaveData`: A function that saves data returned by the last step in `lWorkflow$steps`.
 #' @param bReturnResult `boolean` should *only* the result from the last step (`lResults`) be returned? If false, the full workflow (including `lResults`) is returned. Default is `TRUE`.
 #' @param bKeepInputData `boolean` should the input data be included in `lData` after the workflow is run? Only relevant when bReturnResult is FALSE. Default is `TRUE`.
+#' @param bLogFailAsError `boolean` should a failed workflow be sent to ERROR level log or WARN? Default `TRUE` is sent to ERROR-level.
 #' @param strResultNames `string` vector of length two, which describes the meta fields used to name the output.
 #'
 #' @return A named list of results from `RunWorkflow()`, where the names correspond to the names of
@@ -29,6 +30,7 @@ RunWorkflows <- function(
   lConfig = NULL,
   bKeepInputData = FALSE,
   bReturnResult = TRUE,
+  bLogFailAsError = TRUE,
   strResultNames = c("Type", "ID")
 ) {
   LogMessage(
@@ -50,8 +52,12 @@ RunWorkflows <- function(
         )
       },
       error = function(e) {
-        message(glue::glue("Error with {wf$meta$ID}: ", {conditionMessage(e)}))
-        NULL  # or return a list with an error field if needed
+        if(bLogFailAsError) {
+          log4r::error(logger = .le$logger, level = "error", message(glue::glue("Failed workflow: {wf$meta$ID}: ", {conditionMessage(e)})))
+        } else {
+          log4r::warn(logger = .le$logger, level = "warn", message(glue::glue("Failed workflow: {wf$meta$ID}: ", {conditionMessage(e)})))
+        }
+        conditionMessage(e)  # or return a list with an error field if needed
       }
     )
 
