@@ -50,11 +50,7 @@ RunWorkflows <- function(
         )
       },
       error = function(e) {
-        LogMessage(
-          level = "warn",
-          message = glue::glue("Issue with {wf$meta$ID}: ", {conditionMessage(e)}),
-          cli_detail = "warn"
-        )
+        message(glue::glue("Issue with {wf$meta$ID}: ", {conditionMessage(e)}))
         NULL  # or return a list with an error field if needed
       }
     )
