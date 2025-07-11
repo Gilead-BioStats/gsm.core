@@ -10,6 +10,7 @@ RunWorkflows(
   lConfig = NULL,
   bKeepInputData = FALSE,
   bReturnResult = TRUE,
+  bLogFailAsError = TRUE,
   strResultNames = c("Type", "ID")
 )
 }
@@ -27,6 +28,8 @@ RunWorkflows(
 \item{bKeepInputData}{\code{boolean} should the input data be included in \code{lData} after the workflow is run? Only relevant when bReturnResult is FALSE. Default is \code{TRUE}.}
 
 \item{bReturnResult}{\code{boolean} should \emph{only} the result from the last step (\code{lResults}) be returned? If false, the full workflow (including \code{lResults}) is returned. Default is \code{TRUE}.}
+
+\item{bLogFailAsError}{\code{boolean} should a failed workflow be sent to ERROR level log or WARN? Default \code{TRUE} is sent to ERROR-level.}
 
 \item{strResultNames}{\code{string} vector of length two, which describes the meta fields used to name the output.}
 }
