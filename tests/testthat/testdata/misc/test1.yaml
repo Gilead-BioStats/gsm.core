@@ -1,0 +1,19 @@
+meta:
+  Type: Mapped
+  ID: test1
+  Description: testing workflows
+  Priority: 1
+spec:
+ iris:
+    Species:
+      required: true
+      type: character
+    Petal.Length:
+      required: true
+      type: numeric
+steps:
+  - output: setosa
+    name: gsm.core::RunQuery
+    params:
+      df: iris
+      strQuery: "SELECT * FROM df WHERE Species = 'setosa'"
