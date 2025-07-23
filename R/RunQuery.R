@@ -51,8 +51,8 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
         # through ApplySpec()
         mapping$source <- spec[["source"]] %||% spec[["source_col"]] %||% name
 
-        # NULL type breaks things below
-        mapping$type <- spec[["type"]] %||% ""
+        # NULL type breaks things below, so use existing type if not specified
+        mapping$type <- spec[["type"]] %||% class(df[[mapping$source]])[1]
 
         return(mapping)
       })
@@ -93,9 +93,17 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
             character = "VARCHAR",
             timestamp = "DATETIME",
             logical = "BOOLEAN",
+            POSIXct = "DATETIME",
             NULL
           )
-          glue("{mapping$source} {type}")
+          if (is.null(type)) {
+            LogMessage(
+              level = "error",
+              message = "Unsupported type '{mapping$type}' for column '{mapping$source}'."
+            )
+          }
+          glue("{mapping$source} {type}") %>%
+            trimws()
         }) %>%
         paste(collapse = ", ")
       create_tab_query <- glue("CREATE TABLE {temp_table_name} ({create_tab_query})")
