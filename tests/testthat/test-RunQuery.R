@@ -142,6 +142,12 @@ test_that("RunQuery applies incomplete schema appropriately", {
   lColumnMapping <- list(
     emaN = list(
       source = "Name"
+    ),
+    Age = list(
+      type = "numeric"
+    ),
+    Salary = list(
+      type = "numeric"
     )
   )
 
@@ -152,7 +158,7 @@ test_that("RunQuery applies incomplete schema appropriately", {
       result <- RunQuery(query, df, bUseSchema = T, lColumnMapping = lColumnMapping)
     })
   })
-  expect_equal(class(result$emaN), "character")
+  expect_equal(class(result$emaN), class(df$Name))
 })
 
 
