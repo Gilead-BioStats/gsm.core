@@ -51,7 +51,7 @@ RunQuery <- function(strQuery, df, bUseSchema = FALSE, lColumnMapping = NULL) {
         # through ApplySpec()
         mapping$source <- spec[["source"]] %||% spec[["source_col"]] %||% name
 
-        # NULL type breaks things below, so use existing type if not specified
+        # NULL type breaks things below, so use existing type from `df` if not specified
         mapping$type <- spec[["type"]] %||% class(df[[mapping$source]])[1]
 
         return(mapping)
